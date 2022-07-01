@@ -4,7 +4,10 @@
       *ngFor="let year of dataStorage.years$ | async"
       [label]="year.toString()"
     >
-      Content
     </mat-tab>
   </mat-tab-group>
+
+  <div *ngFor="let calc of dataStorage.flatYearCalculations$| async">
+    <pre>{{ calc | json }}</pre>
+  </div>
 </div>

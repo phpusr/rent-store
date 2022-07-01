@@ -13,16 +13,23 @@ export class DataStorageService {
   currentFlatId$: Subject<number | null>
   currentFlat$: Subject<Flat | null | undefined>
   flatCalculations$: Subject<Calculation[]>
+  flatYearCalculations$: Subject<Calculation[]>
   years$: Subject<number[]>
   currentYear$: Subject<number | null>
   currentYearIndex$: Subject<number | null>
 
   constructor() {
     this.flats$ = new Subject<Flat[]>()
-
-    // Current Flat syncing
     this.currentFlatId$ = new Subject<number | null>()
     this.currentFlat$ = new Subject<Flat | null | undefined>()
+    this.calculations$ = new Subject<Calculation[]>()
+    this.flatCalculations$ = new Subject<Calculation[]>()
+    this.flatYearCalculations$ = new Subject<Calculation[]>()
+    this.years$ = new Subject<number[]>()
+    this.currentYear$ = new Subject<number | null>()
+    this.currentYearIndex$ = new Subject<number | null>()
+
+    // Current Flat syncing
     combineLatest([
       this.currentFlatId$,
       this.flats$
@@ -36,28 +43,37 @@ export class DataStorageService {
     })
 
     // Flat Calculations syncing
-    this.calculations$ = new Subject<Calculation[]>()
-    this.flatCalculations$ = new Subject<Calculation[]>()
     combineLatest([
-      this.currentFlat$,
-      this.calculations$
-    ]).subscribe(([flat, calculations]) => {
-      if (!flat) {
+      this.calculations$,
+      this.currentFlatId$
+    ]).subscribe(([calculations, flatId]) => {
+      if (!flatId) {
         return
       }
 
-      this.updateFlatCalculations(flat.id, calculations)
+      const flatCalculations = calculations.filter(it => it.flatId === flatId)
+      this.flatCalculations$.next(flatCalculations)
+    })
+
+    combineLatest([
+      this.flatCalculations$,
+      this.currentYear$
+    ]).subscribe(([calculations, year]) => {
+      if (!year) {
+        return
+      }
+
+      const yearCalculations = calculations.filter(it => it.year == year)
+      console.log('flatYearCalculations$', yearCalculations, year)
+      this.flatYearCalculations$.next(yearCalculations)
     })
 
     // Syncing years
-    this.years$ = new Subject<number[]>()
     this.flatCalculations$.subscribe(flatCalculations => {
       const yearSet = new Set(flatCalculations.map(it => it.year))
       const years = Array.from(yearSet).sort((a, b) => a - b)
       this.years$.next(years)
     })
-    this.currentYear$ = new Subject<number | null>()
-    this.currentYearIndex$ = new Subject<number | null>()
     combineLatest([
       this.currentYear$,
       this.years$
@@ -71,11 +87,6 @@ export class DataStorageService {
     this.currentFlatId$.next(store.currentFlatId)
     this.currentYear$.next(store.currentYear)
     this.calculations$.next(store.calculations)
-  }
-
-  private updateFlatCalculations(flatId: number, calculations: Calculation[]) {
-    const flatCalculations = calculations.filter(it => it.flatId === flatId)
-    this.flatCalculations$.next(flatCalculations)
   }
 
 }
