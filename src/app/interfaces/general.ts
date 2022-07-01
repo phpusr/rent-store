@@ -1,5 +1,6 @@
 export interface AppState {
   flats: Flat[]
+  currentFlatId: number,
   calculations: Calculation[]
 }
 
@@ -7,7 +8,7 @@ export interface AppState {
 export interface Flat {
   id: number
   address: string
-  number: 64
+  number: string
 }
 
 /* Расчеты */

@@ -6,12 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MainComponent } from './pages/main/main.component'
 import { LayoutComponent } from './components/layout/layout.component'
 import { MatModule } from './mat.module'
+import { FlatSelectorComponent } from './components/layout/flat-selector/flat-selector.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    LayoutComponent
+    LayoutComponent,
+    FlatSelectorComponent
   ],
   imports: [
     BrowserModule,

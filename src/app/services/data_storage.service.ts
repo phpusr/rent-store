@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { combineLatest, forkJoin, Subject } from 'rxjs'
+import { BehaviorSubject, combineLatest, forkJoin, Subject } from 'rxjs'
 import { AppState, Calculation, Flat } from '../interfaces/general'
 import { tmpStore } from './temp_data'
 
@@ -12,13 +12,13 @@ export class DataStorageService {
   private store: AppState
   private calculations$: Subject<Calculation[]>
   currentFlat$: Subject<Flat>
-  flats$: Subject<Flat[]>
+  flats$: BehaviorSubject<Flat[]>
   flatCalculations$: Subject<Calculation[]>
 
   constructor() {
     this.store = tmpStore
     this.currentFlat$ = new Subject<Flat>()
-    this.flats$ = new Subject<Flat[]>()
+    this.flats$ = new BehaviorSubject<Flat[]>([])
     this.flats$.next(this.store.flats)
     this.calculations$ = new Subject<Calculation[]>()
 
