@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 @Component({
@@ -6,12 +7,21 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
   templateUrl: './flat-selector.component.html',
   styleUrls: ['./flat-selector.component.scss']
 })
-export class FlatSelectorComponent implements OnInit {
+export class FlatSelectorComponent implements OnInit, OnDestroy {
+
+  currentFlatId?: number
+  private cfSub?: Subscription
 
   constructor(public dataStorage: DataStorageService) { }
 
   ngOnInit(): void {
-    
+    this.cfSub = this.dataStorage.currentFlat$.subscribe(flat => {
+      this.currentFlatId = flat?.id
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.cfSub?.unsubscribe()
   }
 
 }

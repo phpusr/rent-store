@@ -1,1 +1,10 @@
-<p>main works!</p>
+<div class="container">
+  <mat-tab-group [selectedIndex]="dataStorage.currentYearIndex$ | async">
+    <mat-tab
+      *ngFor="let year of dataStorage.years$ | async"
+      [label]="year.toString()"
+    >
+      Content
+    </mat-tab>
+  </mat-tab-group>
+</div>

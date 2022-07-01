@@ -5,19 +5,11 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list'
-import {MatSelectModule} from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select'
+import { MatTabsModule } from '@angular/material/tabs'
 
 
 @NgModule({
-  imports: [
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatSelectModule
-  ],
   exports: [
     LayoutModule,
     MatToolbarModule,
@@ -25,7 +17,8 @@ import {MatSelectModule} from '@angular/material/select'
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
   ]
 })
 export class MatModule { }

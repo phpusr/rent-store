@@ -1,6 +1,7 @@
 export interface AppState {
   flats: Flat[]
-  currentFlatId: number,
+  currentFlatId: number | null,
+  currentYear: number | null,
   calculations: Calculation[]
 }
 
@@ -31,18 +32,18 @@ export interface Calculation {
     cost: number
   }
   /* Отопление */
-  heating: {
+  heating?: {
     volume: number
     convertedVolume: number
     convertedVolumeMonthly: number
     cost: number
   }
   /* Вывоз мусора */
-  garbage: {
+  garbage?: {
     cost: number
   }
   /* Кап. ремонт */
-  overhaul: {
+  overhaul?: {
     cost: number
   }
 }
