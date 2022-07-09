@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list'
 import { MatSelectModule } from '@angular/material/select'
 import { MatTabsModule } from '@angular/material/tabs'
+import { MatTableModule } from '@angular/material/table'
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MatTabsModule } from '@angular/material/tabs'
     MatIconModule,
     MatListModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
   ]
 })
 export class MatModule { }
