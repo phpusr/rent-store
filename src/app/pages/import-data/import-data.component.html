@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Data Importing</h1>
+
+<div mat-dialog-content>
+  <div class="form">
+    <button mat-raised-button (click)="fileInput.click()">Choose File</button>
+    <input hidden (change)="onFileSelected(fileInput)" #fileInput type="file">
+
+    <mat-form-field class="file-path">
+      <mat-label>Filename</mat-label>
+      <input matInput disabled [value]="file?.name">
+    </mat-form-field>
+  </div>
+
+  <mat-error class="error" *ngIf="errorMessage">Error: {{ errorMessage }}</mat-error>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button mat-raised-button color="primary" [disabled]="!file" (click)="onImportFile()">Import</button>
+  <button mat-button cdkFocusInitial (click)="onNoClick()">Close</button>
+</div>
