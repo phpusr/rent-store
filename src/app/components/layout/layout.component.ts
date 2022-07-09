@@ -24,7 +24,6 @@ export class LayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.onImportData()
   }
 
   onImportData() {

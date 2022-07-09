@@ -32,14 +32,13 @@ export class ImportDataDialog implements OnInit {
   }
 
   onImportFile() {
-    const reader = new FileReader();
-
+    const reader = new FileReader()
     reader.onload = (e: any) => {
       const calculations = JSON.parse(new TextDecoder().decode(e.target.result))
       this.dataStorage.flatCalculations$.next(calculations)
     }
-
-    reader.readAsArrayBuffer(this.file as Blob);
+    reader.readAsArrayBuffer(this.file as Blob)
+    this.dialogRef.close()
   }
 
   checkFile(file: File): boolean {
@@ -57,7 +56,7 @@ export class ImportDataDialog implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close()
   }
 
 }
