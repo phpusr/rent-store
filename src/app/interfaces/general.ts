@@ -19,8 +19,8 @@ export interface Calculation {
   month: number
   /* ЖКХ */
   hcs: {
-    electricity: number
-    electricityMonthly: number
+    electricityVolume: number
+    electricityVolumeMonthly: number
     cost: number
   }
   /* Водоснабжение */

@@ -4,8 +4,8 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
 
 interface TableType {
   month: number
-  electricity: number
-  electricityMonthly: number
+  electricityVolume: number
+  electricityVolumeMonthly: number
   hcs_cost: number
   coldWaterVolume: number
   coldWaterVolumeMonthly: number
@@ -42,8 +42,8 @@ export class MainComponent implements OnInit, OnDestroy {
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = calculations.map(calc => ({
         month: calc.month,
-        electricity: calc.hcs.electricity,
-        electricityMonthly: calc.hcs.electricityMonthly,
+        electricityVolume: calc.hcs.electricityVolume,
+        electricityVolumeMonthly: calc.hcs.electricityVolumeMonthly,
         hcs_cost: calc.hcs.cost,
         coldWaterVolume: calc.water.coldVolume,
         coldWaterVolumeMonthly: calc.water.coldVolumeMonthly,

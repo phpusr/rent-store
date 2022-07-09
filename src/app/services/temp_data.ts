@@ -13,8 +13,8 @@ export const tmpStore: AppState = {
       year: 2020,
       month: 1,
       hcs: {
-        electricity: 1238,
-        electricityMonthly: 90,
+        electricityVolume: 1238,
+        electricityVolumeMonthly: 90,
         cost: 0
       },
       water: {
@@ -29,8 +29,8 @@ export const tmpStore: AppState = {
       year: 2021,
       month: 1,
       hcs: {
-        electricity: 2312,
-        electricityMonthly: 100,
+        electricityVolume: 2312,
+        electricityVolumeMonthly: 100,
         cost: 1165.59
       },
       water: {
@@ -45,8 +45,8 @@ export const tmpStore: AppState = {
       year: 2021,
       month: 2,
       hcs: {
-        electricity: 2312,
-        electricityMonthly: 100,
+        electricityVolume: 2312,
+        electricityVolumeMonthly: 100,
         cost: 1165.59
       },
       water: {
@@ -61,8 +61,8 @@ export const tmpStore: AppState = {
       year: 2021,
       month: 3,
       hcs: {
-        electricity: 2312,
-        electricityMonthly: 100,
+        electricityVolume: 2312,
+        electricityVolumeMonthly: 100,
         cost: 1165.59
       },
       water: {
