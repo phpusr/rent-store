@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select'
 import { Subscription } from 'rxjs/internal/Subscription'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
@@ -18,6 +19,10 @@ export class FlatSelectorComponent implements OnInit, OnDestroy {
     this.cfSub = this.dataStorage.currentFlat$.subscribe(flat => {
       this.currentFlatId = flat?.id
     })
+  }
+
+  onChangeFlat(selectChange: MatSelectChange) {
+    this.dataStorage.currentFlatId$.next(selectChange.value)
   }
 
   ngOnDestroy(): void {
