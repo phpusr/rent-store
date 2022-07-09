@@ -40,6 +40,38 @@ export const tmpStore: AppState = {
         hotVolumeMonthly: 2,
         cost: 285.2
       }
+    }, {
+      flatId: 1,
+      year: 2021,
+      month: 2,
+      hcs: {
+        electricity: 2312,
+        electricityMonthly: 100,
+        cost: 1165.59
+      },
+      water: {
+        coldVolume: 69,
+        coldVolumeMonthly: 3,
+        hotVolume: 35,
+        hotVolumeMonthly: 2,
+        cost: 285.2
+      }
+    }, {
+      flatId: 1,
+      year: 2021,
+      month: 3,
+      hcs: {
+        electricity: 2312,
+        electricityMonthly: 100,
+        cost: 1165.59
+      },
+      water: {
+        coldVolume: 69,
+        coldVolumeMonthly: 3,
+        hotVolume: 35,
+        hotVolumeMonthly: 2,
+        cost: 285.2
+      }
     }
   ]
 }

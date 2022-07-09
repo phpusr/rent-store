@@ -3,10 +3,20 @@ import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 interface TableType {
-  month: number,
-  electricity: number,
-  electricityMonthly: number,
+  month: number
+  electricity: number
+  electricityMonthly: number
   hcs_cost: number
+  coldWaterVolume: number
+  coldWaterVolumeMonthly: number
+  hotWaterVolume: number
+  hotWaterVolumeMonthly: number
+  waterCost: number
+  heatingVolume?: number
+  heatingConvertedVolume?: number
+  heatingConvertedVolumeMonthly?: number
+  garbageCost?: number
+  overhaulCost?: number
 }
 
 @Component({
@@ -17,7 +27,13 @@ interface TableType {
 export class MainComponent implements OnInit, OnDestroy {
 
   dataSource: TableType[] = []
-  displayedColumns = ['month', 'electricity', 'electricityMonthly', 'hcs_cost']
+  displayedColumns = [
+    'month',
+    'electricity', 'electricityMonthly', 'hcs_cost',
+    'coldWaterVolume', 'coldWaterVolumeMonthly', 'hotWaterVolume', 'hotWaterVolumeMonthly', 'waterCost',
+    'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly',
+    'garbageCost', 'overhaulCost'
+  ]
   private calcSub?: Subscription
 
   constructor(public dataStorage: DataStorageService) { }
@@ -28,7 +44,17 @@ export class MainComponent implements OnInit, OnDestroy {
         month: calc.month,
         electricity: calc.hcs.electricity,
         electricityMonthly: calc.hcs.electricityMonthly,
-        hcs_cost: calc.hcs.cost
+        hcs_cost: calc.hcs.cost,
+        coldWaterVolume: calc.water.coldVolume,
+        coldWaterVolumeMonthly: calc.water.coldVolumeMonthly,
+        hotWaterVolume: calc.water.hotVolume,
+        hotWaterVolumeMonthly: calc.water.coldVolumeMonthly,
+        waterCost: calc.water.cost,
+        heatingVolume: calc.heating?.volume,
+        heatingConvertedVolume: calc.heating?.convertedVolume,
+        heatingConvertedVolumeMonthly: calc.heating?.convertedVolumeMonthly,
+        garbageCost: calc.garbage?.cost,
+        overhaulCost: calc.overhaul?.cost
       }))
     })
   }

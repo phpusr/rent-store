@@ -2,10 +2,31 @@
   padding: 20px;
 }
 
+.mat-header-cell, .mat-cell {
+  padding: 10px;
+  border-top: 1px solid transparent;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: rgb(105, 159, 230);
+}
+
 .calc-table {
   margin-top: 10px;
 
   table {
     width: 100%;
+  }
+
+  .vol {
+    background-color: rgb(208 236 255);
+  }
+
+  .vol-monthly {
+    background-color: rgb(217 250 214);
+  }
+
+  .cost {
+    background-color: rgb(255 208 208);
   }
 }

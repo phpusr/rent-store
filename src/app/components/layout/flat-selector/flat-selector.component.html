@@ -1,5 +1,5 @@
 <mat-form-field class="main" appearance="fill">
-  <mat-label>flat</mat-label>
+  <mat-label>Flat</mat-label>
   <mat-select [(value)]="currentFlatId">
     <mat-option *ngFor="let flat of dataStorage.flats$ | async" [value]="flat.id">
       {{ flat.address }}
