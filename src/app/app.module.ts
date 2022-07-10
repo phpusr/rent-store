@@ -8,12 +8,14 @@ import { LayoutComponent } from './components/layout/layout.component'
 import { MatModule } from './modules/mat.module'
 import { FlatSelectorComponent } from './components/layout/flat-selector/flat-selector.component';
 import { ImportDataComponent, ImportDataDialog } from './pages/import-data/import-data.component'
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
+import { EditCalcComponent, EditCalcDialog } from './pages/edit-calc/edit-calc.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainComponent, children: [
-      { path: 'import-data', component: ImportDataComponent }
+      { path: 'import-data', component: ImportDataComponent },
+      { path: 'edit-calc', component: EditCalcComponent }
     ]
   }
 ]
@@ -25,7 +27,9 @@ const routes: Routes = [
     LayoutComponent,
     FlatSelectorComponent,
     ImportDataComponent,
-    ImportDataDialog
+    ImportDataDialog,
+    EditCalcComponent,
+    EditCalcDialog
   ],
   imports: [
     BrowserModule,
