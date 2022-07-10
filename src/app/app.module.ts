@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: 'main', component: MainComponent, children: [
       { path: 'import-data', component: ImportDataComponent },
-      { path: 'edit-calc', component: EditCalcComponent }
+      { path: 'edit-calc/:calcId', component: EditCalcComponent }
     ]
   }
 ]

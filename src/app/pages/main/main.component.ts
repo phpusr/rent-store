@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
+import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 interface TableType {
@@ -36,7 +38,11 @@ export class MainComponent implements OnInit, OnDestroy {
   ]
   private calcSub?: Subscription
 
-  constructor(public dataStorage: DataStorageService) { }
+  constructor(
+    public dataStorage: DataStorageService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
@@ -61,6 +67,10 @@ export class MainComponent implements OnInit, OnDestroy {
 
   getMonthName(monthIndex: number): string {
     return new Date(1, monthIndex - 1, 1).toLocaleString('default', { month: 'long' })
+  }
+
+  onEditCalc(rowIndex: number) {
+    this.router.navigate(['edit-calc', rowIndex + 1], { relativeTo: this.route })
   }
 
   ngOnDestroy(): void {
