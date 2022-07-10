@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
 import { take } from 'rxjs'
+import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+
+interface DialogData {
+  calculation: Calculation
+}
 
 @Component({
   selector: 'app-edit-calc',
@@ -24,14 +29,12 @@ export class EditCalcComponent implements OnInit {
       }
 
       this.dataStorage.flatYearCalculations$.pipe(take(1)).subscribe(calculations => {
-        const calc = calculations[calcId - 1]
-        //TODO
-        console.log('calc', calc)
+        const calculation = calculations[calcId - 1]
+        this.dialog.open(EditCalcDialog, {
+          width: '800px',
+          data: { calculation }
+        })
       })
-    })
-
-    this.dialog.open(EditCalcDialog, {
-      width: '800px'
     })
   }
 
@@ -46,10 +49,14 @@ export class EditCalcDialog implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<EditCalcDialog>,
-    private router: Router
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
   ngOnInit(): void {
+    //TODO
+    console.log('data', this.data)
+
     this.dialogRef.afterClosed().subscribe(() => {
       this.router.navigate(['..'])
     })
