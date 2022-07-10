@@ -1,4 +1,6 @@
 <div class="container">
+  <router-outlet></router-outlet>
+
   <mat-tab-group
     [selectedIndex]="dataStorage.currentYearIndex$ | async"
     (selectedIndexChange)="dataStorage.changeCurrentYearIndex($event)"

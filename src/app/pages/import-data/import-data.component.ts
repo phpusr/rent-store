@@ -1,11 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { Router } from '@angular/router'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 const MAX_FILE_SIZE = 100 * 1024
 
 @Component({
   selector: 'app-import-data',
+  template: ''
+})
+export class ImportDataComponent implements OnInit {
+
+  constructor(private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.dialog.open(ImportDataDialog, {
+      width: '400px'
+    })
+  }
+}
+
+@Component({
+  selector: 'app-import-data-dialog',
   templateUrl: './import-data.component.html',
   styleUrls: ['./import-data.component.scss']
 })
@@ -16,7 +32,8 @@ export class ImportDataDialog implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<ImportDataDialog>,
-    private dataStorage: DataStorageService
+    private dataStorage: DataStorageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +55,7 @@ export class ImportDataDialog implements OnInit {
       this.dataStorage.flatCalculations$.next(calculations)
     }
     reader.readAsArrayBuffer(this.file as Blob)
-    this.dialogRef.close()
+    this.onClose()
   }
 
   checkFile(file: File): boolean {
@@ -55,8 +72,9 @@ export class ImportDataDialog implements OnInit {
     return true
   }
 
-  onNoClick(): void {
+  onClose(): void {
     this.dialogRef.close()
+    this.router.navigate(['..'])
   }
 
 }

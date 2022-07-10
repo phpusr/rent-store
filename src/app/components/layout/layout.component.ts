@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
 import { ImportDataDialog } from 'src/app/pages/import-data/import-data.component'
 import { MatDialog } from '@angular/material/dialog'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-layout',
@@ -18,18 +19,9 @@ export class LayoutComponent implements OnInit {
       shareReplay()
     )
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private dialog: MatDialog
-  ) { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-  }
-
-  onImportData() {
-    this.dialog.open(ImportDataDialog, {
-      width: '400px'
-    })
   }
 
 }

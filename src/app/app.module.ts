@@ -7,7 +7,16 @@ import { MainComponent } from './pages/main/main.component'
 import { LayoutComponent } from './components/layout/layout.component'
 import { MatModule } from './modules/mat.module'
 import { FlatSelectorComponent } from './components/layout/flat-selector/flat-selector.component';
-import { ImportDataDialog } from './pages/import-data/import-data.component'
+import { ImportDataComponent, ImportDataDialog } from './pages/import-data/import-data.component'
+import { RouterModule, Routes } from '@angular/router'
+
+const routes: Routes = [
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: 'main', component: MainComponent, children: [
+      { path: 'import-data', component: ImportDataComponent }
+    ]
+  }
+]
 
 @NgModule({
   declarations: [
@@ -15,11 +24,13 @@ import { ImportDataDialog } from './pages/import-data/import-data.component'
     MainComponent,
     LayoutComponent,
     FlatSelectorComponent,
+    ImportDataComponent,
     ImportDataDialog
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
     MatModule
   ],
   providers: [],
