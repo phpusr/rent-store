@@ -93,4 +93,20 @@ export class DataStorageService {
     this.calculations$.next(store.calculations)
   }
 
+  setFlatCalculations(newFlatCalculations: Calculation[]) {
+    combineLatest([
+      this.calculations$,
+      this.currentFlatId$
+    ]).pipe(take(1)).subscribe(([calculations, flatId]) => {
+      if (!flatId) {
+        return
+      }
+
+      const newCalculations = calculations.filter(it => it.flatId !== flatId)
+      newCalculations.push(...newFlatCalculations)
+      this.calculations$.next(newCalculations)
+      localStorage.setItem('calculations', JSON.stringify(newCalculations))
+    })
+  }
+
 }

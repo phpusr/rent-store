@@ -53,19 +53,14 @@ export class ImportDataDialog implements OnInit {
   onImportFile() {
     const reader = new FileReader()
     reader.onload = (e: any) => {
-      combineLatest([
-        this.dataStorage.calculations$,
-        this.dataStorage.currentFlatId$
-      ]).pipe(take(1)).subscribe(([calculations, flatId]) => {
+      this.dataStorage.currentFlatId$.pipe(take(1)).subscribe(flatId => {
         if (!flatId) {
           return
         }
 
         const importedCalculations: Calculation[] = JSON.parse(new TextDecoder().decode(e.target.result))
         importedCalculations.forEach(it => it.flatId = flatId)
-        const newCalculations = calculations.filter(it => it.flatId !== flatId)
-        newCalculations.push(...importedCalculations)
-        this.dataStorage.calculations$.next(newCalculations)
+        this.dataStorage.setFlatCalculations(importedCalculations)
       })
     }
     reader.readAsArrayBuffer(this.file as Blob)
