@@ -30,6 +30,8 @@ export class EditCalcComponent implements OnInit {
 
       this.dataStorage.flatYearCalculations$.pipe(take(1)).subscribe(calculations => {
         const calculation = calculations[calcId - 1]
+        //TODO значения не успеваю установиться
+        console.log('comp calc', calculations)
         this.dialog.open(EditCalcDialog, {
           width: '800px',
           data: { calculation }
@@ -47,11 +49,18 @@ export class EditCalcComponent implements OnInit {
 })
 export class EditCalcDialog implements OnInit {
 
+  calc: Calculation
+  month: string
+
   constructor(
     private dialogRef: MatDialogRef<EditCalcDialog>,
     private router: Router,
+    dataStorage: DataStorageService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) { }
+  ) {
+    this.calc = data.calculation
+    this.month = dataStorage.getMonthName(this.calc.month)
+  }
 
   ngOnInit(): void {
     //TODO

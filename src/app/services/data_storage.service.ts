@@ -118,4 +118,8 @@ export class DataStorageService {
     })
   }
 
+  getMonthName(monthIndex: number): string {
+    return new Date(1, monthIndex - 1, 1).toLocaleString('default', { month: 'long' })
+  }
+
 }

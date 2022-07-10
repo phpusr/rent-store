@@ -47,7 +47,7 @@ export class MainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = calculations.map(calc => ({
-        month: this.getMonthName(calc.month),
+        month: this.dataStorage.getMonthName(calc.month),
         electricityVolume: calc.hcs.electricityVolume,
         electricityVolumeMonthly: calc.hcs.electricityVolumeMonthly,
         hcs_cost: calc.hcs.cost,
@@ -63,10 +63,6 @@ export class MainComponent implements OnInit, OnDestroy {
         overhaulCost: calc.overhaul?.cost
       }))
     })
-  }
-
-  getMonthName(monthIndex: number): string {
-    return new Date(1, monthIndex - 1, 1).toLocaleString('default', { month: 'long' })
   }
 
   onEditCalc(rowIndex: number) {
