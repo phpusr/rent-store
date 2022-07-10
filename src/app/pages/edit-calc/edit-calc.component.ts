@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
-import { combineLatest } from 'rxjs'
+import { take } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 @Component({
@@ -17,18 +17,17 @@ export class EditCalcComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    combineLatest([
-      this.route.params,
-      this.dataStorage.flatYearCalculations$
-    ]).subscribe(([params, calculations]) => {
+    this.route.params.subscribe(params => {
       const calcId = +params['calcId']
       if (!calcId) {
         return
       }
 
-      const calc = calculations[calcId - 1]
-      //TODO
-      console.log('calc', calc)
+      this.dataStorage.flatYearCalculations$.pipe(take(1)).subscribe(calculations => {
+        const calc = calculations[calcId - 1]
+        //TODO
+        console.log('calc', calc)
+      })
     })
 
     this.dialog.open(EditCalcDialog, {
@@ -48,8 +47,7 @@ export class EditCalcDialog implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<EditCalcDialog>,
     private router: Router
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
     this.dialogRef.afterClosed().subscribe(() => {

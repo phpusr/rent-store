@@ -12,8 +12,8 @@ export class DataStorageService {
   flats$: Subject<Flat[]>
   currentFlatId$: BehaviorSubject<number | null>
   currentFlat$: Subject<Flat | null | undefined>
-  flatCalculations$: Subject<Calculation[]>
-  flatYearCalculations$: Subject<Calculation[]>
+  flatCalculations$: BehaviorSubject<Calculation[]>
+  flatYearCalculations$: BehaviorSubject<Calculation[]>
   years$: BehaviorSubject<number[]>
   currentYear$: Subject<number | null>
   currentYearIndex$: Subject<number | null>
@@ -23,8 +23,8 @@ export class DataStorageService {
     this.currentFlatId$ = new BehaviorSubject<number | null>(null)
     this.currentFlat$ = new Subject<Flat | null | undefined>()
     this.calculations$ = new BehaviorSubject<Calculation[]>([])
-    this.flatCalculations$ = new Subject<Calculation[]>()
-    this.flatYearCalculations$ = new Subject<Calculation[]>()
+    this.flatCalculations$ = new BehaviorSubject<Calculation[]>([])
+    this.flatYearCalculations$ = new BehaviorSubject<Calculation[]>([])
     this.years$ = new BehaviorSubject<number[]>([])
     this.currentYear$ = new Subject<number | null>()
     this.currentYearIndex$ = new Subject<number | null>()
