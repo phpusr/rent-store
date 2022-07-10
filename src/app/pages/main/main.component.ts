@@ -60,7 +60,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   getMonthName(monthIndex: number): string {
-    return new Date(1, 1, monthIndex).toLocaleString('default', { month: 'long' })
+    return new Date(1, monthIndex - 1, 1).toLocaleString('default', { month: 'long' })
   }
 
   ngOnDestroy(): void {
