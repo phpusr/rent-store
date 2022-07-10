@@ -3,7 +3,7 @@
 
   <mat-tab-group
     [selectedIndex]="dataStorage.currentYearIndex$ | async"
-    (selectedIndexChange)="dataStorage.changeCurrentYearIndex($event)"
+    (selectedIndexChange)="dataStorage.setCurrentYearIndex($event)"
   >
     <mat-tab
       *ngFor="let year of dataStorage.years$ | async"

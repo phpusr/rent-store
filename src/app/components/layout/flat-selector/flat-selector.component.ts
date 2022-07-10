@@ -22,7 +22,7 @@ export class FlatSelectorComponent implements OnInit, OnDestroy {
   }
 
   onChangeFlat(selectChange: MatSelectChange) {
-    this.dataStorage.currentFlatId$.next(selectChange.value)
+    this.dataStorage.setCurrentFlatId(selectChange.value)
   }
 
   ngOnDestroy(): void {

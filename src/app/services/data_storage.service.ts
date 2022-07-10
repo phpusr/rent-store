@@ -80,12 +80,6 @@ export class DataStorageService {
     })
   }
 
-  changeCurrentYearIndex(yearIndex: number) {
-    this.years$.pipe(take(1)).subscribe(years => {
-      this.currentYear$.next(years[yearIndex])
-    })
-  }
-
   initValues() {
     this.flats$.next([
       { id: 1, address: 'Levina 231', number: '121' },
@@ -94,6 +88,18 @@ export class DataStorageService {
     this.currentFlatId$.next(JSON.parse(localStorage.getItem('currentFlatId') || '1'))
     this.currentYear$.next(JSON.parse(localStorage.getItem('currentYear') || new Date().getFullYear().toString()))
     this.calculations$.next(JSON.parse(localStorage.getItem('calculations') || '[]'))
+  }
+
+  setCurrentFlatId(flatId: number) {
+    this.currentFlatId$.next(flatId)
+    localStorage.setItem('currentFlatId', flatId.toString())
+  }
+
+  setCurrentYearIndex(yearIndex: number) {
+    this.years$.pipe(take(1)).subscribe(years => {
+      this.currentYear$.next(years[yearIndex])
+      localStorage.setItem('currentYear', years[yearIndex].toString())
+    })
   }
 
   setFlatCalculations(newFlatCalculations: Calculation[]) {
