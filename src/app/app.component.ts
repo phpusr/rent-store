@@ -1,6 +1,5 @@
 import { OnInit, Component } from '@angular/core';
 import { DataStorageService } from './services/data_storage.service'
-import { tmpStore } from './services/temp_data'
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.dataStorage.initValues(tmpStore)
+      this.dataStorage.initValues()
     }, 100)
   }
 

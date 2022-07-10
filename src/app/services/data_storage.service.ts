@@ -86,11 +86,14 @@ export class DataStorageService {
     })
   }
 
-  initValues(store: AppState) {
-    this.flats$.next(store.flats)
-    this.currentFlatId$.next(store.currentFlatId)
-    this.currentYear$.next(store.currentYear)
-    this.calculations$.next(store.calculations)
+  initValues() {
+    this.flats$.next([
+      { id: 1, address: 'Levina 231', number: '121' },
+      { id: 2, address: 'Ludviga 34', number: '45' }
+    ])
+    this.currentFlatId$.next(JSON.parse(localStorage.getItem('currentFlatId') || '1'))
+    this.currentYear$.next(JSON.parse(localStorage.getItem('currentYear') || new Date().getFullYear().toString()))
+    this.calculations$.next(JSON.parse(localStorage.getItem('calculations') || '[]'))
   }
 
   setFlatCalculations(newFlatCalculations: Calculation[]) {
