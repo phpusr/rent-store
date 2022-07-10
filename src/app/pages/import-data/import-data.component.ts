@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { Router } from '@angular/router'
+import { combineLatest, take } from 'rxjs'
+import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 const MAX_FILE_SIZE = 100 * 1024
@@ -51,8 +53,20 @@ export class ImportDataDialog implements OnInit {
   onImportFile() {
     const reader = new FileReader()
     reader.onload = (e: any) => {
-      const calculations = JSON.parse(new TextDecoder().decode(e.target.result))
-      this.dataStorage.flatCalculations$.next(calculations)
+      combineLatest([
+        this.dataStorage.calculations$,
+        this.dataStorage.currentFlatId$
+      ]).pipe(take(1)).subscribe(([calculations, flatId]) => {
+        if (!flatId) {
+          return
+        }
+
+        const importedCalculations: Calculation[] = JSON.parse(new TextDecoder().decode(e.target.result))
+        importedCalculations.forEach(it => it.flatId = flatId)
+        const newCalculations = calculations.filter(it => it.flatId !== flatId)
+        newCalculations.push(...importedCalculations)
+        this.dataStorage.calculations$.next(newCalculations)
+      })
     }
     reader.readAsArrayBuffer(this.file as Blob)
     this.onClose()

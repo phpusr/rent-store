@@ -8,9 +8,9 @@ import { AppState, Calculation, Flat } from '../interfaces/general'
 })
 export class DataStorageService {
 
-  private calculations$: Subject<Calculation[]>
+  calculations$: BehaviorSubject<Calculation[]>
   flats$: Subject<Flat[]>
-  currentFlatId$: Subject<number | null>
+  currentFlatId$: BehaviorSubject<number | null>
   currentFlat$: Subject<Flat | null | undefined>
   flatCalculations$: Subject<Calculation[]>
   flatYearCalculations$: Subject<Calculation[]>
@@ -20,9 +20,9 @@ export class DataStorageService {
 
   constructor() {
     this.flats$ = new Subject<Flat[]>()
-    this.currentFlatId$ = new Subject<number | null>()
+    this.currentFlatId$ = new BehaviorSubject<number | null>(null)
     this.currentFlat$ = new Subject<Flat | null | undefined>()
-    this.calculations$ = new Subject<Calculation[]>()
+    this.calculations$ = new BehaviorSubject<Calculation[]>([])
     this.flatCalculations$ = new Subject<Calculation[]>()
     this.flatYearCalculations$ = new Subject<Calculation[]>()
     this.years$ = new BehaviorSubject<number[]>([])
