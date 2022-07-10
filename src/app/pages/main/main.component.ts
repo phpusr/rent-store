@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 interface TableType {
-  month: number
+  month: string
   electricityVolume: number
   electricityVolumeMonthly: number
   hcs_cost: number
@@ -41,7 +41,7 @@ export class MainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = calculations.map(calc => ({
-        month: calc.month,
+        month: this.getMonthName(calc.month),
         electricityVolume: calc.hcs.electricityVolume,
         electricityVolumeMonthly: calc.hcs.electricityVolumeMonthly,
         hcs_cost: calc.hcs.cost,
@@ -57,6 +57,10 @@ export class MainComponent implements OnInit, OnDestroy {
         overhaulCost: calc.overhaul?.cost
       }))
     })
+  }
+
+  getMonthName(monthIndex: number): string {
+    return new Date(1, 1, monthIndex).toLocaleString('default', { month: 'long' })
   }
 
   ngOnDestroy(): void {
