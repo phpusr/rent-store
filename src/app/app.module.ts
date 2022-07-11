@@ -11,6 +11,7 @@ import { ImportDataComponent, ImportDataDialog } from './pages/import-data/impor
 import { RouterModule, Routes } from '@angular/router';
 import { EditCalcComponent, EditCalcDialog } from './pages/edit-calc/edit-calc.component'
 import { LocalStorageService } from './services/local_storage.service'
+import { ReactiveFormsModule } from '@angular/forms'
 
 const currentYear = LocalStorageService.currentYear
 
@@ -38,6 +39,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule,
     MatModule
   ],
   providers: [],

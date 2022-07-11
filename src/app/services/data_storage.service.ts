@@ -107,13 +107,27 @@ export class DataStorageService {
 
       const newCalculations = calculations.filter(it => it.flatId !== flatId)
       newCalculations.push(...newFlatCalculations)
-      this.calculations$.next(newCalculations)
-      LocalStorageService.calculations = newCalculations
+      this.setCalculations(newCalculations)
     })
+  }
+
+  setCalculations(newCalculations: Calculation[]) {
+    this.calculations$.next(newCalculations)
+    LocalStorageService.calculations = newCalculations
   }
 
   getMonthName(monthIndex: number): string {
     return new Date(1, monthIndex - 1, 1).toLocaleString('default', { month: 'long' })
+  }
+
+  saveCalculation(calc: Calculation) {
+    this.calculations$.pipe(take(1)).subscribe(calculations => {
+      const newCalculations = calculations.filter(it =>
+        it.flatId !== calc.flatId || it.year !== calc.year || it.month !== calc.month
+      )
+      newCalculations.push(calc)
+      this.setCalculations(newCalculations)
+    })
   }
 
 }

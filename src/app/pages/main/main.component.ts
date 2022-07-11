@@ -70,7 +70,7 @@ export class MainComponent implements OnInit, OnDestroy {
         heatingConvertedVolumeMonthly: calc.heating?.convertedVolumeMonthly,
         garbageCost: calc.garbage?.cost,
         overhaulCost: calc.overhaul?.cost
-      }))
+      })).sort((a, b) => a.monthIndex - b.monthIndex)
     })
   }
 
