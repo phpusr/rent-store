@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, combineLatest, Subject, take } from 'rxjs'
-import { AppState, Calculation, Flat } from '../interfaces/general'
+import { Calculation, Flat } from '../interfaces/general'
+import { LocalStorageService } from './local_storage.service'
 
 
 @Injectable({
@@ -85,20 +86,20 @@ export class DataStorageService {
       { id: 1, address: 'Levina 231', number: '121' },
       { id: 2, address: 'Ludviga 34', number: '45' }
     ])
-    this.currentFlatId$.next(JSON.parse(localStorage.getItem('currentFlatId') || '1'))
-    this.currentYear$.next(JSON.parse(localStorage.getItem('currentYear') || new Date().getFullYear().toString()))
-    this.calculations$.next(JSON.parse(localStorage.getItem('calculations') || '[]'))
+    this.currentFlatId$.next(LocalStorageService.currentFlatId)
+    this.currentYear$.next(LocalStorageService.currentYear)
+    this.calculations$.next(LocalStorageService.calculations)
   }
 
   setCurrentFlatId(flatId: number) {
     this.currentFlatId$.next(flatId)
-    localStorage.setItem('currentFlatId', flatId.toString())
+    LocalStorageService.currentFlatId = flatId
   }
 
   setCurrentYearIndex(yearIndex: number) {
     this.years$.pipe(take(1)).subscribe(years => {
       this.currentYear$.next(years[yearIndex])
-      localStorage.setItem('currentYear', years[yearIndex].toString())
+      LocalStorageService.currentYear = years[yearIndex]
     })
   }
 
@@ -114,7 +115,7 @@ export class DataStorageService {
       const newCalculations = calculations.filter(it => it.flatId !== flatId)
       newCalculations.push(...newFlatCalculations)
       this.calculations$.next(newCalculations)
-      localStorage.setItem('calculations', JSON.stringify(newCalculations))
+      LocalStorageService.calculations = newCalculations
     })
   }
 

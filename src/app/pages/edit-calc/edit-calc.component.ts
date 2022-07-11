@@ -30,7 +30,7 @@ export class EditCalcComponent implements OnInit {
 
       this.dataStorage.flatYearCalculations$.pipe(take(1)).subscribe(calculations => {
         const calculation = calculations[calcId - 1]
-        //TODO значения не успеваю установиться
+        //TODO
         console.log('comp calc', calculations)
         this.dialog.open(EditCalcDialog, {
           width: '800px',

@@ -11,9 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private dataStorage: DataStorageService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.dataStorage.initValues()
-    }, 100)
+    this.dataStorage.initValues()
   }
 
 }
