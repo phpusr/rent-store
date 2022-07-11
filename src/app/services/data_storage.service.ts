@@ -34,6 +34,7 @@ export class DataStorageService {
       this.flats$
     ]).subscribe(([currentFlatId, flats]) => {
       if (currentFlatId == null) {
+        this.currentFlat$.next(null)
         return
       }
 
@@ -47,6 +48,7 @@ export class DataStorageService {
       this.currentFlatId$
     ]).subscribe(([calculations, flatId]) => {
       if (!flatId) {
+        this.flatCalculations$.next([])
         return
       }
 
@@ -58,6 +60,7 @@ export class DataStorageService {
       this.currentYear$
     ]).subscribe(([calculations, year]) => {
       if (!year) {
+        this.flatYearCalculations$.next([])
         return
       }
 
