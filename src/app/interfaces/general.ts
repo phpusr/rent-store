@@ -32,7 +32,7 @@ export interface Calculation {
     cost: number
   }
   /* Отопление */
-  heating?: {
+  heating: {
     volume: number
     convertedVolume: number
     convertedVolumeMonthly: number

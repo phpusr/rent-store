@@ -1,19 +1,75 @@
-<h1 mat-dialog-title>Edit Calc</h1>
+<h1 mat-dialog-title>Edit Calc {{ month }} {{ calc.year }}</h1>
 
 <div mat-dialog-content>
   <form>
-    <div>
-      {{ month }} {{ calc.year }}
-    </div>
+    <!-- HCS -->
+    <mat-card>
+      <mat-card-title>HCS</mat-card-title>
 
-    <mat-form-field>
-      <mat-label>Filename</mat-label>
-      <input matInput>
-    </mat-form-field>
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Electricity</mat-label>
+          <input matInput cdkFocusInitial>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Monthly</mat-label>
+          <input matInput disabled value="10">
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Water -->
+    <mat-card>
+      <mat-card-title>Water</mat-card-title>
+
+      <mat-card-content>
+        <div>
+          <mat-form-field>
+            <mat-label>Hot volume</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Monthly</mat-label>
+            <input matInput disabled value="10">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Cold volume</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Monthly</mat-label>
+            <input matInput disabled value="10">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Heating -->
+    <mat-card>
+      <mat-card-title>Heating</mat-card-title>
+
+      <mat-form-field>
+        <mat-label>Volume</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Converted volume</mat-label>
+        <input matInput disabled>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Converted volume monthly</mat-label>
+        <input matInput disabled>
+      </mat-form-field>
+    </mat-card>
   </form>
 </div>
 
 <div mat-dialog-actions align="end">
   <button mat-button mat-raised-button color="primary">Save</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+  <button mat-button mat-dialog-close>Cancel</button>
 </div>

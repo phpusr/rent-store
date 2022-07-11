@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatInputModule } from '@angular/material/input'
+import { MatCardModule } from '@angular/material/card'
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatInputModule } from '@angular/material/input'
     MatTableModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ]
 })
 export class MatModule { }
