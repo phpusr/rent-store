@@ -17,7 +17,6 @@ export class DataStorageService {
   flatYearCalculations$: BehaviorSubject<Calculation[]>
   years$: BehaviorSubject<number[]>
   currentYear$: Subject<number | null>
-  currentYearIndex$: Subject<number | null>
 
   constructor() {
     this.flats$ = new Subject<Flat[]>()
@@ -28,7 +27,6 @@ export class DataStorageService {
     this.flatYearCalculations$ = new BehaviorSubject<Calculation[]>([])
     this.years$ = new BehaviorSubject<number[]>([])
     this.currentYear$ = new Subject<number | null>()
-    this.currentYearIndex$ = new Subject<number | null>()
 
     // Current Flat syncing
     combineLatest([
@@ -73,12 +71,6 @@ export class DataStorageService {
       const years = Array.from(yearSet).sort((a, b) => a - b)
       this.years$.next(years)
     })
-    combineLatest([
-      this.currentYear$,
-      this.years$
-    ]).subscribe(([currentYear, years]) => {
-      this.currentYearIndex$.next(years?.findIndex(it => it === currentYear))
-    })
   }
 
   initValues() {
@@ -96,11 +88,9 @@ export class DataStorageService {
     LocalStorageService.currentFlatId = flatId
   }
 
-  setCurrentYearIndex(yearIndex: number) {
-    this.years$.pipe(take(1)).subscribe(years => {
-      this.currentYear$.next(years[yearIndex])
-      LocalStorageService.currentYear = years[yearIndex]
-    })
+  setCurrentYear(year: number) {
+    this.currentYear$.next(year)
+    LocalStorageService.currentYear = year
   }
 
   setFlatCalculations(newFlatCalculations: Calculation[]) {

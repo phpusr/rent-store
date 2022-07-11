@@ -10,10 +10,13 @@ import { FlatSelectorComponent } from './components/layout/flat-selector/flat-se
 import { ImportDataComponent, ImportDataDialog } from './pages/import-data/import-data.component'
 import { RouterModule, Routes } from '@angular/router';
 import { EditCalcComponent, EditCalcDialog } from './pages/edit-calc/edit-calc.component'
+import { LocalStorageService } from './services/local_storage.service'
+
+const currentYear = LocalStorageService.currentYear
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full' },
-  { path: 'main', component: MainComponent, children: [
+  { path: '', redirectTo: `main/${currentYear}`, pathMatch: 'full' },
+  { path: 'main/:year', component: MainComponent, children: [
       { path: 'import-data', component: ImportDataComponent },
       { path: 'edit-calc/:calcId', component: EditCalcComponent }
     ]

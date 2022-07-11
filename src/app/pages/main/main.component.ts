@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { LocalStorageService } from 'src/app/services/local_storage.service'
 
 interface TableType {
   month: string
@@ -36,6 +37,7 @@ export class MainComponent implements OnInit, OnDestroy {
     'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly',
     'garbageCost', 'overhaulCost'
   ]
+  currentYear = LocalStorageService.currentYear
   private calcSub?: Subscription
 
   constructor(
@@ -45,6 +47,11 @@ export class MainComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.currentYear = +params['year']
+      this.dataStorage.setCurrentYear(this.currentYear)
+    })
+
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = calculations.map(calc => ({
         month: this.dataStorage.getMonthName(calc.month),
