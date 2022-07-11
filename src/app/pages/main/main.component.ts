@@ -6,6 +6,7 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
 import { LocalStorageService } from 'src/app/services/local_storage.service'
 
 interface TableType {
+  monthIndex: number
   month: string
   electricityVolume: number
   electricityVolumeMonthly: number
@@ -54,6 +55,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = calculations.map(calc => ({
+        monthIndex: calc.month,
         month: this.dataStorage.getMonthName(calc.month),
         electricityVolume: calc.hcs.electricityVolume,
         electricityVolumeMonthly: calc.hcs.electricityVolumeMonthly,
@@ -72,8 +74,8 @@ export class MainComponent implements OnInit, OnDestroy {
     })
   }
 
-  onEditCalc(rowIndex: number) {
-    this.router.navigate(['edit-calc', rowIndex + 1], { relativeTo: this.route })
+  onEditCalc(calc: TableType) {
+    this.router.navigate([calc.monthIndex, 'edit'], { relativeTo: this.route })
   }
 
   ngOnDestroy(): void {

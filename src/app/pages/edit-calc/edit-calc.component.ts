@@ -23,15 +23,13 @@ export class EditCalcComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const calcId = +params['calcId']
-      if (!calcId) {
+      const month = +params['month']
+      if (!month) {
         return
       }
 
       this.dataStorage.flatYearCalculations$.pipe(take(1)).subscribe(calculations => {
-        const calculation = calculations[calcId - 1]
-        //TODO
-        console.log('comp calc', calculations)
+        const calculation = calculations.find(it => it.month === month)
         this.dialog.open(EditCalcDialog, {
           width: '800px',
           data: { calculation }

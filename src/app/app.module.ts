@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: '', redirectTo: `main/${currentYear}`, pathMatch: 'full' },
   { path: 'main/:year', component: MainComponent, children: [
       { path: 'import-data', component: ImportDataComponent },
-      { path: 'edit-calc/:calcId', component: EditCalcComponent }
+      { path: ':month/edit', component: EditCalcComponent }
     ]
   }
 ]
