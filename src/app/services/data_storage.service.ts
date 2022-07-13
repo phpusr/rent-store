@@ -10,23 +10,23 @@ import { LocalStorageService } from './local_storage.service'
 export class DataStorageService {
 
   calculations$: BehaviorSubject<Calculation[]>
-  flats$: Subject<Flat[]>
+  flats$: BehaviorSubject<Flat[]>
   currentFlatId$: BehaviorSubject<number | null>
-  currentFlat$: Subject<Flat | null | undefined>
+  currentFlat$: BehaviorSubject<Flat | null | undefined>
   flatCalculations$: BehaviorSubject<Calculation[]>
   flatYearCalculations$: BehaviorSubject<Calculation[]>
   years$: BehaviorSubject<number[]>
-  currentYear$: Subject<number | null>
+  currentYear$: BehaviorSubject<number | null>
 
   constructor() {
-    this.flats$ = new Subject<Flat[]>()
+    this.flats$ = new BehaviorSubject<Flat[]>([])
     this.currentFlatId$ = new BehaviorSubject<number | null>(null)
-    this.currentFlat$ = new Subject<Flat | null | undefined>()
+    this.currentFlat$ = new BehaviorSubject<Flat | null | undefined>(null)
     this.calculations$ = new BehaviorSubject<Calculation[]>([])
     this.flatCalculations$ = new BehaviorSubject<Calculation[]>([])
     this.flatYearCalculations$ = new BehaviorSubject<Calculation[]>([])
     this.years$ = new BehaviorSubject<number[]>([])
-    this.currentYear$ = new Subject<number | null>()
+    this.currentYear$ = new BehaviorSubject<number | null>(null)
 
     // Current Flat syncing
     combineLatest([

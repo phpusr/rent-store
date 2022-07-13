@@ -1,13 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
-import { take } from 'rxjs'
 import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 interface DialogData {
-  calculation: Calculation
+  month: number
+  calculation?: Calculation
 }
 
 @Component({
@@ -29,12 +29,11 @@ export class EditCalcComponent implements OnInit {
         return
       }
 
-      this.dataStorage.flatYearCalculations$.pipe(take(1)).subscribe(calculations => {
-        const calculation = calculations.find(it => it.month === month)
-        this.dialog.open(EditCalcDialog, {
-          width: '800px',
-          data: { calculation }
-        })
+      const calculations = this.dataStorage.flatYearCalculations$.getValue()
+      const calculation = calculations.find(it => it.month === month)
+      this.dialog.open(EditCalcDialog, {
+        width: '800px',
+        data: { calculation, month }
       })
     })
   }
@@ -48,23 +47,23 @@ export class EditCalcComponent implements OnInit {
 })
 export class EditCalcDialog implements OnInit {
 
-  calc: Calculation
+  calc?: Calculation
   month: string
   form: FormGroup
 
   constructor(
+    public dataStorage: DataStorageService,
     private dialogRef: MatDialogRef<EditCalcDialog>,
     private router: Router,
-    private dataStorage: DataStorageService,
     fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
+    this.month = dataStorage.getMonthName(data.month)
     this.calc = data.calculation
-    this.month = dataStorage.getMonthName(this.calc.month)
     this.form = fb.group({
       flatId: [''],
-      month: [''],
       year: [''],
+      month: [''],
       hcs: fb.group({
         electricityVolume: [''],
         electricityVolumeMonthly: { value: '', disabled: true },
@@ -90,7 +89,15 @@ export class EditCalcDialog implements OnInit {
         cost: ['']
       })
     })
-    this.form.setValue(data.calculation)
+
+    if (data.calculation) {
+      this.form.setValue(data.calculation)
+    } else {
+      this.form.patchValue({
+        flatId: dataStorage.currentFlatId$.getValue(),
+        year: dataStorage.currentYear$.getValue()
+      })
+    }
   }
 
   ngOnInit(): void {
