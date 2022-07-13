@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
-import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { LocalStorageService } from 'src/app/services/local_storage.service'
 

@@ -70,8 +70,12 @@ export class DataStorageService {
 
     // Syncing years
     this.flatCalculations$.subscribe(flatCalculations => {
-      const yearSet = new Set(flatCalculations.map(it => it.year))
-      const years = Array.from(yearSet).sort((a, b) => a - b)
+      const minYear = Math.min(...flatCalculations.map(it => it.year))
+      const maxYear = new Date().getFullYear() + 1
+      const years = []
+      for (let year = minYear; year <= maxYear; year++) {
+        years.push(year)
+      }
       this.years$.next(years)
     })
   }
