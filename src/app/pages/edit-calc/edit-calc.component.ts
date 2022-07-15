@@ -61,9 +61,9 @@ export class EditCalcDialog implements OnInit {
     this.month = dataStorage.getMonthName(data.month)
     this.calc = data.calculation
     this.form = fb.group({
-      flatId: [''],
-      year: [''],
-      month: [''],
+      flatId: [dataStorage.currentFlatId$.getValue()],
+      year: [dataStorage.currentYear$.getValue()],
+      month: [data.month],
       hcs: fb.group({
         electricityVolume: [''],
         electricityVolumeMonthly: { value: '', disabled: true },
@@ -92,11 +92,6 @@ export class EditCalcDialog implements OnInit {
 
     if (data.calculation) {
       this.form.setValue(data.calculation)
-    } else {
-      this.form.patchValue({
-        flatId: dataStorage.currentFlatId$.getValue(),
-        year: dataStorage.currentYear$.getValue()
-      })
     }
   }
 
