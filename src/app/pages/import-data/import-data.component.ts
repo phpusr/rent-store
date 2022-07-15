@@ -51,17 +51,17 @@ export class ImportDataDialog implements OnInit {
   }
 
   onImportFile() {
+    const flatId = this.dataStorage.currentFlatId$.getValue()
+    if (!flatId) {
+      alert('Flat wasn\'t selected')
+      return
+    }
+
     const reader = new FileReader()
     reader.onload = (e: any) => {
-      this.dataStorage.currentFlatId$.pipe(take(1)).subscribe(flatId => {
-        if (!flatId) {
-          return
-        }
-
-        const importedCalculations: Calculation[] = JSON.parse(new TextDecoder().decode(e.target.result))
-        importedCalculations.forEach(it => it.flatId = flatId)
-        this.dataStorage.setFlatCalculations(importedCalculations)
-      })
+      const importedCalculations: Calculation[] = JSON.parse(new TextDecoder().decode(e.target.result))
+      importedCalculations.forEach(it => it.flatId = flatId)
+      this.dataStorage.setFlatCalculations(importedCalculations)
     }
     reader.readAsArrayBuffer(this.file as Blob)
     this.onClose()

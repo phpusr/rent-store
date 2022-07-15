@@ -101,18 +101,15 @@ export class DataStorageService {
   }
 
   setFlatCalculations(newFlatCalculations: Calculation[]) {
-    combineLatest([
-      this.calculations$,
-      this.currentFlatId$
-    ]).pipe(take(1)).subscribe(([calculations, flatId]) => {
-      if (!flatId) {
-        return
-      }
+    const flatId = this.currentFlatId$.getValue()
+    if (!flatId) {
+      return
+    }
 
-      const newCalculations = calculations.filter(it => it.flatId !== flatId)
-      newCalculations.push(...newFlatCalculations)
-      this.setCalculations(newCalculations)
-    })
+    const calculations = this.calculations$.getValue()
+    const newCalculations = calculations.filter(it => it.flatId !== flatId)
+    newCalculations.push(...newFlatCalculations)
+    this.setCalculations(newCalculations)
   }
 
   setCalculations(newCalculations: Calculation[]) {
@@ -125,13 +122,12 @@ export class DataStorageService {
   }
 
   saveCalculation(calc: Calculation) {
-    this.calculations$.pipe(take(1)).subscribe(calculations => {
-      const newCalculations = calculations.filter(it =>
-        it.flatId !== calc.flatId || it.year !== calc.year || it.month !== calc.month
-      )
-      newCalculations.push(calc)
-      this.setCalculations(newCalculations)
-    })
+    const calculations = this.calculations$.getValue()
+    const newCalculations = calculations.filter(it =>
+      it.flatId !== calc.flatId || it.year !== calc.year || it.month !== calc.month
+    )
+    newCalculations.push(calc)
+    this.setCalculations(newCalculations)
   }
 
 }
