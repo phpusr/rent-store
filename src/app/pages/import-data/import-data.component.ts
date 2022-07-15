@@ -65,6 +65,7 @@ export class ImportDataDialog implements OnInit {
     }
     reader.readAsArrayBuffer(this.file as Blob)
     this.onClose()
+    alert('Import was successfull')
   }
 
   checkFile(file: File): boolean {
