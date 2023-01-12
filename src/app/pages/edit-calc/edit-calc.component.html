@@ -70,6 +70,6 @@
 </div>
 
 <div mat-dialog-actions align="end">
-  <button mat-button mat-raised-button color="primary" (click)="onSave()">Save</button>
+  <button mat-button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
   <button mat-button mat-dialog-close>Cancel</button>
 </div>

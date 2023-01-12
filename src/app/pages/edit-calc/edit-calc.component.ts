@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Calculation } from 'src/app/interfaces/general'
@@ -7,6 +7,7 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
 
 interface DialogData {
   month: number
+  prevCalculations?: Calculation
   calculation?: Calculation
 }
 
@@ -30,10 +31,11 @@ export class EditCalcComponent implements OnInit {
       }
 
       const calculations = this.dataStorage.flatYearCalculations$.getValue()
+      const prevCalculations = calculations.find(it => it.month === month - 1)
       const calculation = calculations.find(it => it.month === month)
       this.dialog.open(EditCalcDialog, {
         width: '800px',
-        data: { calculation, month }
+        data: { prevCalculations, calculation, month }
       })
     })
   }
@@ -47,7 +49,6 @@ export class EditCalcComponent implements OnInit {
 })
 export class EditCalcDialog implements OnInit {
 
-  calc?: Calculation
   month: string
   form: FormGroup
 
@@ -59,25 +60,24 @@ export class EditCalcDialog implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.month = dataStorage.getMonthName(data.month)
-    this.calc = data.calculation
     this.form = fb.group({
       flatId: [dataStorage.currentFlatId$.getValue()],
       year: [dataStorage.currentYear$.getValue()],
       month: [data.month],
       hcs: fb.group({
-        electricityVolume: [''],
+        electricityVolume: ['', Validators.required],
         electricityVolumeMonthly: { value: '', disabled: true },
         cost: [''],
       }),
       water: fb.group({
-        coldVolume: [''],
+        coldVolume: ['', Validators.required],
         coldVolumeMonthly: { value: '', disabled: true },
-        hotVolume: [''],
+        hotVolume: ['', Validators.required],
         hotVolumeMonthly: { value: '', disabled: true },
         cost: ['']
       }),
       heating: fb.group({
-        volume: [''],
+        volume: ['', Validators.required],
         convertedVolume: { value: '', disabled: true },
         convertedVolumeMonthly: { value: '', disabled: true },
         cost: ['']
@@ -98,6 +98,12 @@ export class EditCalcDialog implements OnInit {
   ngOnInit(): void {
     this.dialogRef.afterClosed().subscribe(() => {
       this.router.navigate(['../..'])
+    })
+
+    this.form.get('hcs.electricityVolume')?.valueChanges.subscribe(val => {
+      this.form.patchValue({
+        hcs: { electricityVolumeMonthly: val - (this.data.prevCalculations?.hcs?.electricityVolume || 0) }
+      })
     })
   }
 
