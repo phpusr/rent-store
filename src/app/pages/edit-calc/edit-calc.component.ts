@@ -51,6 +51,7 @@ export class EditCalcDialog implements OnInit {
 
   month: string
   form: FormGroup
+  autoCalcProps: string[]
 
   constructor(
     public dataStorage: DataStorageService,
@@ -59,14 +60,23 @@ export class EditCalcDialog implements OnInit {
     fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
+    this.autoCalcProps = [
+      'hcs.electricityVolumeMonthly', 'hcs.cost',
+      'water.hotVolumeMonthly', 'water.coldVolumeMonthly', 'water.cost',
+      'heating.convertedVolume', 'heating.convertedVolumeMonthly', 'heating.cost',
+      'garbage.cost', 'overhaul.cost'
+    ]
+
     this.month = dataStorage.getMonthName(data.month)
+    const prevElectricityVolume = this.data.prevCalculations?.hcs?.electricityVolume || 0
+
     this.form = fb.group({
       flatId: [dataStorage.currentFlatId$.getValue()],
       year: [dataStorage.currentYear$.getValue()],
       month: [data.month],
       hcs: fb.group({
-        electricityVolume: ['', Validators.required],
-        electricityVolumeMonthly: { value: '', disabled: true },
+        electricityVolume: ['', Validators.min(prevElectricityVolume)],
+        electricityVolumeMonthly: ['', Validators.min(0)],
         cost: [''],
       }),
       water: fb.group({
@@ -90,9 +100,15 @@ export class EditCalcDialog implements OnInit {
       })
     })
 
+    this.autoCalcProps.forEach(propName => this.form.get(propName)?.disable())
+
     if (data.calculation) {
       this.form.setValue(data.calculation)
     }
+
+    this.form.get('hcs.electricityVolume')?.valueChanges.subscribe(val => {
+      this.form.patchValue({ hcs: { electricityVolumeMonthly: val - prevElectricityVolume } })
+    })
   }
 
   ngOnInit(): void {
@@ -100,23 +116,16 @@ export class EditCalcDialog implements OnInit {
       this.router.navigate(['../..'])
     })
 
-    this.form.get('hcs.electricityVolume')?.valueChanges.subscribe(val => {
-      this.form.patchValue({
-        hcs: { electricityVolumeMonthly: val - (this.data.prevCalculations?.hcs?.electricityVolume || 0) }
-      })
-    })
+
   }
 
   onSave() {
-    [
-      'hcs.electricityVolumeMonthly', 'hcs.cost',
-      'water.hotVolumeMonthly', 'water.coldVolumeMonthly', 'water.cost',
-      'heating.convertedVolume', 'heating.convertedVolumeMonthly', 'heating.cost',
-      'garbage.cost', 'overhaul.cost'
-    ].forEach(propName => this.form.get(propName)?.enable())
+    this.autoCalcProps.forEach(propName => this.form.get(propName)?.enable())
 
-    this.dataStorage.saveCalculation(this.form.value)
-    this.dialogRef.close()
+    if (this.form.valid) {
+      this.dataStorage.saveCalculation(this.form.value)
+      this.dialogRef.close()
+    }
   }
 
 }
