@@ -5,6 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
+
+/* Convert WATS to GKAL */
+const GKAL_CONST = 0.00086
+
 interface DialogData {
   month: number
   prevCalculations?: Calculation
@@ -69,6 +73,10 @@ export class EditCalcDialog implements OnInit {
 
     this.month = dataStorage.getMonthName(data.month)
     const prevElectricityVolume = this.data.prevCalculations?.hcs?.electricityVolume || 0
+    const prevColdWaterVolume = this.data.prevCalculations?.water?.coldVolume || 0
+    const prevHotWaterVolume = this.data.prevCalculations?.water?.hotVolume || 0
+    const prevHeatingVolume = this.data.prevCalculations?.heating?.volume || 0
+    const prevHeatingVolumeConverted = prevHeatingVolume * GKAL_CONST
 
     this.form = fb.group({
       flatId: [dataStorage.currentFlatId$.getValue()],
@@ -80,16 +88,16 @@ export class EditCalcDialog implements OnInit {
         cost: [''],
       }),
       water: fb.group({
-        coldVolume: ['', Validators.required],
-        coldVolumeMonthly: { value: '', disabled: true },
-        hotVolume: ['', Validators.required],
-        hotVolumeMonthly: { value: '', disabled: true },
+        coldVolume: ['', Validators.min(prevColdWaterVolume)],
+        coldVolumeMonthly: ['', Validators.min(0)],
+        hotVolume: ['', Validators.min(prevHotWaterVolume)],
+        hotVolumeMonthly: ['', Validators.min(0)],
         cost: ['']
       }),
       heating: fb.group({
-        volume: ['', Validators.required],
-        convertedVolume: { value: '', disabled: true },
-        convertedVolumeMonthly: { value: '', disabled: true },
+        volume: ['', Validators.min(prevHeatingVolume)],
+        convertedVolume: ['', Validators.min(prevHeatingVolumeConverted)],
+        convertedVolumeMonthly: ['', Validators.min(0)],
         cost: ['']
       }),
       garbage: fb.group({
@@ -108,6 +116,17 @@ export class EditCalcDialog implements OnInit {
 
     this.form.get('hcs.electricityVolume')?.valueChanges.subscribe(val => {
       this.form.patchValue({ hcs: { electricityVolumeMonthly: val - prevElectricityVolume } })
+    })
+    this.form.get('water.coldVolume')?.valueChanges.subscribe(val => {
+      this.form.patchValue({ water: { coldVolumeMonthly: val - prevColdWaterVolume } })
+    })
+    this.form.get('water.hotVolume')?.valueChanges.subscribe(val => {
+      this.form.patchValue({ water: { hotVolumeMonthly: val - prevHotWaterVolume } })
+    })
+    this.form.get('heating.volume')?.valueChanges.subscribe(val => {
+      const convertedVolume = val * GKAL_CONST
+      const convertedVolumeMonthly = convertedVolume - prevHeatingVolumeConverted
+      this.form.patchValue({ heating: { convertedVolume, convertedVolumeMonthly } })
     })
   }
 
