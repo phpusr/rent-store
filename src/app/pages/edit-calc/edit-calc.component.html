@@ -69,7 +69,10 @@
   </form>
 </div>
 
-<div mat-dialog-actions align="end">
-  <button mat-button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
-  <button mat-button mat-dialog-close>Cancel</button>
+<div mat-dialog-actions>
+  <button *ngIf="data.calculation" mat-button mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+  <div>
+    <button mat-button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
 </div>

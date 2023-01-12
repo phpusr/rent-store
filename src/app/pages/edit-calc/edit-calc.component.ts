@@ -135,8 +135,6 @@ export class EditCalcDialog implements OnInit {
     this.dialogRef.afterClosed().subscribe(() => {
       this.router.navigate(['../..'])
     })
-
-
   }
 
   onSave() {
@@ -146,6 +144,10 @@ export class EditCalcDialog implements OnInit {
       this.dataStorage.saveCalculation(this.form.value)
       this.dialogRef.close()
     }
+  }
+
+  onDelete() {
+    //TODO
   }
 
 }
