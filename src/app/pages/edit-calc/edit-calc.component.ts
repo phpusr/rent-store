@@ -124,8 +124,9 @@ export class EditCalcDialog implements OnInit {
       this.form.patchValue({ water: { hotVolumeMonthly: val - prevHotWaterVolume } })
     })
     this.form.get('heating.volume')?.valueChanges.subscribe(val => {
-      const convertedVolume = val * GKAL_CONST
-      const convertedVolumeMonthly = convertedVolume - prevHeatingVolumeConverted
+      const precision = 10000
+      const convertedVolume = Math.round(val * GKAL_CONST * precision) / precision
+      const convertedVolumeMonthly = Math.round((convertedVolume - prevHeatingVolumeConverted) * precision) / precision
       this.form.patchValue({ heating: { convertedVolume, convertedVolumeMonthly } })
     })
   }
