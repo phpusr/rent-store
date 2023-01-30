@@ -18,6 +18,7 @@ interface TableType {
   heatingVolume?: number
   heatingConvertedVolume?: number
   heatingConvertedVolumeMonthly?: number
+  heatingCost?: number
   garbageCost?: number
   overhaulCost?: number
 }
@@ -34,7 +35,7 @@ export class MainComponent implements OnInit, OnDestroy {
     'month',
     'electricity', 'electricityMonthly', 'hcs_cost',
     'coldWaterVolume', 'coldWaterVolumeMonthly', 'hotWaterVolume', 'hotWaterVolumeMonthly', 'waterCost',
-    'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly',
+    'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly', 'heatingCost',
     'garbageCost', 'overhaulCost'
   ]
   currentYear = LocalStorageService.currentYear
@@ -70,6 +71,7 @@ export class MainComponent implements OnInit, OnDestroy {
           heatingVolume: calc?.heating?.volume,
           heatingConvertedVolume: calc?.heating?.convertedVolume,
           heatingConvertedVolumeMonthly: calc?.heating?.convertedVolumeMonthly,
+          heatingCost: calc?.heating?.cost,
           garbageCost: calc?.garbage?.cost,
           overhaulCost: calc?.overhaul?.cost
         }
