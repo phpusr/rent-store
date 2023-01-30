@@ -147,7 +147,14 @@ export class EditCalcDialog implements OnInit {
   }
 
   onDelete() {
-    //TODO
+    if (!this.data.calculation) {
+      return
+    }
+
+    if (confirm(`Are you sure to delete calculation for ${this.data.calculation.month}.${this.data.calculation.year}?`)) {
+      this.dataStorage.deleteCalculation(this.data.calculation)
+      this.dialogRef.close()
+    }
   }
 
 }

@@ -122,11 +122,17 @@ export class DataStorageService {
   }
 
   saveCalculation(calc: Calculation) {
-    const calculations = this.calculations$.getValue()
-    const newCalculations = calculations.filter(it =>
+    const newCalculations = this.calculations$.getValue().filter(it =>
       it.flatId !== calc.flatId || it.year !== calc.year || it.month !== calc.month
     )
     newCalculations.push(calc)
+    this.setCalculations(newCalculations)
+  }
+
+  deleteCalculation(calc: Calculation) {
+    const newCalculations = this.calculations$.getValue().filter(it =>
+      it.flatId !== calc.flatId || it.year !== calc.year || it.month !== calc.month
+    )
     this.setCalculations(newCalculations)
   }
 
