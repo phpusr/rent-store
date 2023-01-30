@@ -133,7 +133,7 @@ export class EditCalcDialog implements OnInit {
 
   ngOnInit(): void {
     this.dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['../..'])
+      this.router.navigate(['..'])
     })
   }
 
