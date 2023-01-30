@@ -7,14 +7,23 @@
       <mat-card-title>HCS</mat-card-title>
 
       <mat-card-content>
-        <mat-form-field>
-          <mat-label>Electricity</mat-label>
-          <input type="number" matInput cdkFocusInitial formControlName="electricityVolume">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Monthly</mat-label>
-          <input type="number" matInput formControlName="electricityVolumeMonthly">
-        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <mat-label>Electricity</mat-label>
+            <input type="number" matInput cdkFocusInitial formControlName="electricityVolume">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Monthly</mat-label>
+            <input type="number" matInput formControlName="electricityVolumeMonthly">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Cost</mat-label>
+            <input type="number" matInput formControlName="cost">
+          </mat-form-field>
+        </div>
       </mat-card-content>
     </mat-card>
 
@@ -44,6 +53,13 @@
             <input type="number" matInput formControlName="hotVolumeMonthly">
           </mat-form-field>
         </div>
+
+        <div>
+          <mat-form-field>
+            <mat-label>Cost</mat-label>
+            <input type="number" matInput formControlName="cost">
+          </mat-form-field>
+        </div>
       </mat-card-content>
     </mat-card>
 
@@ -51,21 +67,52 @@
     <mat-card formGroupName="heating">
       <mat-card-title>Heating</mat-card-title>
 
-      <mat-form-field>
-        <mat-label>Volume</mat-label>
-        <input type="number" matInput formControlName="volume">
-      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <mat-label>Volume</mat-label>
+          <input type="number" matInput formControlName="volume">
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Converted volume</mat-label>
-        <input type="number" matInput formControlName="convertedVolume">
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Converted volume</mat-label>
+          <input type="number" matInput formControlName="convertedVolume">
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Converted volume monthly</mat-label>
-        <input type="number" matInput formControlName="convertedVolumeMonthly">
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Converted volume monthly</mat-label>
+          <input type="number" matInput formControlName="convertedVolumeMonthly">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Cost</mat-label>
+          <input type="number" matInput formControlName="cost">
+        </mat-form-field>
+      </div>
     </mat-card>
+
+    <div class="two-columns">
+      <!-- Garbage -->
+      <mat-card formGroupName="garbage">
+        <mat-card-title>Garbage</mat-card-title>
+
+        <mat-form-field>
+          <mat-label>Cost</mat-label>
+          <input type="number" matInput formControlName="cost">
+        </mat-form-field>
+      </mat-card>
+
+      <!-- Overhaul -->
+      <mat-card formGroupName="overhaul">
+        <mat-card-title>Overhaul</mat-card-title>
+
+        <mat-form-field>
+          <mat-label>Cost</mat-label>
+          <input type="number" matInput formControlName="cost">
+        </mat-form-field>
+      </mat-card>
+    </div>
   </form>
 </div>
 

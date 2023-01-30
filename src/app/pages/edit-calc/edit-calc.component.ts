@@ -55,7 +55,14 @@ export class EditCalcDialog implements OnInit {
 
   month: string
   form: FormGroup
-  autoCalcProps: string[]
+  autoCalcProps = [
+    'hcs.electricityVolumeMonthly',
+    'water.hotVolumeMonthly', 'water.coldVolumeMonthly',
+    'heating.convertedVolume', 'heating.convertedVolumeMonthly'
+  ]
+  costProps = [
+    'hcs.cost', 'water.cost', 'heating.cost', 'garbage.cost', 'overhaul.cost'
+  ]
 
   constructor(
     public dataStorage: DataStorageService,
@@ -64,12 +71,6 @@ export class EditCalcDialog implements OnInit {
     fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
-    this.autoCalcProps = [
-      'hcs.electricityVolumeMonthly', 'hcs.cost',
-      'water.hotVolumeMonthly', 'water.coldVolumeMonthly', 'water.cost',
-      'heating.convertedVolume', 'heating.convertedVolumeMonthly', 'heating.cost',
-      'garbage.cost', 'overhaul.cost'
-    ]
 
     this.month = dataStorage.getMonthName(data.month)
     const prevElectricityVolume = this.data.prevCalculations?.hcs?.electricityVolume || 0
@@ -112,6 +113,8 @@ export class EditCalcDialog implements OnInit {
 
     if (data.calculation) {
       this.form.setValue(data.calculation)
+    } else {
+      this.costProps.forEach(propName => this.form.get(propName)?.disable())
     }
 
     this.form.get('hcs.electricityVolume')?.valueChanges.subscribe(val => {

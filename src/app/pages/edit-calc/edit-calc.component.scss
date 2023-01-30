@@ -15,3 +15,15 @@
   display: flex;
   justify-content: space-between;
 }
+
+.two-columns {
+  display: flex;
+}
+
+.two-columns mat-card {
+  flex: 1;
+}
+
+.two-columns mat-card:first-child {
+  margin-right: 15px;
+}
