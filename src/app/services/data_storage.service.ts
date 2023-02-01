@@ -81,10 +81,7 @@ export class DataStorageService {
   }
 
   initValues() {
-    this.flats$.next([
-      { id: 1, address: 'Levina 231', number: '121' },
-      { id: 2, address: 'Ludviga 34', number: '45' }
-    ])
+    this.flats$.next(LocalStorageService.flats)
     this.currentFlatId$.next(LocalStorageService.currentFlatId)
     this.currentYear$.next(LocalStorageService.currentYear)
     this.calculations$.next(LocalStorageService.calculations)
@@ -98,6 +95,11 @@ export class DataStorageService {
   setCurrentYear(year: number) {
     this.currentYear$.next(year)
     LocalStorageService.currentYear = year
+  }
+
+  setFlats(newFlats: Flat[]) {
+    this.flats$.next(newFlats)
+    LocalStorageService.flats = newFlats
   }
 
   setFlatCalculations(newFlatCalculations: Calculation[]) {

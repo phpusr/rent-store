@@ -1,4 +1,4 @@
-import { Calculation } from '../interfaces/general'
+import { Flat, Calculation } from '../interfaces/general'
 
 export class LocalStorageService {
 
@@ -21,6 +21,14 @@ export class LocalStorageService {
 
   static set currentYear(year: number) {
     localStorage.setItem('currentYear', year.toString())
+  }
+
+  static get flats(): Flat[] {
+    return JSON.parse(localStorage.getItem('flats') || '[]')
+  }
+
+  static set flats(flats: Flat[]) {
+    localStorage.setItem('flats', JSON.stringify(flats))
   }
 
   static get calculations(): Calculation[] {
