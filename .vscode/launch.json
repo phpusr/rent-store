@@ -4,10 +4,16 @@
   "configurations": [
     {
       "name": "ng serve",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/"
+    },
+    {
+      "command": "ng build",
+      "name": "ng build",
+      "request": "launch",
+      "type": "node-terminal"
     },
     {
       "name": "ng test",
