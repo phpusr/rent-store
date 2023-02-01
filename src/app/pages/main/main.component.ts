@@ -21,6 +21,7 @@ interface TableType {
   heatingCost?: number
   garbageCost?: number
   overhaulCost?: number
+  totalCost?: number
 }
 
 @Component({
@@ -36,7 +37,7 @@ export class MainComponent implements OnInit, OnDestroy {
     'electricity', 'electricityMonthly', 'hcs_cost',
     'coldWaterVolume', 'coldWaterVolumeMonthly', 'hotWaterVolume', 'hotWaterVolumeMonthly', 'waterCost',
     'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly', 'heatingCost',
-    'garbageCost', 'overhaulCost'
+    'garbageCost', 'overhaulCost', 'totalCost'
   ]
   currentYear = LocalStorageService.currentYear
   private calcSub?: Subscription
@@ -73,7 +74,8 @@ export class MainComponent implements OnInit, OnDestroy {
           heatingConvertedVolumeMonthly: calc?.heating?.convertedVolumeMonthly,
           heatingCost: calc?.heating?.cost,
           garbageCost: calc?.garbage?.cost,
-          overhaulCost: calc?.overhaul?.cost
+          overhaulCost: calc?.overhaul?.cost,
+          totalCost: (calc?.hcs.cost || 0) + (calc?.water.cost || 0) + (calc?.heating?.cost || 0) + (calc?.garbage?.cost || 0) + (calc?.overhaul?.cost || 0)
         }
         this.dataSource.push(convertedCalc)
       }
