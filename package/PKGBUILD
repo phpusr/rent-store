@@ -1,0 +1,40 @@
+# Maintainer: phpusr
+pkgname=rent-store
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='rent-store'
+arch=('x86_64')
+url='https://github.com/phpusr/rent-store'
+license=('GPL')
+depends=('electron17')
+makedepends=('npm')
+provides=('rent-store')
+source_x86_64=(
+  "rent-store-v${pkgver}.tar.gz::${url}/archive/refs/heads/main.zip"
+)
+source=(
+  'rent_store.desktop'
+  'rent_store.sh'
+)
+sha1sums=('953ff14db7885436008f176fbf72212d25d0297a'
+          '16544f028cce0c0f4ca91e0ee05cc5bff190c601')
+sha1sums_x86_64=('06d8697a7315509fb7d295727cf4cb82e2ebec98')
+
+package() {
+  cd "${srcdir}/rent-store-${pkgver}"
+
+  export NODE_ENV=production
+  npm install
+
+  # Install app resources
+  find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/rent_store/{}" \;
+
+  # Install bin
+  install -Dm755 "${srcdir}/rent_store.sh" "${pkgdir}/usr/bin/rent_store"
+
+  # Install desktop
+  install -Dm755 "${srcdir}/rent_store.desktop" "${pkgdir}/usr/share/applications/rent_store.desktop"
+
+  # Install icon
+  install -Dm644 "assets/icons/main_icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/rent_store.png"
+}
