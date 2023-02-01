@@ -67,6 +67,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = []
+      this.footerRow = { hcsCost: 0, waterCost: 0, heatingCost: 0, garbageCost: 0, overhaulCost: 0, totalCost: 0 }
       for (let monthIndex = 1; monthIndex <= 12; monthIndex++) {
         const calc = calculations.find(it => it.month === monthIndex)
         const convertedCalc = {
