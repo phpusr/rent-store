@@ -1,0 +1,14 @@
+{
+  "name": "rent-store",
+  "version": "1.0.0",
+  "description": "Rent store",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "phpusr",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.1.0"
+  }
+}
