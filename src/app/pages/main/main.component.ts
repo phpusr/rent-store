@@ -9,7 +9,7 @@ interface TableType {
   month: string
   electricityVolume?: number
   electricityVolumeMonthly?: number
-  hcs_cost?: number
+  hcsCost?: number
   coldWaterVolume?: number
   coldWaterVolumeMonthly?: number
   hotWaterVolume?: number
@@ -24,6 +24,15 @@ interface TableType {
   totalCost?: number
 }
 
+interface FooterRowType {
+  hcsCost: number
+  waterCost: number
+  heatingCost: number
+  garbageCost: number
+  overhaulCost: number
+  totalCost: number
+}
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -34,12 +43,14 @@ export class MainComponent implements OnInit, OnDestroy {
   dataSource: TableType[] = []
   displayedColumns = [
     'month',
-    'electricity', 'electricityMonthly', 'hcs_cost',
+    'electricity', 'electricityMonthly', 'hcsCost',
     'coldWaterVolume', 'coldWaterVolumeMonthly', 'hotWaterVolume', 'hotWaterVolumeMonthly', 'waterCost',
     'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly', 'heatingCost',
     'garbageCost', 'overhaulCost', 'totalCost'
   ]
+  footerDisplayColumns = ['month', 'hcsCost']
   currentYear = LocalStorageService.currentYear
+  footerRow: FooterRowType = { hcsCost: 0, waterCost: 0, heatingCost: 0, garbageCost: 0, overhaulCost: 0, totalCost: 0 }
   private calcSub?: Subscription
 
   constructor(
@@ -63,7 +74,7 @@ export class MainComponent implements OnInit, OnDestroy {
           month: this.dataStorage.getMonthName(monthIndex),
           electricityVolume: calc?.hcs.electricityVolume,
           electricityVolumeMonthly: calc?.hcs.electricityVolumeMonthly,
-          hcs_cost: calc?.hcs.cost,
+          hcsCost: calc?.hcs.cost,
           coldWaterVolume: calc?.water.coldVolume,
           coldWaterVolumeMonthly: calc?.water.coldVolumeMonthly,
           hotWaterVolume: calc?.water.hotVolume,
@@ -78,6 +89,13 @@ export class MainComponent implements OnInit, OnDestroy {
           totalCost: (calc?.hcs.cost || 0) + (calc?.water.cost || 0) + (calc?.heating?.cost || 0) + (calc?.garbage?.cost || 0) + (calc?.overhaul?.cost || 0)
         }
         this.dataSource.push(convertedCalc)
+
+        this.footerRow.hcsCost += calc?.hcs.cost || 0
+        this.footerRow.waterCost += calc?.water.cost || 0
+        this.footerRow.heatingCost += calc?.heating?.cost || 0
+        this.footerRow.garbageCost += calc?.garbage?.cost || 0
+        this.footerRow.overhaulCost += calc?.overhaul?.cost || 0
+        this.footerRow.totalCost += convertedCalc.totalCost
       }
     })
   }
