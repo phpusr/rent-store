@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { DataStorageService } from 'src/app/services/data_storage.service'
 
 @Component({
   selector: 'app-layout',
@@ -17,9 +18,27 @@ export class LayoutComponent implements OnInit {
       shareReplay()
     )
 
-  constructor(private breakpointObserver: BreakpointObserver, public router: Router) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public router: Router,
+    public dataStorage: DataStorageService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  exportData(): void {
+    const data = {
+      currentFlatId: this.dataStorage.currentFlatId$.getValue(),
+      currentYear: this.dataStorage.currentYear$.getValue(),
+      flats: this.dataStorage.flats$.getValue(),
+      calculations: this.dataStorage.calculations$.getValue()
+    }
+    const blob = new Blob([JSON.stringify(data, null, ' ')])
+    const a = document.createElement('a')
+    a.href = URL.createObjectURL(blob)
+    a.download = 'export.json'
+    a.click()
   }
 
 }
