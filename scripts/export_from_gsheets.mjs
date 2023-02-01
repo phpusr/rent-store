@@ -24,7 +24,15 @@ async function main() {
     range: 'Main'
   })
 
-  const exportData = []
+  const exportData = {
+    currentFlatId: 1,
+    currentYear: 2022,
+    flats: [
+      { id: 1, address: 'Levina 231', number: '121' },
+      { id: 2, address: 'Ludviga 34', number: '45' }
+    ],
+    calculations: []
+  }
   let currentYear
 
   rowsResponse.data.values.forEach((row, index) => {
@@ -38,6 +46,7 @@ async function main() {
     currentYear = year || currentYear
 
     const calc = {
+      flatId: 1,
       year: currentYear,
       month: getMonthIndex(row[i++]),
       hcs: {
@@ -71,7 +80,7 @@ async function main() {
       cost: toFloat(row[i++]) || 0
     }
 
-    exportData.push(calc)
+    exportData.calculations.push(calc)
   })
 
   // Saving to json file

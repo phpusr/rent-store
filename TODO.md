@@ -1,6 +1,7 @@
 TODO
 ====
 
+- Fill garbage and overhaul costs from last calculation
 - Add Tauri or Electrone
 
 
