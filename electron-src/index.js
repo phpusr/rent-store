@@ -6,10 +6,10 @@ const createWindow = () => {
     height: 600
   })
 
-  win.loadFile('../dist/rent-store/index.html')
+  win.loadFile('index.html')
 
   // Open the DevTools.
-  //win.webContents.openDevTools()
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
