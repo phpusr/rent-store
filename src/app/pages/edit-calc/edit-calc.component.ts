@@ -85,28 +85,28 @@ export class EditCalcDialog implements OnInit {
       year: [dataStorage.currentYear$.getValue()],
       month: [data.month],
       hcs: fb.group({
-        electricityVolume: ['', Validators.min(prevElectricityVolume)],
-        electricityVolumeMonthly: ['', Validators.min(0)],
-        cost: [''],
+        electricityVolume: ['', [Validators.required, Validators.min(prevElectricityVolume)]],
+        electricityVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
+        cost: ['', [Validators.required, Validators.min(0)]],
       }),
       water: fb.group({
-        coldVolume: ['', Validators.min(prevColdWaterVolume)],
-        coldVolumeMonthly: ['', Validators.min(0)],
-        hotVolume: ['', Validators.min(prevHotWaterVolume)],
-        hotVolumeMonthly: ['', Validators.min(0)],
-        cost: ['']
+        coldVolume: ['', [Validators.required, Validators.min(prevColdWaterVolume)]],
+        coldVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
+        hotVolume: ['', [Validators.required, Validators.min(prevHotWaterVolume)]],
+        hotVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
+        cost: ['', [Validators.required, Validators.min(0)]]
       }),
       heating: fb.group({
-        volume: ['', Validators.min(prevHeatingVolume)],
-        convertedVolume: ['', Validators.min(prevHeatingVolumeConverted)],
-        convertedVolumeMonthly: ['', Validators.min(0)],
-        cost: ['']
+        volume: ['', [Validators.required, Validators.min(prevHeatingVolume)]],
+        convertedVolume: ['', [Validators.required, Validators.min(prevHeatingVolumeConverted)]],
+        convertedVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
+        cost: ['', [Validators.required, Validators.min(0)]]
       }),
       garbage: fb.group({
-        cost: ['']
+        cost: ['', [Validators.required, Validators.min(0)]]
       }),
       overhaul: fb.group({
-        cost: ['']
+        cost: ['', [Validators.required, Validators.min(0)]]
       })
     })
 
