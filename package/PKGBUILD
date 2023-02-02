@@ -15,18 +15,19 @@ source_x86_64=(
 source=(
   'rent_store.desktop'
   'rent_store.sh'
+  'icon.png'
 )
-sha1sums=('953ff14db7885436008f176fbf72212d25d0297a'
-          '16544f028cce0c0f4ca91e0ee05cc5bff190c601')
-sha1sums_x86_64=('06d8697a7315509fb7d295727cf4cb82e2ebec98')
+sha1sums=('691e090c438280f19486ce0a8da6634bc43f4eaf'
+          '16544f028cce0c0f4ca91e0ee05cc5bff190c601'
+          'a6e8632ec5fcc913bde518430c5a788f49c5e113')
+sha1sums_x86_64=('b31a47fc7187d0641ca1262fad26c63fc6c129a2')
 
 package() {
-  cd "${srcdir}/rent-store-${pkgver}"
-
-  export NODE_ENV=production
-  npm install
+  cd "${srcdir}/rent-store-main"
+  make build
 
   # Install app resources
+  cd dist/rent-store
   find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/rent_store/{}" \;
 
   # Install bin
@@ -36,5 +37,5 @@ package() {
   install -Dm755 "${srcdir}/rent_store.desktop" "${pkgdir}/usr/share/applications/rent_store.desktop"
 
   # Install icon
-  install -Dm644 "assets/icons/main_icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/rent_store.png"
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/rent_store.png"
 }
