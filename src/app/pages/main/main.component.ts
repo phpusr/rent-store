@@ -49,7 +49,6 @@ export class MainComponent implements OnInit, OnDestroy {
     'garbageCost', 'overhaulCost', 'totalCost'
   ]
   footerDisplayColumns = ['month', 'hcsCost']
-  currentYear = LocalStorageService.currentYear
   footerRow: FooterRowType = { hcsCost: 0, waterCost: 0, heatingCost: 0, garbageCost: 0, overhaulCost: 0, totalCost: 0 }
   private calcSub?: Subscription
 
@@ -61,8 +60,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.currentYear = +params['year']
-      this.dataStorage.setCurrentYear(this.currentYear)
+      this.dataStorage.setCurrentYear(+params['year'])
     })
 
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {

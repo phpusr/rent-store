@@ -5,7 +5,7 @@
     <a mat-tab-link
       [routerLink]="['..', year.toString()]"
       *ngFor="let year of dataStorage.years$ | async"
-      [active]="year === currentYear"
+      [active]="year === (dataStorage.currentYear$ | async)"
     >{{ year }}</a>
   </nav>
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
