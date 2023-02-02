@@ -31,6 +31,16 @@
         "<node_internals>/**"
       ],
       "type": "node"
+    },
+    {
+      "name": "Electron App",
+      "program": "${workspaceFolder}/electron-src/index.js",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceFolder}/electron-src/node_modules/.bin/electron",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
     }
   ]
 }

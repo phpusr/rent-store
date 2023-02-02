@@ -1,4 +1,8 @@
 const { app, BrowserWindow } = require('electron')
+const fs = require('fs')
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -6,10 +10,16 @@ const createWindow = () => {
     height: 600
   })
 
-  win.loadFile('index.html')
+  if (fs.existsSync('index.html')) {
+    win.loadFile('index.html')
+  } else {
+    win.loadFile('../dist/rent-store/index.html')
+  }
 
-  // Open the DevTools.
-  win.webContents.openDevTools()
+  // Open the DevTools
+  if (!isProduction) {
+    win.webContents.openDevTools()
+  }
 }
 
 app.whenReady().then(() => {
