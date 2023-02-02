@@ -66,18 +66,13 @@ async function main() {
         convertedVolume: toFloat(row[i++]),
         convertedVolumeMonthly: toFloat(row[i++]),
         cost: toFloat(row[i++]),
+      },
+      garbage: {
+        cost: toFloat(row[i++]) || 0
+      },
+      overhaul: {
+        cost: toFloat(row[i++]) || 0
       }
-    }
-
-    const garbageCost = toFloat(row[i++])
-    if (garbageCost) {
-      calc.garbage = {
-        cost: garbageCost
-      }
-    }
-
-    calc.overhaul = {
-      cost: toFloat(row[i++]) || 0
     }
 
     exportData.calculations.push(calc)

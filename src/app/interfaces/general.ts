@@ -39,11 +39,11 @@ export interface Calculation {
     cost: number
   }
   /* Вывоз мусора */
-  garbage?: {
+  garbage: {
     cost: number
   }
   /* Кап. ремонт */
-  overhaul?: {
+  overhaul: {
     cost: number
   }
 }
