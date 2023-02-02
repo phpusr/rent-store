@@ -10,6 +10,7 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
 const GKAL_CONST = 0.00086
 
 interface DialogData {
+  route: ActivatedRoute
   month: number
   prevCalculations?: Calculation
   calculation?: Calculation
@@ -39,7 +40,7 @@ export class EditCalcComponent implements OnInit {
       const calculation = calculations.find(it => it.month === month)
       this.dialog.open(EditCalcDialog, {
         width: '800px',
-        data: { prevCalculations, calculation, month }
+        data: { route: this.route, prevCalculations, calculation, month }
       })
     })
   }
@@ -136,7 +137,7 @@ export class EditCalcDialog implements OnInit {
 
   ngOnInit(): void {
     this.dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['..'])
+      this.router.navigate(['../..'], { relativeTo: this.data.route })
     })
   }
 
