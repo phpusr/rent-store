@@ -79,21 +79,21 @@ export class MainComponent implements OnInit, OnDestroy {
           hotWaterVolume: calc?.water.hotVolume,
           hotWaterVolumeMonthly: calc?.water.coldVolumeMonthly,
           waterCost: calc?.water.cost,
-          heatingVolume: calc?.heating?.volume,
-          heatingConvertedVolume: calc?.heating?.convertedVolume,
-          heatingConvertedVolumeMonthly: calc?.heating?.convertedVolumeMonthly,
-          heatingCost: calc?.heating?.cost,
-          garbageCost: calc?.garbage?.cost,
-          overhaulCost: calc?.overhaul?.cost,
-          totalCost: (calc?.hcs.cost || 0) + (calc?.water.cost || 0) + (calc?.heating?.cost || 0) + (calc?.garbage?.cost || 0) + (calc?.overhaul?.cost || 0)
+          heatingVolume: calc?.heating.volume,
+          heatingConvertedVolume: calc?.heating.convertedVolume,
+          heatingConvertedVolumeMonthly: calc?.heating.convertedVolumeMonthly,
+          heatingCost: calc?.heating.cost,
+          garbageCost: calc?.garbage.cost,
+          overhaulCost: calc?.overhaul.cost,
+          totalCost: (calc?.hcs.cost || 0) + (calc?.water.cost || 0) + (calc?.heating.cost || 0) + (calc?.garbage.cost || 0) + (calc?.overhaul.cost || 0)
         }
         this.dataSource.push(convertedCalc)
 
         this.footerRow.hcsCost += calc?.hcs.cost || 0
         this.footerRow.waterCost += calc?.water.cost || 0
-        this.footerRow.heatingCost += calc?.heating?.cost || 0
-        this.footerRow.garbageCost += calc?.garbage?.cost || 0
-        this.footerRow.overhaulCost += calc?.overhaul?.cost || 0
+        this.footerRow.heatingCost += calc?.heating.cost || 0
+        this.footerRow.garbageCost += calc?.garbage.cost || 0
+        this.footerRow.overhaulCost += calc?.overhaul.cost || 0
         this.footerRow.totalCost += convertedCalc.totalCost
       }
     })

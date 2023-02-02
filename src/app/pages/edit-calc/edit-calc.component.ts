@@ -74,10 +74,10 @@ export class EditCalcDialog implements OnInit {
   ) {
 
     this.month = dataStorage.getMonthName(data.month)
-    const prevElectricityVolume = this.data.prevCalculations?.hcs?.electricityVolume || 0
-    const prevColdWaterVolume = this.data.prevCalculations?.water?.coldVolume || 0
-    const prevHotWaterVolume = this.data.prevCalculations?.water?.hotVolume || 0
-    const prevHeatingVolume = this.data.prevCalculations?.heating?.volume || 0
+    const prevElectricityVolume = this.data.prevCalculations?.hcs.electricityVolume || 0
+    const prevColdWaterVolume = this.data.prevCalculations?.water.coldVolume || 0
+    const prevHotWaterVolume = this.data.prevCalculations?.water.hotVolume || 0
+    const prevHeatingVolume = this.data.prevCalculations?.heating.volume || 0
     const prevHeatingVolumeConverted = prevHeatingVolume * GKAL_CONST
 
     this.form = fb.group({
