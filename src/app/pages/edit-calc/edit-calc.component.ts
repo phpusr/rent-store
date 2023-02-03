@@ -85,31 +85,32 @@ export class EditCalcDialog implements OnInit {
       year: [dataStorage.currentYear$.getValue()],
       month: [data.month],
       hcs: fb.group({
-        electricityVolume: ['', [Validators.required, Validators.min(prevElectricityVolume)]],
-        electricityVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
-        cost: ['', [Validators.required, Validators.min(0)]],
+        electricityVolume: [null, [Validators.required, Validators.min(prevElectricityVolume)]],
+        electricityVolumeMonthly: [null, [Validators.required, Validators.min(0)]],
+        cost: [null, Validators.min(0)],
       }),
       water: fb.group({
-        coldVolume: ['', [Validators.required, Validators.min(prevColdWaterVolume)]],
-        coldVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
-        hotVolume: ['', [Validators.required, Validators.min(prevHotWaterVolume)]],
-        hotVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
-        cost: ['', [Validators.required, Validators.min(0)]]
+        coldVolume: [null, [Validators.required, Validators.min(prevColdWaterVolume)]],
+        coldVolumeMonthly: [null, [Validators.required, Validators.min(0)]],
+        hotVolume: [null, [Validators.required, Validators.min(prevHotWaterVolume)]],
+        hotVolumeMonthly: [null, [Validators.required, Validators.min(0)]],
+        cost: [null, Validators.min(0)]
       }),
       heating: fb.group({
-        volume: ['', [Validators.required, Validators.min(prevHeatingVolume)]],
-        convertedVolume: ['', [Validators.required, Validators.min(prevHeatingVolumeConverted)]],
-        convertedVolumeMonthly: ['', [Validators.required, Validators.min(0)]],
-        cost: ['', [Validators.required, Validators.min(0)]]
+        volume: [null, [Validators.required, Validators.min(prevHeatingVolume)]],
+        convertedVolume: [null, [Validators.required, Validators.min(prevHeatingVolumeConverted)]],
+        convertedVolumeMonthly: [null, [Validators.required, Validators.min(0)]],
+        cost: [null, Validators.min(0)]
       }),
       garbage: fb.group({
-        cost: ['', [Validators.required, Validators.min(0)]]
+        cost: [null, Validators.min(0)]
       }),
       overhaul: fb.group({
-        cost: ['', [Validators.required, Validators.min(0)]]
+        cost: [null, Validators.min(0)]
       })
     })
 
+    // Auto calc props disabling
     this.autoCalcProps.forEach(propName => this.form.get(propName)?.disable())
 
     if (data.calculation) {
@@ -143,6 +144,7 @@ export class EditCalcDialog implements OnInit {
 
   onSave() {
     this.autoCalcProps.forEach(propName => this.form.get(propName)?.enable())
+    this.costProps.forEach(propName => this.form.get(propName)?.enable())
 
     if (this.form.valid) {
       this.dataStorage.saveCalculation(this.form.value)
