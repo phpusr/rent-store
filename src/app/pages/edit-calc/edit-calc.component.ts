@@ -38,7 +38,8 @@ export class EditCalcComponent implements OnInit {
 
       const calculations = this.dataStorage.flatCalculations$.getValue()
       const prevCalculationsYear = month === 1 ? year - 1 : year
-      const prevCalculations = calculations.find(it => it.year === prevCalculationsYear && it.month === 12)
+      const prevCalculationMonth = month === 1 ? 12 : month - 1
+      const prevCalculations = calculations.find(it => it.year === prevCalculationsYear && it.month === prevCalculationMonth)
       const calculation = calculations.find(it => it.year === year && it.month === month)
       this.dialog.open(EditCalcDialog, {
         width: '800px',
