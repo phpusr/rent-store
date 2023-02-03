@@ -16,7 +16,7 @@ build: ## Build
 
 mk_package: ## Create Pacman package
 	@echo "=== Creating Pacman package"
-	@cd package && rm *.tar.gz; makepkg -f; updpkgsums && makepkg -srif
+	@git push && cd package && rm *.tar.gz; makepkg -f; updpkgsums && makepkg -srif
 
 clean: ## Clean
 	@echo "=== Clean ==="
