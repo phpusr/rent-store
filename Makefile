@@ -14,6 +14,10 @@ build: ## Build
 	@cd electron-src && cp index.js package*.json ../dist/rent-store
 	@cd dist/rent-store && NODE_ENV=production npm install --omit=dev
 
+package: ## Create Pacman package
+	@echo "=== Creating Pacman package"
+	@cd package && rm *.tar.gz; makepkg -f; updpkgsums && makepkg -srif
+
 clean: ## Clean
 	@echo "=== Clean ==="
 	@rm -rf dist
