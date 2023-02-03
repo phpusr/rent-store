@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
-import { LocalStorageService } from 'src/app/services/local_storage.service'
 
 interface TableType {
   monthIndex: number
@@ -25,8 +24,12 @@ interface TableType {
 }
 
 interface FooterRowType {
+  electricityVolume: number
   hcsCost: number
+  coldWaterVolume: number
+  hotWaterVolume: number
   waterCost: number
+  heatingConvertedVolume: number
   heatingCost: number
   garbageCost: number
   overhaulCost: number
@@ -49,7 +52,7 @@ export class MainComponent implements OnInit, OnDestroy {
     'garbageCost', 'overhaulCost', 'totalCost'
   ]
   footerDisplayColumns = ['month', 'hcsCost']
-  footerRow: FooterRowType = { hcsCost: 0, waterCost: 0, heatingCost: 0, garbageCost: 0, overhaulCost: 0, totalCost: 0 }
+  footerRow: FooterRowType = this.getFooterRowInitValue()
   private calcSub?: Subscription
 
   constructor(
@@ -65,7 +68,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = []
-      this.footerRow = { hcsCost: 0, waterCost: 0, heatingCost: 0, garbageCost: 0, overhaulCost: 0, totalCost: 0 }
+      this.footerRow = this.getFooterRowInitValue()
       for (let monthIndex = 1; monthIndex <= 12; monthIndex++) {
         const calc = calculations.find(it => it.month === monthIndex)
         const convertedCalc = {
@@ -77,7 +80,7 @@ export class MainComponent implements OnInit, OnDestroy {
           coldWaterVolume: calc?.water.coldVolume,
           coldWaterVolumeMonthly: calc?.water.coldVolumeMonthly,
           hotWaterVolume: calc?.water.hotVolume,
-          hotWaterVolumeMonthly: calc?.water.coldVolumeMonthly,
+          hotWaterVolumeMonthly: calc?.water.hotVolumeMonthly,
           waterCost: calc?.water.cost,
           heatingVolume: calc?.heating.volume,
           heatingConvertedVolume: calc?.heating.convertedVolume,
@@ -89,14 +92,33 @@ export class MainComponent implements OnInit, OnDestroy {
         }
         this.dataSource.push(convertedCalc)
 
+        this.footerRow.electricityVolume += calc?.hcs.electricityVolumeMonthly || 0
         this.footerRow.hcsCost += calc?.hcs.cost || 0
+        this.footerRow.coldWaterVolume += calc?.water.coldVolumeMonthly || 0
+        this.footerRow.hotWaterVolume += calc?.water.hotVolumeMonthly || 0
         this.footerRow.waterCost += calc?.water.cost || 0
+        this.footerRow.heatingConvertedVolume += calc?.heating.convertedVolumeMonthly || 0
         this.footerRow.heatingCost += calc?.heating.cost || 0
         this.footerRow.garbageCost += calc?.garbage.cost || 0
         this.footerRow.overhaulCost += calc?.overhaul.cost || 0
         this.footerRow.totalCost += convertedCalc.totalCost
       }
     })
+  }
+
+  getFooterRowInitValue(): FooterRowType {
+    return {
+      electricityVolume: 0,
+      hcsCost: 0,
+      coldWaterVolume: 0,
+      hotWaterVolume: 0,
+      waterCost: 0,
+      heatingConvertedVolume: 0,
+      heatingCost: 0,
+      garbageCost: 0,
+      overhaulCost: 0,
+      totalCost: 0
+    }
   }
 
   onEditCalc(calc: TableType) {
