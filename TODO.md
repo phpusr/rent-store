@@ -1,9 +1,10 @@
 TODO
 ====
 
-
+- Change theme
+- Добавить вывод в двух колонках для сравнения с другим годом, либо добавить вывод всех годов
 
 ## Minor
 
-- Avg cost per month
+- Среднегодовая стоимость
 - Highlight annual calculations
