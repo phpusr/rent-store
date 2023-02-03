@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const fs = require('fs')
+const path = require('path')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 const isProduction = process.env.NODE_ENV === 'production'
@@ -10,7 +11,7 @@ const createWindow = () => {
     height: 600
   })
 
-  if (fs.existsSync('index.html')) {
+  if (fs.existsSync(path.resolve(__dirname, 'index.html'))) {
     win.loadFile('index.html')
   } else {
     win.loadFile('../dist/rent-store/index.html')
