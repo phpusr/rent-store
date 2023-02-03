@@ -2,7 +2,7 @@
   <mat-label>Flat</mat-label>
   <mat-select [value]="currentFlatId" (selectionChange)="onChangeFlat($event)">
     <mat-option *ngFor="let flat of dataStorage.flats$ | async" [value]="flat.id">
-      {{ flat.address }}
+      {{ flat.address }} ({{ flat.number }})
     </mat-option>
   </mat-select>
 </mat-form-field>
