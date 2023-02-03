@@ -30,14 +30,16 @@ export class EditCalcComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      const year = this.dataStorage.currentYear$.getValue() || 0
       const month = +params['month']
       if (!month) {
         return
       }
 
-      const calculations = this.dataStorage.flatYearCalculations$.getValue()
-      const prevCalculations = calculations.find(it => it.month === month - 1)
-      const calculation = calculations.find(it => it.month === month)
+      const calculations = this.dataStorage.flatCalculations$.getValue()
+      const prevCalculationsYear = month === 1 ? year - 1 : year
+      const prevCalculations = calculations.find(it => it.year === prevCalculationsYear && it.month === 12)
+      const calculation = calculations.find(it => it.year === year && it.month === month)
       this.dialog.open(EditCalcDialog, {
         width: '800px',
         data: { route: this.route, prevCalculations, calculation, month }
@@ -54,7 +56,7 @@ export class EditCalcComponent implements OnInit {
 })
 export class EditCalcDialog implements OnInit {
 
-  month: string
+  monthName: string
   form: FormGroup
   autoCalcProps = [
     'hcs.electricityVolumeMonthly',
@@ -72,12 +74,11 @@ export class EditCalcDialog implements OnInit {
     fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
-
-    this.month = dataStorage.getMonthName(data.month)
-    const prevElectricityVolume = this.data.prevCalculations?.hcs.electricityVolume || 0
-    const prevColdWaterVolume = this.data.prevCalculations?.water.coldVolume || 0
-    const prevHotWaterVolume = this.data.prevCalculations?.water.hotVolume || 0
-    const prevHeatingVolume = this.data.prevCalculations?.heating.volume || 0
+    this.monthName = dataStorage.getMonthName(data.month)
+    const prevElectricityVolume = data.prevCalculations?.hcs.electricityVolume || 0
+    const prevColdWaterVolume = data.prevCalculations?.water.coldVolume || 0
+    const prevHotWaterVolume = data.prevCalculations?.water.hotVolume || 0
+    const prevHeatingVolume = data.prevCalculations?.heating.volume || 0
     const prevHeatingVolumeConverted = prevHeatingVolume * GKAL_CONST
 
     this.form = fb.group({
@@ -142,6 +143,12 @@ export class EditCalcDialog implements OnInit {
     })
   }
 
+  getTitle() {
+    let title = this.data.calculation ? 'Edit' : 'Add'
+    title += ` calculations for ${this.monthName} ${this.dataStorage.currentYear$.getValue()}`
+    return title
+  }
+
   onSave() {
     this.autoCalcProps.forEach(propName => this.form.get(propName)?.enable())
     this.costProps.forEach(propName => this.form.get(propName)?.enable())
@@ -157,10 +164,18 @@ export class EditCalcDialog implements OnInit {
       return
     }
 
-    if (confirm(`Are you sure to delete calculation for ${this.data.calculation.month}.${this.data.calculation.year}?`)) {
+    if (confirm(`Are you sure to delete calculation for ${this.monthName} ${this.data.calculation.year}?`)) {
       this.dataStorage.deleteCalculation(this.data.calculation)
       this.dialogRef.close()
     }
+  }
+
+  fillLastMonthGarbageCost() {
+    this.form.patchValue({ garbage: { cost: this.data.prevCalculations?.garbage.cost } })
+  }
+
+  fillLastMonthOverhaulCost() {
+    this.form.patchValue({ overhaul: { cost: this.data.prevCalculations?.overhaul.cost } })
   }
 
 }

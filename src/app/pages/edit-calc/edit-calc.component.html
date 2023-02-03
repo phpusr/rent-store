@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Edit Calc {{ month }} {{ dataStorage.currentYear$ | async }}</h1>
+<h1 mat-dialog-title>{{ getTitle() }}</h1>
 
 <div mat-dialog-content>
   <form [formGroup]="form">
@@ -101,6 +101,7 @@
           <mat-label>Cost</mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
+        <button type="button" mat-button color="primary" (click)="fillLastMonthGarbageCost()">Last</button>
       </mat-card>
 
       <!-- Overhaul -->
@@ -111,15 +112,16 @@
           <mat-label>Cost</mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
+        <button type="button" mat-button color="primary" (click)="fillLastMonthOverhaulCost()">Last</button>
       </mat-card>
     </div>
   </form>
 </div>
 
 <div mat-dialog-actions>
-  <button *ngIf="data.calculation" mat-button mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+  <button *ngIf="data.calculation" mat-raised-button color="warn" (click)="onDelete()">Delete</button>
   <div>
-    <button mat-button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
     <button mat-button mat-dialog-close>Cancel</button>
   </div>
 </div>

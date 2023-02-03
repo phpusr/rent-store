@@ -1,7 +1,7 @@
 TODO
 ====
 
-- Fill garbage and overhaul costs from last calculation
+
 
 ## Minor
 
