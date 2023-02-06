@@ -8,9 +8,11 @@
 
     <mat-nav-list>
       <a mat-list-item [routerLink]="[router.url, 'import-data']">Import data</a>
-    </mat-nav-list>
-    <mat-nav-list>
       <button mat-list-item (click)="exportData()">Export data</button>
+
+      <mat-list-item>
+        <mat-slide-toggle (change)="switchTheme($event)">Dark theme</mat-slide-toggle>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 

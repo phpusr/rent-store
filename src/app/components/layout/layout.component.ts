@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core'
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { BreakpointObserver } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
 import { Router } from '@angular/router'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { MatSlideToggleChange } from '@angular/material/slide-toggle'
 
 @Component({
   selector: 'app-layout',
@@ -11,6 +12,8 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+
+  @Output() onSwitchTheme = new EventEmitter<boolean>()
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(min-width: 1px)')
     .pipe(
@@ -25,6 +28,10 @@ export class LayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  switchTheme({ checked }: MatSlideToggleChange) {
+    this.onSwitchTheme.emit(checked)
   }
 
   exportData(): void {
