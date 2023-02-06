@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataStorage.initValues()
-    this.switchMode(false)
+    this.dataStorage.isDarkMode$.subscribe(this.switchMode.bind(this))
   }
 
   switchMode(isDarkMode: boolean) {

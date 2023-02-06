@@ -11,7 +11,7 @@
       <button mat-list-item (click)="exportData()">Export data</button>
 
       <mat-list-item>
-        <mat-slide-toggle (change)="switchTheme($event)">Dark theme</mat-slide-toggle>
+        <mat-slide-toggle [checked]="dataStorage.isDarkMode$ | async" (change)="switchTheme($event)">Dark theme</mat-slide-toggle>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>

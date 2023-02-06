@@ -2,6 +2,10 @@ import { Flat, Calculation } from '../interfaces/general'
 
 export class LocalStorageService {
 
+  static get isDarkMode(): boolean {
+    return localStorage.getItem('isDarkMode') === 'true'
+  }
+
   static get currentFlatId(): number {
     return JSON.parse(localStorage.getItem('currentFlatId') || '1')
   }
@@ -17,6 +21,10 @@ export class LocalStorageService {
     } catch(e) {
       return currentDateYear
     }
+  }
+
+  static set isDarkMode(value: boolean) {
+    localStorage.setItem('isDarkMode', '' + value)
   }
 
   static set currentYear(year: number) {

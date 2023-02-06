@@ -9,16 +9,18 @@ import { LocalStorageService } from './local_storage.service'
 })
 export class DataStorageService {
 
-  calculations$: BehaviorSubject<Calculation[]>
+  isDarkMode$: BehaviorSubject<boolean>
   flats$: BehaviorSubject<Flat[]>
   currentFlatId$: BehaviorSubject<number | null>
   currentFlat$: BehaviorSubject<Flat | null | undefined>
+  calculations$: BehaviorSubject<Calculation[]>
   flatCalculations$: BehaviorSubject<Calculation[]>
   flatYearCalculations$: BehaviorSubject<Calculation[]>
   years$: BehaviorSubject<number[]>
   currentYear$: BehaviorSubject<number | null>
 
   constructor() {
+    this.isDarkMode$ = new BehaviorSubject<boolean>(false)
     this.flats$ = new BehaviorSubject<Flat[]>([])
     this.currentFlatId$ = new BehaviorSubject<number | null>(null)
     this.currentFlat$ = new BehaviorSubject<Flat | null | undefined>(null)
@@ -81,10 +83,16 @@ export class DataStorageService {
   }
 
   initValues() {
+    this.isDarkMode$.next(LocalStorageService.isDarkMode)
     this.flats$.next(LocalStorageService.flats)
     this.currentFlatId$.next(LocalStorageService.currentFlatId)
     this.currentYear$.next(LocalStorageService.currentYear)
     this.calculations$.next(LocalStorageService.calculations)
+  }
+
+  setIsDarkMode(value: boolean) {
+    this.isDarkMode$.next(value)
+    LocalStorageService.isDarkMode = value
   }
 
   setCurrentFlatId(flatId: number) {

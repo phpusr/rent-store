@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { BreakpointObserver } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
@@ -12,8 +12,6 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle'
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
-  @Output() onSwitchTheme = new EventEmitter<boolean>()
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(min-width: 1px)')
     .pipe(
@@ -31,7 +29,7 @@ export class LayoutComponent implements OnInit {
   }
 
   switchTheme({ checked }: MatSlideToggleChange) {
-    this.onSwitchTheme.emit(checked)
+    this.dataStorage.setIsDarkMode(checked)
   }
 
   exportData(): void {
