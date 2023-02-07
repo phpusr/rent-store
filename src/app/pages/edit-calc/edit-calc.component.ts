@@ -12,7 +12,7 @@ const GKAL_CONST = 0.00086
 interface DialogData {
   route: ActivatedRoute
   month: number
-  prevCalculations?: Calculation
+  prevCalculation?: Calculation
   calculation?: Calculation
 }
 
@@ -37,13 +37,13 @@ export class EditCalcComponent implements OnInit {
       }
 
       const calculations = this.dataStorage.flatCalculations$.getValue()
-      const prevCalculationsYear = month === 1 ? year - 1 : year
+      const prevCalculationYear = month === 1 ? year - 1 : year
       const prevCalculationMonth = month === 1 ? 12 : month - 1
-      const prevCalculations = calculations.find(it => it.year === prevCalculationsYear && it.month === prevCalculationMonth)
+      const prevCalculation = calculations.find(it => it.year === prevCalculationYear && it.month === prevCalculationMonth)
       const calculation = calculations.find(it => it.year === year && it.month === month)
       this.dialog.open(EditCalcDialog, {
         width: '800px',
-        data: { route: this.route, prevCalculations, calculation, month }
+        data: { route: this.route, prevCalculation, calculation, month }
       })
     })
   }
@@ -76,10 +76,10 @@ export class EditCalcDialog implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.monthName = dataStorage.getMonthName(data.month)
-    const prevElectricityVolume = data.prevCalculations?.hcs.electricityVolume || 0
-    const prevColdWaterVolume = data.prevCalculations?.water.coldVolume || 0
-    const prevHotWaterVolume = data.prevCalculations?.water.hotVolume || 0
-    const prevHeatingVolume = data.prevCalculations?.heating.volume || 0
+    const prevElectricityVolume = data.prevCalculation?.hcs.electricityVolume || 0
+    const prevColdWaterVolume = data.prevCalculation?.water.coldVolume || 0
+    const prevHotWaterVolume = data.prevCalculation?.water.hotVolume || 0
+    const prevHeatingVolume = data.prevCalculation?.heating.volume || 0
     const prevHeatingVolumeConverted = prevHeatingVolume * GKAL_CONST
 
     this.form = fb.group({
@@ -172,11 +172,11 @@ export class EditCalcDialog implements OnInit {
   }
 
   fillLastMonthGarbageCost() {
-    this.form.patchValue({ garbage: { cost: this.data.prevCalculations?.garbage.cost } })
+    this.form.patchValue({ garbage: { cost: this.data.prevCalculation?.garbage.cost } })
   }
 
   fillLastMonthOverhaulCost() {
-    this.form.patchValue({ overhaul: { cost: this.data.prevCalculations?.overhaul.cost } })
+    this.form.patchValue({ overhaul: { cost: this.data.prevCalculation?.overhaul.cost } })
   }
 
 }
