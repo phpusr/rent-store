@@ -1,4 +1,13 @@
 <div class="calc-table">
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link
+      [routerLink]="['..', year.toString()]"
+      *ngFor="let year of dataStorage.years$ | async"
+      [active]="year === (dataStorage.currentYear$ | async)"
+    >{{ year }}</a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
     <ng-container matColumnDef="month">
       <th mat-header-cell *matHeaderCellDef>Month</th>

@@ -1,16 +1,8 @@
 <div class="container">
   <router-outlet></router-outlet>
 
-  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-    <a mat-tab-link
-      [routerLink]="['..', year.toString()]"
-      *ngFor="let year of dataStorage.years$ | async"
-      [active]="year === (dataStorage.currentYear$ | async)"
-    >{{ year }}</a>
-  </nav>
-  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-
   <div class="tables">
+    <app-calc-table></app-calc-table>
     <app-calc-table></app-calc-table>
   </div>
 
