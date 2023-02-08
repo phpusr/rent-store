@@ -9,6 +9,7 @@ import { LocalStorageService } from './local_storage.service'
 })
 export class DataStorageService {
 
+  isSplitMode$: BehaviorSubject<boolean>
   isDarkMode$: BehaviorSubject<boolean>
   flats$: BehaviorSubject<Flat[]>
   currentFlatId$: BehaviorSubject<number | null>
@@ -20,6 +21,7 @@ export class DataStorageService {
   currentYear$: BehaviorSubject<number | null>
 
   constructor() {
+    this.isSplitMode$ = new BehaviorSubject<boolean>(false)
     this.isDarkMode$ = new BehaviorSubject<boolean>(false)
     this.flats$ = new BehaviorSubject<Flat[]>([])
     this.currentFlatId$ = new BehaviorSubject<number | null>(null)

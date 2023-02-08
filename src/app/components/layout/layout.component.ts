@@ -28,10 +28,6 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  switchTheme({ checked }: MatSlideToggleChange) {
-    this.dataStorage.setIsDarkMode(checked)
-  }
-
   exportData(): void {
     const data = {
       currentFlatId: this.dataStorage.currentFlatId$.getValue(),
@@ -44,6 +40,14 @@ export class LayoutComponent implements OnInit {
     a.href = URL.createObjectURL(blob)
     a.download = 'export.json'
     a.click()
+  }
+
+  switchTheme({ checked }: MatSlideToggleChange) {
+    this.dataStorage.setIsDarkMode(checked)
+  }
+
+  switchSplitMode({ checked }: MatSlideToggleChange) {
+    //TODO
   }
 
 }
