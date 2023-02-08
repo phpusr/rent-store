@@ -62,10 +62,6 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.dataStorage.setCurrentYear(+params['year'])
-    })
-
     this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
       this.dataSource = []
       this.footerRow = this.getFooterRowInitValue()

@@ -11,11 +11,12 @@ export class MainComponent implements OnInit {
 
   constructor(
     public dataStorage: DataStorageService,
-    private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe(params => {
+      this.dataStorage.setCurrentYear(+params['year'])
+    })
   }
 }
