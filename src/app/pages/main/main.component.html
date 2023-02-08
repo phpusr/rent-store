@@ -3,7 +3,7 @@
 
   <div class="tables">
     <app-calc-table></app-calc-table>
-    <app-calc-table></app-calc-table>
+    <app-calc-table *ngIf="dataStorage.isSplitMode$ | async"></app-calc-table>
   </div>
 
 </div>
