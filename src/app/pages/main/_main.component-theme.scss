@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $is-dark-theme: map.get($color-config, 'is-dark');
+
+  $teal-palette: mat.define-palette(mat.$teal-palette);
+  $green-palette: mat.define-palette(mat.$light-green-palette);
+  $pink-palette: mat.define-palette(mat.$pink-palette);
+
+  $dark-theme-color: white;
+  $vol-color: rgb(54 58 60);
+  $vol-bg-color: rgb(208 236 255);
+  $vol-monthly-color: rgb(55 64 54);
+  $vol-monthly-bg-color: rgb(217 250 214);
+  $cost-color: rgb(48, 24, 24);
+  $cost-bg-color: rgb(255 208 208);
+  $total-cost-bg-color: rgb(255 208 208);
+
+  @if $is-dark-theme {
+    $vol-color: $dark-theme-color;
+    $vol-bg-color: mat.get-color-from-palette($teal-palette, 800);
+    $vol-monthly-color: $dark-theme-color;
+    $vol-monthly-bg-color: mat.get-color-from-palette($green-palette, 800);
+    $cost-color: $dark-theme-color;
+    $cost-bg-color: mat.get-color-from-palette($pink-palette, 800);
+    $total-cost-bg-color: mat.get-color-from-palette($pink-palette, 900)
+  }
+
+  .vol {
+    color: $vol-color;
+    background-color: $vol-bg-color;
+  }
+
+  .vol-monthly {
+    color: $vol-monthly-color;
+    background-color: $vol-monthly-bg-color;
+  }
+
+  .cost {
+    color: $cost-color;
+    background-color: $cost-bg-color;
+  }
+
+  .total-cost {
+    color: $cost-color;
+    background-color: $total-cost-bg-color;
+    font-weight: 500;
+  }
+}

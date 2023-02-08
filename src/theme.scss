@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use './app/pages/main/main.component-theme' as main-page;
 
 @include mat.core();
 
@@ -24,8 +25,10 @@ $my-theme-dark: mat.define-dark-theme((
 
 .theme-light {
   @include mat.all-component-themes($my-theme-light);
+  @include main-page.theme($my-theme-light);
 }
 
 .theme-dark {
   @include mat.all-component-themes($my-theme-dark);
+  @include main-page.theme($my-theme-dark);
 }
