@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use './app/pages/main/main.component-theme' as main-page;
+@use './app/pages/main/calc-table/calc-table.component-theme' as main-page;
 
 @include mat.core();
 

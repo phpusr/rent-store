@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 10px;
+  border-top: 1px solid transparent;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: rgb(105, 159, 230);
+}
+
+.footer-row {
+  font-weight: 500;
+}
