@@ -9,7 +9,7 @@
   $green-palette: mat.define-palette(mat.$light-green-palette);
   $pink-palette: mat.define-palette(mat.$pink-palette);
 
-  $dark-theme-color: white;
+  $dark-theme-color: rgba(255, 255, 255, 0.9);
   $vol-color: rgb(54 58 60);
   $vol-bg-color: rgb(208 236 255);
   $vol-monthly-color: rgb(55 64 54);
