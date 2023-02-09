@@ -104,6 +104,25 @@ export class CalcTableComponent implements OnInit, OnDestroy {
     })
   }
 
+  getCurrentYear() {
+    return this.splitModeTable ? this.dataStorage.splitYear$.getValue() : this.dataStorage.currentYear$.getValue()
+  }
+
+  getLink(year: number) {
+    if (!this.dataStorage.isSplitMode$.getValue()) {
+      return ['..', year]
+    }
+
+    let action = ''
+    if (this.splitModeTable) {
+      action = `${this.dataStorage.currentYear$.getValue()}-${year}`
+    } else {
+      action = `${year}-${this.dataStorage.splitYear$.getValue()}`
+    }
+
+    return ['..', action]
+  }
+
   getFooterRowInitValues(): FooterRowType {
     return {
       electricityVolume: 0,
@@ -123,7 +142,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
     if (this.splitModeTable) {
       return
     }
-    
+
     this.router.navigate([calc.monthIndex, 'edit'], { relativeTo: this.route })
   }
 
