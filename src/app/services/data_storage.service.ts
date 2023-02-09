@@ -19,6 +19,7 @@ export class DataStorageService {
   flatYearCalculations$: BehaviorSubject<Calculation[]>
   years$: BehaviorSubject<number[]>
   currentYear$: BehaviorSubject<number | null>
+  splitYear$: BehaviorSubject<number | null>
 
   constructor() {
     this.isSplitMode$ = new BehaviorSubject<boolean>(false)
@@ -31,6 +32,7 @@ export class DataStorageService {
     this.flatYearCalculations$ = new BehaviorSubject<Calculation[]>([])
     this.years$ = new BehaviorSubject<number[]>([])
     this.currentYear$ = new BehaviorSubject<number | null>(null)
+    this.splitYear$ = new BehaviorSubject<number | null>(null)
 
     // Current Flat syncing
     combineLatest([
@@ -90,6 +92,11 @@ export class DataStorageService {
     this.currentFlatId$.next(LocalStorageService.currentFlatId)
     this.currentYear$.next(LocalStorageService.currentYear)
     this.calculations$.next(LocalStorageService.calculations)
+  }
+
+  setSplitYear(value: number | null) {
+    this.isSplitMode$.next(!!value)
+    this.splitYear$.next(value)
   }
 
   setIsDarkMode(value: boolean) {

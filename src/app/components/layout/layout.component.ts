@@ -47,7 +47,14 @@ export class LayoutComponent implements OnInit {
   }
 
   switchSplitMode({ checked }: MatSlideToggleChange) {
-    //TODO
+    let action = ''
+    const currentYear = this.dataStorage.currentYear$.getValue()
+    if (checked) {
+      action = `${currentYear}-${currentYear}`
+    } else {
+      action = '' + currentYear
+    }
+    this.router.navigate(['main', action])
   }
 
 }

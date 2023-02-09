@@ -16,7 +16,9 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.dataStorage.setCurrentYear(+params['year'])
+      const years = params['year'].split('-')
+      this.dataStorage.setCurrentYear(years[0])
+      this.dataStorage.setSplitYear(years[1])
     })
   }
 }
