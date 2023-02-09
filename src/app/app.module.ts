@@ -13,6 +13,7 @@ import { EditCalcComponent, EditCalcDialog } from './pages/edit-calc/edit-calc.c
 import { LocalStorageService } from './services/local_storage.service'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalcTableComponent } from './pages/main/calc-table/calc-table.component'
+import { CalcTableMonthComponent } from './pages/main/calc-table-month/calc-table-month.component'
 
 const currentYear = LocalStorageService.currentYear
 
@@ -35,7 +36,8 @@ const routes: Routes = [
     ImportDataDialog,
     EditCalcComponent,
     EditCalcDialog,
-    CalcTableComponent
+    CalcTableComponent,
+    CalcTableMonthComponent
   ],
   imports: [
     BrowserModule,

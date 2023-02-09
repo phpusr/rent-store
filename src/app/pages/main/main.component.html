@@ -1,16 +1,10 @@
 <div class="container">
   <router-outlet></router-outlet>
 
-  <mat-grid-list *ngIf="isSplitMode(); else noSplitMode" cols="2">
-    <mat-grid-tile>
-      <app-calc-table></app-calc-table>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <app-calc-table [splitModeTable]="true"></app-calc-table>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <ng-template #noSplitMode>
-    <app-calc-table></app-calc-table>
-  </ng-template>
+  <div class="tables">
+    <app-calc-table-month [ngStyle]="getMonthColumnStyles()"></app-calc-table-month>
+    <app-calc-table [ngStyle]="getTableStyles()"></app-calc-table>
+    <app-calc-table *ngIf="isSplitMode()" [ngStyle]="getTableStyles()" [splitModeTable]="true"></app-calc-table>
+  </div>
 
 </div>

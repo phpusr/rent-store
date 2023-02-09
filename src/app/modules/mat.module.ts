@@ -13,7 +13,6 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatInputModule } from '@angular/material/input'
 import { MatCardModule } from '@angular/material/card'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
-import { MatGridListModule } from '@angular/material/grid-list'
 
 
 @NgModule({
@@ -31,8 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatSlideToggleModule,
-    MatGridListModule
+    MatSlideToggleModule
   ]
 })
 export class MatModule { }
