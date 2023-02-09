@@ -54,6 +54,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   footerDisplayColumns = ['month', 'hcsCost']
   footerRow: FooterRowType = this.getFooterRowInitValues()
   private calcSub?: Subscription
+  private splitSub?: Subscription
 
   constructor(
     public dataStorage: DataStorageService,
@@ -62,7 +63,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.dataStorage.isSplitMode$.subscribe(isSplitMode => {
+    this.splitSub = this.dataStorage.isSplitMode$.subscribe(isSplitMode => {
       if (isSplitMode) {
         this.displayedColumns = this.displayedColumns.filter(it => it !== 'month')
       } else {
@@ -155,5 +156,6 @@ export class CalcTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.calcSub?.unsubscribe()
+    this.splitSub?.unsubscribe()
   }
 }
