@@ -23,6 +23,20 @@
     $cost-bg-color: mat.get-color-from-palette($pink-palette, 800);
     $total-cost-bg-color: mat.get-color-from-palette($pink-palette, 900);
     $header-cell-font-weight: 600;
+
+    .table::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    .table::-webkit-scrollbar-track {
+      background: #484848;
+    }
+
+    .table::-webkit-scrollbar-thumb {
+      background-color: #323232;
+      border-radius: 3px;
+      border: 1px solid #6a6a6a;
+    }
   }
 
   .vol {
