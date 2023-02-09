@@ -21,4 +21,8 @@ export class MainComponent implements OnInit {
       this.dataStorage.setSplitYear(years[1])
     })
   }
+
+  isSplitMode(): boolean {
+    return this.dataStorage.isSplitMode$.getValue()
+  }
 }

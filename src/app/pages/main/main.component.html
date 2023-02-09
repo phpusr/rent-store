@@ -1,9 +1,16 @@
 <div class="container">
   <router-outlet></router-outlet>
 
-  <div class="tables">
+  <mat-grid-list *ngIf="isSplitMode(); else noSplitMode" cols="2">
+    <mat-grid-tile>
+      <app-calc-table></app-calc-table>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-calc-table></app-calc-table>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <ng-template #noSplitMode>
     <app-calc-table></app-calc-table>
-    <app-calc-table *ngIf="dataStorage.isSplitMode$ | async"></app-calc-table>
-  </div>
+  </ng-template>
 
 </div>
