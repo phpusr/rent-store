@@ -69,7 +69,9 @@ export class CalcTableComponent implements OnInit, OnDestroy {
       if (isSplitMode) {
         this.displayedColumns = this.displayedColumns.filter(it => it !== 'month')
       } else {
-        this.displayedColumns.unshift('month')
+        if (!this.displayedColumns.includes('month')) {
+          this.displayedColumns.unshift('month')
+        }
       }
     })
 
