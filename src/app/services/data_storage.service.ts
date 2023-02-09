@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, combineLatest, Subject, take } from 'rxjs'
+import { BehaviorSubject, combineLatest } from 'rxjs'
 import { Calculation, Flat } from '../interfaces/general'
 import { LocalStorageService } from './local_storage.service'
 

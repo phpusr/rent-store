@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { UtilsService } from 'src/app/services/utils.service'
 
 interface TableType {
   monthIndex: number
@@ -58,6 +59,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
 
   constructor(
     public dataStorage: DataStorageService,
+    private utils: UtilsService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -94,7 +96,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
           heatingCost: calc?.heating.cost,
           garbageCost: calc?.garbage.cost,
           overhaulCost: calc?.overhaul.cost,
-          totalCost: (calc?.hcs.cost || 0) + (calc?.water.cost || 0) + (calc?.heating.cost || 0) + (calc?.garbage.cost || 0) + (calc?.overhaul.cost || 0)
+          totalCost: this.utils.getTotalCostCalculation(calc)
         }
         this.dataSource.push(convertedCalc)
 
