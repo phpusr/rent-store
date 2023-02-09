@@ -1,6 +1,10 @@
 .container {
   padding: 20px;
 
+  app-calc-table-month {
+    margin-top: 59px;
+  }
+
   .tables {
     display: flex;
     justify-content: space-between;

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { DataStorageService } from 'src/app/services/data_storage.service'
+
+interface TableType {
+  month: string
+}
 
 @Component({
   selector: 'app-calc-table-month',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalcTableMonthComponent implements OnInit {
 
-  constructor() { }
+  dataSource: TableType[] = []
+  displayedColumns = ['month']
 
-  ngOnInit(): void {
+  constructor(dataStorage: DataStorageService) {
+    for (let monthIndex = 1; monthIndex <= 12; monthIndex++) {
+      this.dataSource.push({ month: dataStorage.getMonthName(monthIndex) })
+    }
   }
+
+  ngOnInit(): void {}
 
 }

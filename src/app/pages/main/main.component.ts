@@ -35,8 +35,12 @@ export class MainComponent implements OnInit {
   }
 
   getTableStyles() {
-    return {
-      width: `calc(50% - ${MONTH_COLUMN_WIDTH / 2 + 10}px)`
+    if (this.isSplitMode()) {
+      return {
+        width: `calc(50% - ${MONTH_COLUMN_WIDTH / 2 + 10}px)`
+      }
     }
+
+    return { width: '100%' }
   }
 }
