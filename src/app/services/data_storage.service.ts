@@ -14,11 +14,11 @@ export class DataStorageService {
   flats$: BehaviorSubject<Flat[]>
   currentFlatId$: BehaviorSubject<number | null>
   currentFlat$: BehaviorSubject<Flat | null | undefined>
+  years$: BehaviorSubject<number[]>
+  currentYear$: BehaviorSubject<number | null>
   calculations$: BehaviorSubject<Calculation[]>
   flatCalculations$: BehaviorSubject<Calculation[]>
   flatYearCalculations$: BehaviorSubject<Calculation[]>
-  years$: BehaviorSubject<number[]>
-  currentYear$: BehaviorSubject<number | null>
   splitYear$: BehaviorSubject<number | null>
   splitFlatYearCalculations$: BehaviorSubject<Calculation[]>
 
@@ -28,11 +28,11 @@ export class DataStorageService {
     this.flats$ = new BehaviorSubject<Flat[]>([])
     this.currentFlatId$ = new BehaviorSubject<number | null>(null)
     this.currentFlat$ = new BehaviorSubject<Flat | null | undefined>(null)
+    this.years$ = new BehaviorSubject<number[]>([])
+    this.currentYear$ = new BehaviorSubject<number | null>(null)
     this.calculations$ = new BehaviorSubject<Calculation[]>([])
     this.flatCalculations$ = new BehaviorSubject<Calculation[]>([])
     this.flatYearCalculations$ = new BehaviorSubject<Calculation[]>([])
-    this.years$ = new BehaviorSubject<number[]>([])
-    this.currentYear$ = new BehaviorSubject<number | null>(null)
     this.splitYear$ = new BehaviorSubject<number | null>(null)
     this.splitFlatYearCalculations$ = new BehaviorSubject<Calculation[]>([])
 
