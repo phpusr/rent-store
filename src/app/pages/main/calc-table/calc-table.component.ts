@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
@@ -43,6 +43,7 @@ interface FooterRowType {
 })
 export class CalcTableComponent implements OnInit, OnDestroy {
 
+  @Input() splitModeTable = false
   dataSource: TableType[] = []
   displayedColumns = [
     'month',
@@ -52,7 +53,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
     'garbageCost', 'overhaulCost', 'totalCost'
   ]
   footerDisplayColumns = ['month', 'hcsCost']
-  footerRow: FooterRowType = this.getFooterRowInitValue()
+  footerRow: FooterRowType = this.getFooterRowInitValues()
   private calcSub?: Subscription
 
   constructor(
@@ -62,9 +63,10 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.calcSub = this.dataStorage.flatYearCalculations$.subscribe(calculations => {
+    const calculations = this.splitModeTable ? this.dataStorage.splitFlatYearCalculations$ : this.dataStorage.flatYearCalculations$
+    this.calcSub = calculations.subscribe(calculations => {
       this.dataSource = []
-      this.footerRow = this.getFooterRowInitValue()
+      this.footerRow = this.getFooterRowInitValues()
       for (let monthIndex = 1; monthIndex <= 12; monthIndex++) {
         const calc = calculations.find(it => it.month === monthIndex)
         const convertedCalc = {
@@ -102,7 +104,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
     })
   }
 
-  getFooterRowInitValue(): FooterRowType {
+  getFooterRowInitValues(): FooterRowType {
     return {
       electricityVolume: 0,
       hcsCost: 0,
@@ -118,6 +120,10 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   }
 
   onEditCalc(calc: TableType) {
+    if (this.splitModeTable) {
+      return
+    }
+    
     this.router.navigate([calc.monthIndex, 'edit'], { relativeTo: this.route })
   }
 
