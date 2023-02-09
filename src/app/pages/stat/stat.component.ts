@@ -11,10 +11,10 @@ interface TableType {
 
 @Component({
   selector: 'app-flats',
-  templateUrl: './flats.component.html',
-  styleUrls: ['./flats.component.scss']
+  templateUrl: './stat.component.html',
+  styleUrls: ['./stat.component.scss']
 })
-export class FlatsComponent implements OnInit, OnDestroy {
+export class StatComponent implements OnInit, OnDestroy {
 
   dataSource: TableType[] = []
   displayColumns = ['year', 'allCost', 'avgCost']

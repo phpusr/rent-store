@@ -14,7 +14,7 @@ import { LocalStorageService } from './services/local_storage.service'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalcTableComponent } from './pages/main/calc-table/calc-table.component'
 import { CalcTableMonthComponent } from './pages/main/calc-table-month/calc-table-month.component';
-import { FlatsComponent } from './pages/flats/flats.component'
+import { StatComponent } from './pages/stat/stat.component'
 
 const currentYear = LocalStorageService.currentYear
 
@@ -25,7 +25,7 @@ const routes: Routes = [
       { path: ':month/edit', component: EditCalcComponent }
     ]
   },
-  { path: 'flats', component: FlatsComponent }
+  { path: 'stat', component: StatComponent }
 ]
 
 @NgModule({
@@ -40,7 +40,7 @@ const routes: Routes = [
     EditCalcDialog,
     CalcTableComponent,
     CalcTableMonthComponent,
-    FlatsComponent
+    StatComponent
   ],
   imports: [
     BrowserModule,
