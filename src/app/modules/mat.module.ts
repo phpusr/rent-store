@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatInputModule } from '@angular/material/input'
 import { MatCardModule } from '@angular/material/card'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatSortModule } from '@angular/material/sort'
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSortModule
   ]
 })
 export class MatModule { }
