@@ -30,20 +30,21 @@ export class StatComponent implements OnInit, OnDestroy {
       this.dataStorage.flatCalculations$,
       this.dataStorage.years$
     ]).subscribe(([flatCalculations, years]) => {
-      this.dataSource = years.map(year => {
-        let yearSum = 0
-        const yearFlatCalculations = flatCalculations.filter(it => it.year === year)
-        yearFlatCalculations.forEach(it => {
-          yearSum += this.utils.getTotalCostCalculation(it)
-        })
-        return {
-          year,
-          allCost: yearSum,
-          avgCost: yearFlatCalculations.length ? yearSum / yearFlatCalculations.length : 0
-        }
-      })
+      for (let index = 0; index < years.length - 1; index++) {
+        let calcCount = 0
+        const yearSum = flatCalculations.filter(it => {
+          return it.year === years[index]
+        }).reduce((sum, it) => {
+          calcCount++
+          return sum + this.utils.getTotalCostCalculation(it)
+        }, 0)
 
-      console.log('ds', this.dataSource)
+        this.dataSource.push({
+          year: years[index],
+          allCost: yearSum,
+          avgCost: calcCount ? yearSum / calcCount : 0
+        })
+      }
     })
   }
 
