@@ -51,6 +51,7 @@ export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
         })
       }
       this.dataSource = new MatTableDataSource(tableData)
+      this.dataSource.sort = this.sort
     })
   }
 

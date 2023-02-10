@@ -28,6 +28,7 @@ export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.flatsSub = this.dataStorage.flats$.subscribe(flats => {
       this.dataSource = new MatTableDataSource(flats)
+      this.dataSource.sort = this.sort
     })
   }
 
