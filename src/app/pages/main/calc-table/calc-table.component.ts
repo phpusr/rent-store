@@ -151,6 +151,11 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   }
 
   onEditCalc(calc: TableType) {
+    if (!this.dataStorage.currentFlatId$.getValue()) {
+      alert('Select flat before!')
+      return
+    }
+
     if (this.splitModeTable) {
       return
     }

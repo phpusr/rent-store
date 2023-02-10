@@ -61,7 +61,7 @@ export class ImportDataDialog implements OnInit {
     reader.onload = (e: any) => {
       const data = JSON.parse(new TextDecoder().decode(e.target.result))
       this.dataStorage.setFlats(data.flats)
-      this.dataStorage.setFlatCalculations(data.calculations)
+      this.dataStorage.setCalculations(data.calculations)
       this.dataStorage.setCurrentFlatId(data.currentFlatId)
       this.dataStorage.setCurrentYear(data.currentYear)
     }
