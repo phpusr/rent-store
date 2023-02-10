@@ -4,6 +4,7 @@ import { Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-flats',
@@ -18,7 +19,11 @@ export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatSort) sort!: MatSort
 
-  constructor(private dataStorage: DataStorageService) { }
+  constructor(
+    private dataStorage: DataStorageService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.flatsSub = this.dataStorage.flats$.subscribe(flats => {
@@ -32,6 +37,10 @@ export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.flatsSub?.unsubscribe()
+  }
+
+  onEditFlat(flat: Flat) {
+    this.router.navigate([flat.id, 'edit'], { relativeTo: this.route })
   }
 
 }

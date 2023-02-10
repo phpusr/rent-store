@@ -17,6 +17,7 @@ import { CalcTableMonthComponent } from './pages/main/calc-table-month/calc-tabl
 import { StatComponent } from './pages/stat/stat.component'
 import { TestComponent } from './pages/test/test.component'
 import { FlatsComponent } from './pages/flats/flats.component'
+import { EditFlatComponent } from './pages/flats/edit-flat/edit-flat.component'
 
 const currentYear = LocalStorageService.currentYear
 
@@ -28,7 +29,10 @@ const routes: Routes = [
     ]
   },
   { path: 'stat', component: StatComponent },
-  { path: 'flats', component: FlatsComponent },
+  { path: 'flats', component: FlatsComponent, children: [
+      { path: ':flatId/edit', component: EditFlatComponent }
+    ]
+  },
   { path: 'test', component: TestComponent }
 ]
 
@@ -46,7 +50,8 @@ const routes: Routes = [
     CalcTableMonthComponent,
     StatComponent,
     TestComponent,
-    FlatsComponent
+    FlatsComponent,
+    EditFlatComponent
   ],
   imports: [
     BrowserModule,

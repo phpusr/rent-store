@@ -1,4 +1,6 @@
 <div class="container">
+  <router-outlet></router-outlet>
+  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z1"
       matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
 
@@ -18,6 +20,6 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns" (dblclick)="onEditFlat(row)"></tr>
   </table>
 </div>
