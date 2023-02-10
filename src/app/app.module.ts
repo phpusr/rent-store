@@ -17,7 +17,7 @@ import { CalcTableMonthComponent } from './pages/main/calc-table-month/calc-tabl
 import { StatComponent } from './pages/stat/stat.component'
 import { TestComponent } from './pages/test/test.component'
 import { FlatsComponent } from './pages/flats/flats.component'
-import { EditFlatComponent } from './pages/flats/edit-flat/edit-flat.component'
+import { EditFlatComponent, EditFlatDialog } from './pages/flats/edit-flat/edit-flat.component'
 
 const currentYear = LocalStorageService.currentYear
 
@@ -51,7 +51,8 @@ const routes: Routes = [
     StatComponent,
     TestComponent,
     FlatsComponent,
-    EditFlatComponent
+    EditFlatComponent,
+    EditFlatDialog
   ],
   imports: [
     BrowserModule,

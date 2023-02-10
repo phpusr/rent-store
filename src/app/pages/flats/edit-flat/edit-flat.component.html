@@ -6,5 +6,17 @@
       <mat-label>Address</mat-label>
       <input type="text" matInput cdkFocusInitial formControlName="address">
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Number</mat-label>
+      <input type="text" matInput formControlName="number">
+    </mat-form-field>
   </form>
+</div>
+
+<div mat-dialog-actions>
+  <button *ngIf="data.flat" mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+  <div>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
 </div>

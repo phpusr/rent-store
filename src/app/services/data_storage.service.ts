@@ -133,16 +133,25 @@ export class DataStorageService {
     LocalStorageService.flats = newFlats
   }
 
-  setFlatCalculations(newFlatCalculations: Calculation[]) {
-    const flatId = this.currentFlatId$.getValue()
-    if (!flatId) {
-      return
+  saveFlat(flat: Flat) {
+    if (!flat.id) {
+      flat.id = new Date().getTime()
+    }
+    const newFlats = this.flats$.getValue().filter(it => it.id !== flat.id)
+    newFlats.push(flat)
+    this.setFlats(newFlats)
+  }
+
+  deleteFlat(flatId: number) {
+    if (this.currentFlatId$.getValue() === flatId) {
+      this.currentFlatId$.next(null)
     }
 
-    const calculations = this.calculations$.getValue()
-    const newCalculations = calculations.filter(it => it.flatId !== flatId)
-    newCalculations.push(...newFlatCalculations)
+    const newCalculations = this.calculations$.getValue().filter(it => it.flatId !== flatId)
     this.setCalculations(newCalculations)
+
+    const newFlats = this.flats$.getValue().filter(it => it.id !== flatId)
+    this.setFlats(newFlats)
   }
 
   setCalculations(newCalculations: Calculation[]) {

@@ -26,7 +26,7 @@ export class EditFlatComponent implements OnInit {
     this.route.params.subscribe(params => {
       const flat = this.dataStorage.flats$.getValue().find(it => it.id === +params['flatId'])
       this.dialog.open(EditFlatDialog, {
-        width: '800px',
+        width: '400px',
         data: {
           route: this.route,
           flat
@@ -49,6 +49,7 @@ export class EditFlatDialog implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<EditFlatDialog>,
     private router: Router,
+    private dataStorage: DataStorageService,
     fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
@@ -67,6 +68,25 @@ export class EditFlatDialog implements OnInit {
     this.dialogRef.afterClosed().subscribe(() => {
       this.router.navigate(['../..'], { relativeTo: this.data.route })
     })
+  }
+
+  onSave() {
+    if (this.form.valid) {
+      this.dataStorage.saveFlat(this.form.value)
+      this.dialogRef.close()
+    }
+  }
+
+  onDelete() {
+    const { flat } = this.data
+    if (!flat) {
+      return
+    }
+
+    if (confirm(`Are you sure to delete flat: ${flat.address} ${flat.number}?`)) {
+      this.dataStorage.deleteFlat(flat.id)
+      this.dialogRef.close()
+    }
   }
 
 }
