@@ -16,6 +16,7 @@ import { CalcTableComponent } from './pages/main/calc-table/calc-table.component
 import { CalcTableMonthComponent } from './pages/main/calc-table-month/calc-table-month.component'
 import { StatComponent } from './pages/stat/stat.component'
 import { TestComponent } from './pages/test/test.component'
+import { FlatsComponent } from './pages/flats/flats.component'
 
 const currentYear = LocalStorageService.currentYear
 
@@ -27,6 +28,7 @@ const routes: Routes = [
     ]
   },
   { path: 'stat', component: StatComponent },
+  { path: 'flats', component: FlatsComponent },
   { path: 'test', component: TestComponent }
 ]
 
@@ -43,7 +45,8 @@ const routes: Routes = [
     CalcTableComponent,
     CalcTableMonthComponent,
     StatComponent,
-    TestComponent
+    TestComponent,
+    FlatsComponent
   ],
   imports: [
     BrowserModule,
