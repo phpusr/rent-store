@@ -1,1 +1,10 @@
-<p>edit-flat works!</p>
+<h1 mat-dialog-title>Flat Dialog</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input type="text" matInput cdkFocusInitial formControlName="address">
+    </mat-form-field>
+  </form>
+</div>
