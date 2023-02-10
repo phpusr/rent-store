@@ -1,6 +1,8 @@
 <div class="container">
   <router-outlet></router-outlet>
-  
+
+  <a mat-raised-button [routerLink]="['create']">Create</a>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z1"
       matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
 

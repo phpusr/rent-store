@@ -30,7 +30,8 @@ const routes: Routes = [
   },
   { path: 'stat', component: StatComponent },
   { path: 'flats', component: FlatsComponent, children: [
-      { path: ':flatId/edit', component: EditFlatComponent }
+      { path: ':flatId/edit', component: EditFlatComponent },
+      { path: 'create', component: EditFlatComponent }
     ]
   },
   { path: 'test', component: TestComponent }

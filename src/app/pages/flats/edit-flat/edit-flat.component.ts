@@ -54,7 +54,7 @@ export class EditFlatDialog implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.form = fb.group({
-      id: [null, Validators.required],
+      id: [null],
       address: [null, Validators.required],
       number: [null, [Validators.required, Validators.min(0)]]
     })
@@ -66,7 +66,8 @@ export class EditFlatDialog implements OnInit {
 
   ngOnInit(): void {
     this.dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['../..'], { relativeTo: this.data.route })
+      const navigationUrl = this.data.flat ? ['../..'] : ['..']
+      this.router.navigate(navigationUrl, { relativeTo: this.data.route })
     })
   }
 

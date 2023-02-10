@@ -39,6 +39,10 @@ export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.flatsSub?.unsubscribe()
   }
 
+  onCreateFlat()  {
+    this.router.navigate(['create'])
+  }
+
   onEditFlat(flat: Flat) {
     this.router.navigate([flat.id, 'edit'], { relativeTo: this.route })
   }
