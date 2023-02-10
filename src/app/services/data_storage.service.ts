@@ -135,7 +135,9 @@ export class DataStorageService {
 
   saveFlat(flat: Flat) {
     if (!flat.id) {
-      flat.id = new Date().getTime()
+      flat.id = this.flats$.getValue().reduce((max, flat) => {
+        return flat.id > max ? flat.id : max
+      }, 0) + 1
     }
     const newFlats = this.flats$.getValue().filter(it => it.id !== flat.id)
     newFlats.push(flat)
