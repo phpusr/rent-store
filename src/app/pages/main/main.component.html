@@ -2,7 +2,6 @@
   <router-outlet></router-outlet>
 
   <div class="tables">
-    <app-calc-table-month *ngIf="isSplitMode()" [ngStyle]="getMonthColumnStyles()"></app-calc-table-month>
     <app-calc-table [ngStyle]="getTableStyles()"></app-calc-table>
     <app-calc-table *ngIf="isSplitMode()" [ngStyle]="getTableStyles()" [splitModeTable]="true"></app-calc-table>
   </div>

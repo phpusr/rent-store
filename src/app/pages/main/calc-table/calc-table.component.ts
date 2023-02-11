@@ -47,7 +47,7 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   @Input() splitModeTable = false
   dataSource: TableType[] = []
   displayedColumns = [
-    'electricity', 'electricityMonthly', 'hcsCost',
+    'month', 'electricity', 'electricityMonthly', 'hcsCost',
     'coldWaterVolume', 'coldWaterVolumeMonthly', 'hotWaterVolume', 'hotWaterVolumeMonthly', 'waterCost',
     'heatingVolume', 'heatingConvertedVolume', 'heatingConvertedVolumeMonthly', 'heatingCost',
     'garbageCost', 'overhaulCost', 'totalCost'
@@ -66,12 +66,8 @@ export class CalcTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.splitSub = this.dataStorage.isSplitMode$.subscribe(isSplitMode => {
-      if (isSplitMode) {
+      if (this.splitModeTable) {
         this.displayedColumns = this.displayedColumns.filter(it => it !== 'month')
-      } else {
-        if (!this.displayedColumns.includes('month')) {
-          this.displayedColumns.unshift('month')
-        }
       }
     })
 

@@ -8,9 +8,9 @@
   </nav>
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
-  <div class="calc-table">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
-      <ng-container matColumnDef="month">
+  <div class="calc-table mat-elevation-z1">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="month" [sticky]="true">
         <th mat-header-cell *matHeaderCellDef>Month</th>
         <td mat-cell *matCellDef="let element">{{ element.month }}</td>
         <td mat-footer-cell *matFooterCellDef>Annual</td>
@@ -106,13 +106,13 @@
         <td mat-footer-cell *matFooterCellDef>{{ footerRow.totalCost.toFixed(2) }}</td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         (dblclick)="onEditCalc(row)"
       ></tr>
-      <tr mat-footer-row *matFooterRowDef="displayedColumns" class="footer-row"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true" class="footer-row"></tr>
     </table>
   </div>
 </div>
