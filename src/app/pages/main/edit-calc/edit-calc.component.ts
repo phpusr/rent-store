@@ -6,8 +6,8 @@ import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 
-/* Convert WATS to GKAL */
-const GKAL_CONST = 0.00086
+/* Convert KWats to GCal */
+const GCAL_CONST = 0.00086
 
 interface DialogData {
   route: ActivatedRoute
@@ -80,7 +80,7 @@ export class EditCalcDialog implements OnInit {
     const prevColdWaterVolume = data.prevCalculation?.water.coldVolume || 0
     const prevHotWaterVolume = data.prevCalculation?.water.hotVolume || 0
     const prevHeatingVolume = data.prevCalculation?.heating.volume || 0
-    const prevHeatingVolumeConverted = prevHeatingVolume * GKAL_CONST
+    const prevHeatingVolumeConverted = prevHeatingVolume * GCAL_CONST
 
     this.form = fb.group({
       flatId: [dataStorage.currentFlatId$.getValue()],
@@ -132,7 +132,7 @@ export class EditCalcDialog implements OnInit {
     })
     this.form.get('heating.volume')?.valueChanges.subscribe(val => {
       const precision = 10000
-      const convertedVolume = Math.round(val * GKAL_CONST * precision) / precision
+      const convertedVolume = Math.round(val * GCAL_CONST * precision) / precision
       const convertedVolumeMonthly = Math.round((convertedVolume - prevHeatingVolumeConverted) * precision) / precision
       this.form.patchValue({ heating: { convertedVolume, convertedVolumeMonthly } })
     })

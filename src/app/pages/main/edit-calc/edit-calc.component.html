@@ -9,18 +9,18 @@
       <mat-card-content>
         <div>
           <mat-form-field>
-            <mat-label>Electricity</mat-label>
+            <mat-label>Electricity (kW*h)</mat-label>
             <input type="number" matInput cdkFocusInitial formControlName="electricityVolume">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Monthly</mat-label>
+            <mat-label>Monthly (kW*h)</mat-label>
             <input type="number" matInput formControlName="electricityVolumeMonthly">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Cost</mat-label>
+            <mat-label>Cost (₽)</mat-label>
             <input type="number" matInput formControlName="cost">
           </mat-form-field>
         </div>
@@ -34,29 +34,29 @@
       <mat-card-content>
         <div>
           <mat-form-field>
-            <mat-label>Cold volume</mat-label>
+            <mat-label>Cold volume (m<sup>3</sup>)</mat-label>
             <input type="number" matInput formControlName="coldVolume">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Monthly</mat-label>
+            <mat-label>Monthly (m<sup>3</sup>)</mat-label>
             <input type="number" matInput formControlName="coldVolumeMonthly">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Hot volume</mat-label>
+            <mat-label>Hot volume (m<sup>3</sup>)</mat-label>
             <input type="number" matInput formControlName="hotVolume">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Monthly</mat-label>
+            <mat-label>Monthly (m<sup>3</sup>)</mat-label>
             <input type="number" matInput formControlName="hotVolumeMonthly">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Cost</mat-label>
+            <mat-label>Cost (₽)</mat-label>
             <input type="number" matInput formControlName="cost">
           </mat-form-field>
         </div>
@@ -69,24 +69,24 @@
 
       <div>
         <mat-form-field>
-          <mat-label>Volume</mat-label>
+          <mat-label>Volume (kW*h)</mat-label>
           <input type="number" matInput formControlName="volume">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Converted volume</mat-label>
+          <mat-label>Converted volume (GCal)</mat-label>
           <input type="number" matInput formControlName="convertedVolume">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Converted volume monthly</mat-label>
+          <mat-label>Converted volume monthly (GCal)</mat-label>
           <input type="number" matInput formControlName="convertedVolumeMonthly">
         </mat-form-field>
       </div>
 
       <div>
         <mat-form-field>
-          <mat-label>Cost</mat-label>
+          <mat-label>Cost (₽)</mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
       </div>
@@ -98,7 +98,7 @@
         <mat-card-title>Garbage</mat-card-title>
 
         <mat-form-field>
-          <mat-label>Cost</mat-label>
+          <mat-label>Cost (₽)</mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
         <button type="button" mat-button color="primary" (click)="fillLastMonthGarbageCost()">Last</button>
@@ -109,7 +109,7 @@
         <mat-card-title>Overhaul</mat-card-title>
 
         <mat-form-field>
-          <mat-label>Cost</mat-label>
+          <mat-label>Cost (₽)</mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
         <button type="button" mat-button color="primary" (click)="fillLastMonthOverhaulCost()">Last</button>
