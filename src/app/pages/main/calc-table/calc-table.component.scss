@@ -8,12 +8,17 @@ table {
   width: 100%;
 }
 
-.mat-header-cell, .mat-cell {
+.cdk-header-cell, .cdk-cell {
   padding: 10px;
   border-top: 1px solid transparent;
+  text-align: center;
 }
 
-.mat-row:hover .mat-cell {
+.cdk-column-month {
+  text-align: left;
+}
+
+.cdk-row:hover .cdk-cell {
   border-color: rgb(105, 159, 230);
 }
 
