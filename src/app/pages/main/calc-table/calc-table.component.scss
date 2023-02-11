@@ -8,7 +8,7 @@ table {
   width: 100%;
 }
 
-.cdk-header-cell, .cdk-cell {
+.cdk-header-cell, .cdk-cell, .cdk-footer-cell {
   padding: 10px;
   border-top: 1px solid transparent;
   text-align: center;
@@ -19,7 +19,8 @@ table {
 }
 
 .cdk-row:hover .cdk-cell {
-  border-color: rgb(105, 159, 230);
+  border-bottom-color: rgb(105, 159, 230);
+  border-top-color: rgb(105, 159, 230);
 }
 
 .footer-row {
