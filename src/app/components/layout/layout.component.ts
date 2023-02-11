@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { BreakpointObserver } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { MatSlideToggleChange } from '@angular/material/slide-toggle'
 
@@ -13,6 +13,8 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle'
 })
 export class LayoutComponent implements OnInit {
 
+  isMainPage = false
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(min-width: 1px)')
     .pipe(
       map(result => result.matches),
@@ -21,11 +23,17 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
+    private route: ActivatedRoute,
     public router: Router,
     public dataStorage: DataStorageService
   ) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.isMainPage = event.url == '/' || event.url.startsWith('/main/')
+      }
+    })
   }
 
   exportData(): void {

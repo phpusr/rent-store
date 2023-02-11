@@ -10,7 +10,7 @@
       <a mat-list-item [routerLink]="[router.url, 'import-data']">Import data</a>
       <button mat-list-item (click)="exportData()">Export data</button>
 
-      <mat-list-item>
+      <mat-list-item *ngIf="isMainPage">
         <mat-slide-toggle [checked]="dataStorage.isSplitMode$ | async" (change)="switchSplitMode($event)">Split Mode</mat-slide-toggle>
       </mat-list-item>
 
