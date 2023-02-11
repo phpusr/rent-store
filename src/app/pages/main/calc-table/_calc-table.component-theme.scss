@@ -24,44 +24,47 @@
     $total-cost-bg-color: mat.get-color-from-palette($pink-palette, 900);
     $header-cell-font-weight: 600;
 
-    .table::-webkit-scrollbar {
+    .calc-table::-webkit-scrollbar {
       width: 7px;
     }
 
-    .table::-webkit-scrollbar-track {
+    .calc-table::-webkit-scrollbar-track {
       background: #484848;
     }
 
-    .table::-webkit-scrollbar-thumb {
+    .calc-table::-webkit-scrollbar-thumb {
       background-color: #323232;
       border-radius: 3px;
       border: 1px solid #6a6a6a;
     }
   }
 
-  .vol {
-    color: $font-color;
-    background-color: $vol-bg-color;
+  .calc-table {
+    .vol {
+      color: $font-color;
+      background-color: $vol-bg-color;
+    }
+
+    .vol-monthly {
+      color: $font-color;
+      background-color: $vol-monthly-bg-color;
+    }
+
+    .cost {
+      color: $font-color;
+      background-color: $cost-bg-color;
+    }
+
+    .total-cost {
+      color: $font-color;
+      background-color: $total-cost-bg-color;
+      font-weight: 500;
+    }
+
+    .mat-header-cell {
+      font-size: 14px;
+      font-weight: $header-cell-font-weight;
+    }
   }
 
-  .vol-monthly {
-    color: $font-color;
-    background-color: $vol-monthly-bg-color;
-  }
-
-  .cost {
-    color: $font-color;
-    background-color: $cost-bg-color;
-  }
-
-  .total-cost {
-    color: $font-color;
-    background-color: $total-cost-bg-color;
-    font-weight: 500;
-  }
-
-  .mat-header-cell {
-    font-size: 14px;
-    font-weight: $header-cell-font-weight;
-  }
 }
