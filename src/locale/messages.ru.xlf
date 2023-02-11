@@ -2,15 +2,15 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="plaintext" original="ng2.template" source-language="en-US" target-language="ru-RU">
     <body>
-      <trans-unit id="6896055343385124801" datatype="html">
+      <trans-unit id="layout.flats" datatype="html">
         <source>Flats</source>
-        <target>Тестовый перевод</target>
+        <target>Квартиры</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
           <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7652319011121347113" datatype="html">
+      <trans-unit id="layout.stat" datatype="html">
         <source>Stat</source>
         <target>Статистика</target>
         <context-group purpose="location">
