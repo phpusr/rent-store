@@ -13,7 +13,6 @@ import { EditCalcComponent, EditCalcDialog } from './pages/main/edit-calc/edit-c
 import { LocalStorageService } from './services/local_storage.service'
 import { ReactiveFormsModule } from '@angular/forms'
 import { CalcTableComponent } from './pages/main/calc-table/calc-table.component'
-import { CalcTableMonthComponent } from './pages/main/calc-table-month/calc-table-month.component'
 import { StatComponent } from './pages/stat/stat.component'
 import { TestComponent } from './pages/test/test.component'
 import { FlatsComponent } from './pages/flats/flats.component'
@@ -48,7 +47,6 @@ const routes: Routes = [
     EditCalcComponent,
     EditCalcDialog,
     CalcTableComponent,
-    CalcTableMonthComponent,
     StatComponent,
     TestComponent,
     FlatsComponent,
