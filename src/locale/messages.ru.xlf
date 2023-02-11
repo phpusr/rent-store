@@ -10,6 +10,14 @@
           <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7652319011121347113" datatype="html">
+        <source>Stat</source>
+        <target>Статистика</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
