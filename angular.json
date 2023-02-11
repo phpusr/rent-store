@@ -5,6 +5,12 @@
   "projects": {
     "rent-store": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ru-RU": "src/locale/messages.ru.xlf"
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -56,6 +62,7 @@
               "outputHashing": "all"
             },
             "development": {
+              "localize": ["ru-RU"],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

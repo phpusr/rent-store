@@ -2,6 +2,7 @@ TODO
 ====
 
 - i18n
+- Убрать дублирование стилей: https://github.com/angular/components/blob/main/guides/duplicate-theming-styles.md
 
 ## Minor
 
