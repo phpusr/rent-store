@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use './app/pages/main/calc-table/calc-table.component-theme' as main-page;
+@use './app/pages/stat/stat.component-theme' as stat-page;
 
 @include mat.core();
 
@@ -26,9 +27,11 @@ $my-theme-dark: mat.define-dark-theme((
 .theme-light {
   @include mat.all-component-themes($my-theme-light);
   @include main-page.theme($my-theme-light);
+  @include stat-page.theme($my-theme-light);
 }
 
 .theme-dark {
   @include mat.all-component-themes($my-theme-dark);
   @include main-page.theme($my-theme-dark);
+  @include stat-page.theme($my-theme-dark);
 }

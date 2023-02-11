@@ -1,13 +1,15 @@
 .container {
   padding: 20px;
 
-  table {
-    width: 400px;
-    margin: 0 auto;
+  .stat-table {
+    table {
+      width: 400px;
+      margin: 0 auto;
 
-    .cost {
-      background: rgb(87 87 87);
-      padding-left: 10px;
+      .cost {
+        padding-left: 10px;
+      }
     }
   }
+
 }
