@@ -4,6 +4,19 @@
   "configurations": [
     {
       "name": "ng serve",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "start"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "name": "ng serve (chrome)",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
