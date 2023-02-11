@@ -31,6 +31,20 @@ $my-theme-dark: mat.define-dark-theme((
 }
 
 .theme-dark {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #484848;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #323232;
+    border-radius: 3px;
+    border: 1px solid #6a6a6a;
+  }
+
   @include mat.all-component-themes($my-theme-dark);
   @include main-page.theme($my-theme-dark);
   @include stat-page.theme($my-theme-dark);
