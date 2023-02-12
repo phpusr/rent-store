@@ -2,6 +2,14 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file datatype="plaintext" original="ng2.template" source-language="en-US" target-language="ru-RU">
     <body>
+      <trans-unit id="layout.flat-selector.flat" datatype="html">
+        <source>Flat</source>
+        <target>Квартира</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/flat-selector/flat-selector.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="layout.menu.title" datatype="html">
         <source>Menu</source>
         <target>Меню</target>
@@ -56,6 +64,86 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
           <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.edit-flat" datatype="html">
+        <source>Edit flat</source>
+        <target>Редактирование квартиры</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.add-flat" datatype="html">
+        <source>Add flat</source>
+        <target>Добавление квартиры</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.address" datatype="html">
+        <source>Address</source>
+        <target>Адрес</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.number" datatype="html">
+        <source>Number</source>
+        <target>№</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shared.delete" datatype="html">
+        <source>Delete</source>
+        <target>Удалить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shared.save" datatype="html">
+        <source>Save</source>
+        <target>Сохранить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="shared.cancel" datatype="html">
+        <source>Cancel</source>
+        <target>Отмена</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.list.add" datatype="html">
+        <source>Add</source>
+        <target>Добавить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.ID" datatype="html">
+        <source>ID</source>
+        <target>ID</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
     </body>

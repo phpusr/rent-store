@@ -1,22 +1,27 @@
-<h1 mat-dialog-title>{{ getTitle() }}</h1>
+<h1 mat-dialog-title>
+  <span *ngIf="data.flat; else addFlat" i18n="@@flats.edit-flat.edit-flat">Edit flat</span>
+  <ng-template #addFlat>
+    <span i18n="@@flats.edit-flat.add-flat">Add flat</span>
+  </ng-template>
+</h1>
 
 <div mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field>
-      <mat-label>Address</mat-label>
+      <mat-label i18n="@@flats.edit-flat.address">Address</mat-label>
       <input type="text" matInput cdkFocusInitial formControlName="address">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Number</mat-label>
+      <mat-label i18n="@@flats.edit-flat.number">Number</mat-label>
       <input type="text" matInput formControlName="number">
     </mat-form-field>
   </form>
 </div>
 
 <div mat-dialog-actions>
-  <button *ngIf="data.flat" mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+  <button *ngIf="data.flat" mat-raised-button color="warn" (click)="onDelete()" i18n="@@shared.delete">Delete</button>
   <div>
-    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid" i18n="@@shared.save">Save</button>
+    <button mat-button mat-dialog-close i18n="@@shared.cancel">Cancel</button>
   </div>
 </div>

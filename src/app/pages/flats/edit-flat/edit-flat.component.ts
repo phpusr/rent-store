@@ -71,10 +71,6 @@ export class EditFlatDialog implements OnInit {
     })
   }
 
-  getTitle() {
-    return (this.data.flat ? 'Edit' : 'Add') + ' Flat'
-  }
-
   onSave() {
     if (this.form.valid) {
       this.dataStorage.saveFlat(this.form.value)
