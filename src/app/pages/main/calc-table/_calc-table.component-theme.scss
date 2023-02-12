@@ -16,15 +16,17 @@
   $cost-bg-color: rgb(255 208 208);
   $total-cost-bg-color: rgb(255 208 208);
   $header-cell-font-weight: 500;
+  $table-hover-border-color: rgb(105, 159, 230);
 
   @if $is-dark-theme {
     $font-color: rgba(255, 255, 255, 0.85);
-    $separator-color: rgb(255 255 255 / 24%);;
+    $separator-color: rgb(255 255 255 / 24%);
     $vol-bg-color: mat.get-color-from-palette($teal-palette, 800);
     $vol-monthly-bg-color: mat.get-color-from-palette($green-palette, 800);
     $cost-bg-color: mat.get-color-from-palette($pink-palette, 800);
     $total-cost-bg-color: mat.get-color-from-palette($pink-palette, 900);
     $header-cell-font-weight: 600;
+    $table-hover-border-color: rgba(255, 255, 255, 0.5);
   }
 
   .calc-table {
@@ -56,6 +58,11 @@
     .mat-header-cell {
       font-size: 14px;
       font-weight: $header-cell-font-weight;
+    }
+
+    .cdk-row:hover .cdk-cell {
+      border-bottom-color: $table-hover-border-color;
+      border-top-color: $table-hover-border-color;
     }
   }
 
