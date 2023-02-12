@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use './app/pages/main/calc-table/calc-table.component-theme' as main-page;
+@use './app/pages/main/calc-table/calc-table.component-theme' as calc-table;
 @use './app/pages/stat/stat.component-theme' as stat-page;
 
 @include mat.core();
@@ -24,9 +24,10 @@ $my-theme-dark: mat.define-dark-theme((
  density: 0,
 ));
 
+@include mat.all-component-themes($my-theme-light);
+
 .theme-light {
-  @include mat.all-component-themes($my-theme-light);
-  @include main-page.theme($my-theme-light);
+  @include calc-table.theme($my-theme-light);
   @include stat-page.theme($my-theme-light);
 }
 
@@ -45,7 +46,7 @@ $my-theme-dark: mat.define-dark-theme((
     border: 1px solid #6a6a6a;
   }
 
-  @include mat.all-component-themes($my-theme-dark);
-  @include main-page.theme($my-theme-dark);
+  @include mat.all-component-colors($my-theme-dark);
+  @include calc-table.theme($my-theme-dark);
   @include stat-page.theme($my-theme-dark);
 }
