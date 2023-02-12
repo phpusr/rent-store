@@ -26,11 +26,6 @@ $my-theme-dark: mat.define-dark-theme((
 
 @include mat.all-component-themes($my-theme-light);
 
-.theme-light {
-  @include calc-table.theme($my-theme-light);
-  @include stat-page.theme($my-theme-light);
-}
-
 .theme-dark {
   ::-webkit-scrollbar {
     width: 10px;

@@ -2,68 +2,48 @@
 @use '@angular/material' as mat;
 
 @mixin theme($theme) {
-  $color-config: mat.get-color-config($theme);
-  $is-dark-theme: map.get($color-config, 'is-dark');
-
   $teal-palette: mat.define-palette(mat.$teal-palette);
   $green-palette: mat.define-palette(mat.$light-green-palette);
   $pink-palette: mat.define-palette(mat.$pink-palette);
 
-  $font-color: rgba(0, 0, 0, 0.85);
-  $separator-color: white;
-  $vol-bg-color: rgb(208 236 255);
-  $vol-monthly-bg-color: rgb(217 250 214);
-  $cost-bg-color: rgb(255 208 208);
-  $total-cost-bg-color: rgb(255 208 208);
-  $header-cell-font-weight: 500;
-  $table-hover-border-color: rgb(105, 159, 230);
-
-  @if $is-dark-theme {
-    $font-color: rgba(255, 255, 255, 0.85);
-    $separator-color: rgb(255 255 255 / 24%);
-    $vol-bg-color: mat.get-color-from-palette($teal-palette, 800);
-    $vol-monthly-bg-color: mat.get-color-from-palette($green-palette, 800);
-    $cost-bg-color: mat.get-color-from-palette($pink-palette, 800);
-    $total-cost-bg-color: mat.get-color-from-palette($pink-palette, 900);
-    $header-cell-font-weight: 600;
-    $table-hover-border-color: rgba(255, 255, 255, 0.5);
-  }
+  $font-color: rgba(255, 255, 255, 0.85);
 
   .calc-table {
     .section-separator {
-      border-left: 5px solid $separator-color;
+      border-left: 5px solid rgb(255 255 255 / 24%);
     }
 
     .vol {
       color: $font-color;
-      background-color: $vol-bg-color;
+      background-color: mat.get-color-from-palette($teal-palette, 800);
     }
 
     .vol-monthly {
       color: $font-color;
-      background-color: $vol-monthly-bg-color;
+      background-color: mat.get-color-from-palette($green-palette, 800);
     }
 
     .cost {
       color: $font-color;
-      background-color: $cost-bg-color;
+      background-color: mat.get-color-from-palette($pink-palette, 800);
     }
 
     .total-cost {
       color: $font-color;
-      background-color: $total-cost-bg-color;
+      background-color: mat.get-color-from-palette($pink-palette, 900);
       font-weight: 500;
     }
 
     .mat-header-cell {
       font-size: 14px;
-      font-weight: $header-cell-font-weight;
+      font-weight: 600;
     }
+
+    $table-hover-border-color: rgba(255, 255, 255, 0.5);
 
     .cdk-row:hover .cdk-cell {
-      border-bottom-color: $table-hover-border-color;
-      border-top-color: $table-hover-border-color;
+      border-bottom-color: $table-hover-border-color !important;
+      border-top-color: $table-hover-border-color !important;
     }
   }
-
 }
