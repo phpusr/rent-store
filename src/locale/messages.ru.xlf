@@ -146,6 +146,30 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="stat.year" datatype="html">
+        <source>Year</source>
+        <target>Год</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/stat/stat.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="stat.all_cost" datatype="html">
+        <source>All Cost</source>
+        <target>Общая стоимость</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/stat/stat.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="stat.avg_cost" datatype="html">
+        <source>AVG Cost</source>
+        <target>Средняя стоимость</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/stat/stat.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
     </body>
   </file>
 </xliff>
