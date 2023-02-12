@@ -2,18 +2,53 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="layout.flats" datatype="html">
+      <trans-unit id="layout.menu.title" datatype="html">
+        <source>Menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="layout.menu.import_data" datatype="html">
+        <source>Import data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="layout.menu.export_data" datatype="html">
+        <source>Export data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="layout.menu.split_mode" datatype="html">
+        <source>Split Mode</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="layout.menu.dark_theme" datatype="html">
+        <source>Dark Theme</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="layout.navbar.flats" datatype="html">
         <source>Flats</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
-          <context context-type="linenumber">35,36</context>
+          <context context-type="linenumber">37,38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="layout.stat" datatype="html">
+      <trans-unit id="layout.navbar.stat" datatype="html">
         <source>Stat</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/layout/layout.component.html</context>
-          <context context-type="linenumber">37,38</context>
+          <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
     </body>
