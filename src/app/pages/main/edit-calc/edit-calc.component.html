@@ -4,23 +4,29 @@
   <form [formGroup]="form">
     <!-- HCS -->
     <mat-card formGroupName="hcs">
-      <mat-card-title>HCS</mat-card-title>
+      <mat-card-title i18n="@@main.edit-calc.hcs">HCS</mat-card-title>
 
       <mat-card-content>
         <div>
           <mat-form-field>
-            <mat-label>Electricity (kW*h)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.electricity">Electricity</span> (<span i18n="@@units.kwh">kW*h</span>)
+            </mat-label>
             <input type="number" matInput cdkFocusInitial formControlName="electricityVolume">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Monthly (kW*h)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.monthly">Monthly</span> (<span i18n="@@units.kwh">kW*h</span>)
+            </mat-label>
             <input type="number" matInput formControlName="electricityVolumeMonthly">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Cost (₽)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+            </mat-label>
             <input type="number" matInput formControlName="cost">
           </mat-form-field>
         </div>
@@ -29,34 +35,44 @@
 
     <!-- Water -->
     <mat-card formGroupName="water">
-      <mat-card-title>Water</mat-card-title>
+      <mat-card-title i18n="@@main.edit-calc.water">Water</mat-card-title>
 
       <mat-card-content>
         <div>
           <mat-form-field>
-            <mat-label>Cold volume (m<sup>3</sup>)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.cold_water">Cold water</span> (<span i18n="@@units.m">m</span><sup>3</sup>)
+            </mat-label>
             <input type="number" matInput formControlName="coldVolume">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Monthly (m<sup>3</sup>)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.monthly">Monthly</span> (<span i18n="@@units.m">m</span><sup>3</sup>)
+            </mat-label>
             <input type="number" matInput formControlName="coldVolumeMonthly">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Hot volume (m<sup>3</sup>)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.hot_water">Hot water</span> (<span i18n="@@units.m">m</span><sup>3</sup>)
+            </mat-label>
             <input type="number" matInput formControlName="hotVolume">
           </mat-form-field>
           <mat-form-field>
-            <mat-label>Monthly (m<sup>3</sup>)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.monthly">Monthly</span> (<span i18n="@@units.m">m</span><sup>3</sup>)
+            </mat-label>
             <input type="number" matInput formControlName="hotVolumeMonthly">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
-            <mat-label>Cost (₽)</mat-label>
+            <mat-label>
+              <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+            </mat-label>
             <input type="number" matInput formControlName="cost">
           </mat-form-field>
         </div>
@@ -65,28 +81,36 @@
 
     <!-- Heating -->
     <mat-card formGroupName="heating">
-      <mat-card-title>Heating</mat-card-title>
+      <mat-card-title i18n="@@main.edit-calc.heating">Heating</mat-card-title>
 
       <div>
         <mat-form-field>
-          <mat-label>Volume (kW*h)</mat-label>
+          <mat-label>
+            <span i18n="@@main.edit-calc.volume">Volume</span> (<span i18n="@@units.kwh">kW*h</span>)
+          </mat-label>
           <input type="number" matInput formControlName="volume">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Converted volume (GCal)</mat-label>
+          <mat-label>
+            <span i18n="@@main.edit-calc.heating_converted">Converted</span> (<span i18n="@@units.gcal">GCal</span>)
+          </mat-label>
           <input type="number" matInput formControlName="convertedVolume">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Converted volume monthly (GCal)</mat-label>
+          <mat-label>
+            <span i18n="@@main.edit-calc.monthly">Monthly</span> (<span i18n="@@units.gcal">GCal</span>)
+          </mat-label>
           <input type="number" matInput formControlName="convertedVolumeMonthly">
         </mat-form-field>
       </div>
 
       <div>
         <mat-form-field>
-          <mat-label>Cost (₽)</mat-label>
+          <mat-label>
+            <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+          </mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
       </div>
@@ -95,33 +119,39 @@
     <div class="two-columns">
       <!-- Garbage -->
       <mat-card formGroupName="garbage">
-        <mat-card-title>Garbage</mat-card-title>
+        <mat-card-title i18n="@@main.edit-calc.garbage">Garbage</mat-card-title>
 
         <mat-form-field>
-          <mat-label>Cost (₽)</mat-label>
+          <mat-label>
+            <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+          </mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
-        <button type="button" mat-button color="primary" (click)="fillLastMonthGarbageCost()">Last</button>
+        <button type="button" mat-button color="primary" (click)="fillLastMonthGarbageCost()" i18n="@@main.edit-calc.last">Last</button>
       </mat-card>
 
       <!-- Overhaul -->
       <mat-card formGroupName="overhaul">
-        <mat-card-title>Overhaul</mat-card-title>
+        <mat-card-title i18n="@@main.edit-calc.overhaul">Overhaul</mat-card-title>
 
         <mat-form-field>
-          <mat-label>Cost (₽)</mat-label>
+          <mat-label>
+            <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+          </mat-label>
           <input type="number" matInput formControlName="cost">
         </mat-form-field>
-        <button type="button" mat-button color="primary" (click)="fillLastMonthOverhaulCost()">Last</button>
+        <button type="button" mat-button color="primary" (click)="fillLastMonthOverhaulCost()" i18n="@@main.edit-calc.last">
+          Last
+        </button>
       </mat-card>
     </div>
   </form>
 </div>
 
 <div mat-dialog-actions>
-  <button *ngIf="data.calculation" mat-raised-button color="warn" (click)="onDelete()">Delete</button>
+  <button *ngIf="data.calculation" mat-raised-button color="warn" (click)="onDelete()" i18n="@@shared.delete">Delete</button>
   <div>
-    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid" i18n="@@shared.save">Save</button>
+    <button mat-button mat-dialog-close i18n="@@shared.cancel">Cancel</button>
   </div>
 </div>
