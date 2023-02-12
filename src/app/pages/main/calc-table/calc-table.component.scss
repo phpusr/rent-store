@@ -14,6 +14,10 @@ table {
   text-align: center;
 }
 
+.cdk-header-cell span {
+  white-space: nowrap;
+}
+
 .cdk-column-month {
   text-align: left;
 }
