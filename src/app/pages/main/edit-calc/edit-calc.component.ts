@@ -145,9 +145,12 @@ export class EditCalcDialog implements OnInit {
   }
 
   getTitle() {
-    let title = this.data.calculation ? 'Edit' : 'Add'
-    title += ` calculations for ${this.monthName} ${this.dataStorage.currentYear$.getValue()}`
-    return title
+    const currentYear = this.dataStorage.currentYear$.getValue()
+    if (this.data.calculation) {
+      return $localize`:@@main.edit-calc.edit_title:Edit calculation for ${this.monthName} ${currentYear}`
+    }
+
+    return $localize`:@@main.edit-calc.add_title:Add calculation for ${this.monthName} ${currentYear}`
   }
 
   onSave() {
@@ -165,7 +168,8 @@ export class EditCalcDialog implements OnInit {
       return
     }
 
-    if (confirm(`Are you sure to delete calculation for ${this.monthName} ${this.data.calculation.year}?`)) {
+    const confirmationText = $localize`:@@main.edit-calc.confirm_delete:Are you sure to delete calculation for ${this.monthName} ${this.data.calculation.year}?`
+    if (confirm(confirmationText)) {
       this.dataStorage.deleteCalculation(this.data.calculation)
       this.dialogRef.close()
     }

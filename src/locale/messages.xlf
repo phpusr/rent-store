@@ -102,7 +102,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">150</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shared.save" datatype="html">
@@ -113,7 +113,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">154</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shared.cancel" datatype="html">
@@ -124,7 +124,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">155</context>
+          <context context-type="linenumber">153</context>
         </context-group>
       </trans-unit>
       <trans-unit id="flats.edit-flat.delete_confirmation" datatype="html">
@@ -470,6 +470,31 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
           <context context-type="linenumber">130</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="main.edit-calc.edit_title" datatype="html">
+        <source>Edit calculation for <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="currentYear"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="main.edit-calc.add_title" datatype="html">
+        <source>Add calculation for <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="currentYear"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
+          <context context-type="linenumber">153</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="main.edit-calc.confirm_delete" datatype="html">
+        <source>Are you sure to delete calculation for <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="this.data.calculation.year"/>?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stat.year" datatype="html">
