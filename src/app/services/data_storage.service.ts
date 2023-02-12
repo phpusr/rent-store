@@ -4,6 +4,9 @@ import { Calculation, Flat } from '../interfaces/general'
 import { LocalStorageService } from './local_storage.service'
 
 
+const DEFAULT_LOCALE = 'RU-ru'
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -162,7 +165,8 @@ export class DataStorageService {
   }
 
   getMonthName(monthIndex: number): string {
-    return new Date(1, monthIndex - 1, 1).toLocaleString('default', { month: 'long' })
+    const month = new Date(1, monthIndex - 1, 1).toLocaleString(DEFAULT_LOCALE, { month: 'long' })
+    return month.substring(0, 1).toUpperCase() + month.substring(1)
   }
 
   saveCalculation(calc: Calculation) {
