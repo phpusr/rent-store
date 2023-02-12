@@ -84,7 +84,9 @@ export class EditFlatDialog implements OnInit {
       return
     }
 
-    if (confirm(`Are you sure to delete flat: ${flat.address} ${flat.number}?`)) {
+    const confirmText = $localize`:@@flats.edit-flat.delete_confirmation:Are you sure to delete "${flat.address} ${flat.number}"?`
+
+    if (confirm(confirmText)) {
       this.dataStorage.deleteFlat(flat.id)
       this.dialogRef.close()
     }
