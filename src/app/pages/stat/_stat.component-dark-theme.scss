@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  .stat-table {
+    .cost {
+      background: rgb(87 87 87);
+    }
+  }
+}

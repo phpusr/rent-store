@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
-@use './app/pages/main/calc-table/calc-table.component-theme' as calc-table;
-@use './app/pages/stat/stat.component-theme' as stat-page;
+@use './app/pages/main/calc-table/calc-table.component-dark-theme' as calc-table;
+@use './app/pages/stat/stat.component-dark-theme' as stat-page;
 
 @include mat.core();
 
