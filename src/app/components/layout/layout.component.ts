@@ -23,7 +23,6 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private route: ActivatedRoute,
     public router: Router,
     public dataStorage: DataStorageService
   ) { }
@@ -36,7 +35,16 @@ export class LayoutComponent implements OnInit {
     })
   }
 
+  getImportDataLink(): string[] {
+    return ['/main', '' + this.dataStorage.currentYear$.getValue(), 'import-data']
+  }
+
   exportData(): void {
+    const confirmText = $localize`:@@layout.export_data.confirmation_text:Are you sure to export data?`
+    if (!confirm(confirmText)) {
+      return
+    }
+
     const data = {
       currentFlatId: this.dataStorage.currentFlatId$.getValue(),
       currentYear: this.dataStorage.currentYear$.getValue(),
