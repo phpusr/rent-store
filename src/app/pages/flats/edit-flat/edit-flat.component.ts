@@ -26,7 +26,7 @@ export class EditFlatComponent implements OnInit {
     this.route.params.subscribe(params => {
       const flat = this.dataStorage.flats$.getValue().find(it => it.id === +params['flatId'])
       this.dialog.open(EditFlatDialog, {
-        width: '400px',
+        width: '450px',
         data: {
           route: this.route,
           flat
@@ -56,7 +56,12 @@ export class EditFlatDialog implements OnInit {
     this.form = fb.group({
       id: [null],
       address: [null, Validators.required],
-      number: [null, [Validators.required, Validators.min(0)]]
+      number: [null, [Validators.required, Validators.min(0)]],
+      hcsLink: [null],
+      waterLink: [null],
+      heatingLink: [null],
+      garbageLink: [null],
+      overhaulLink: [null]
     })
 
     if (data.flat) {

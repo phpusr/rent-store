@@ -7,14 +7,40 @@
 
 <div mat-dialog-content>
   <form [formGroup]="form">
-    <mat-form-field>
-      <mat-label i18n="@@flats.edit-flat.address">Address</mat-label>
-      <input type="text" matInput cdkFocusInitial formControlName="address">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label i18n="@@flats.edit-flat.number">Number</mat-label>
-      <input type="text" matInput formControlName="number">
-    </mat-form-field>
+    <mat-card>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.address">Address</mat-label>
+        <input type="text" matInput cdkFocusInitial formControlName="address">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.number">Number</mat-label>
+        <input type="text" matInput formControlName="number">
+      </mat-form-field>
+    </mat-card>
+
+    <mat-card class="links">
+      <mat-card-title i18n="@@main.edit-calc.links">Links</mat-card-title>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.hcs_link">HCS link</mat-label>
+        <input type="text" matInput formControlName="hcsLink">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.water_link">Water link</mat-label>
+        <input type="text" matInput formControlName="waterLink">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.heating_link">Heating link</mat-label>
+        <input type="text" matInput formControlName="heatingLink">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.garbage_link">Garbage link</mat-label>
+        <input type="text" matInput formControlName="garbageLink">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label i18n="@@flats.edit-flat.overhaul_link">Overhaul link</mat-label>
+        <input type="text" matInput formControlName="overhaulLink">
+      </mat-form-field>
+    </mat-card>
   </form>
 </div>
 

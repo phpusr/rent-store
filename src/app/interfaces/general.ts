@@ -10,6 +10,11 @@ export interface Flat {
   id: number
   address: string
   number: string
+  hcsLink?: string
+  waterLink?: string
+  heatingLink?: string
+  garbageLink?: string
+  overhaulLink?: string
 }
 
 /* Расчеты */
