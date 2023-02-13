@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   dataSource = new MatTableDataSource<Flat>()
-  displayColumns = ['id', 'address', 'number']
+  displayColumns = ['id', 'address', 'number', 'hcsLink', 'waterLink', 'heatingLink', 'garbageLink', 'overhaulLink']
   private flatsSub?: Subscription
 
   @ViewChild(MatSort) sort!: MatSort
