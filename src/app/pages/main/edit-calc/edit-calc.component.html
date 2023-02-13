@@ -4,7 +4,12 @@
   <form [formGroup]="form">
     <!-- HCS -->
     <mat-card formGroupName="hcs">
-      <mat-card-title i18n="@@main.edit-calc.hcs">HCS</mat-card-title>
+      <mat-card-title>
+        <span i18n="@@main.edit-calc.hcs">HCS</span>
+        <a *ngIf="currentFlat.hcsLink" mat-icon-button [href]="currentFlat.hcsLink" target="_blank">
+          <mat-icon class="link">open_in_new</mat-icon>
+        </a>
+      </mat-card-title>
 
       <mat-card-content>
         <div>
@@ -35,7 +40,12 @@
 
     <!-- Water -->
     <mat-card formGroupName="water">
-      <mat-card-title i18n="@@main.edit-calc.water">Water</mat-card-title>
+      <mat-card-title>
+        <span i18n="@@main.edit-calc.water">Water</span>
+        <a *ngIf="currentFlat.waterLink" mat-icon-button [href]="currentFlat.waterLink" target="_blank">
+          <mat-icon class="link">open_in_new</mat-icon>
+        </a>
+      </mat-card-title>
 
       <mat-card-content>
         <div>
@@ -81,7 +91,12 @@
 
     <!-- Heating -->
     <mat-card formGroupName="heating">
-      <mat-card-title i18n="@@main.edit-calc.heating">Heating</mat-card-title>
+      <mat-card-title>
+        <span i18n="@@main.edit-calc.heating">Heating</span>
+        <a *ngIf="currentFlat.heatingLink" mat-icon-button [href]="currentFlat.heatingLink" target="_blank">
+          <mat-icon class="link">open_in_new</mat-icon>
+        </a>
+      </mat-card-title>
 
       <div>
         <mat-form-field>
@@ -119,7 +134,12 @@
     <div class="two-columns">
       <!-- Garbage -->
       <mat-card formGroupName="garbage">
-        <mat-card-title i18n="@@main.edit-calc.garbage">Garbage</mat-card-title>
+        <mat-card-title>
+          <span i18n="@@main.edit-calc.garbage">Garbage</span>
+          <a *ngIf="currentFlat.garbageLink" mat-icon-button [href]="currentFlat.garbageLink" target="_blank">
+            <mat-icon class="link">open_in_new</mat-icon>
+          </a>
+        </mat-card-title>
 
         <mat-form-field>
           <mat-label>
@@ -132,7 +152,12 @@
 
       <!-- Overhaul -->
       <mat-card formGroupName="overhaul">
-        <mat-card-title i18n="@@main.edit-calc.overhaul">Overhaul</mat-card-title>
+        <mat-card-title>
+          <span i18n="@@main.edit-calc.overhaul">Overhaul</span>
+          <a *ngIf="currentFlat.overhaulLink" mat-icon-button [href]="currentFlat.overhaulLink" target="_blank">
+            <mat-icon class="link">open_in_new</mat-icon>
+          </a>
+        </mat-card-title>
 
         <mat-form-field>
           <mat-label>

@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Calculation } from 'src/app/interfaces/general'
+import { Calculation, Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 
 
@@ -59,6 +59,7 @@ export class EditCalcDialog implements OnInit {
 
   monthName: string
   form: FormGroup
+  currentFlat: Flat
   autoCalcProps = [
     'hcs.electricityVolumeMonthly',
     'water.hotVolumeMonthly', 'water.coldVolumeMonthly',
@@ -75,6 +76,7 @@ export class EditCalcDialog implements OnInit {
     fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
+    this.currentFlat = dataStorage.currentFlat$.getValue()!
     this.monthName = dataStorage.getMonthName(data.month)
     const prevElectricityVolume = data.prevCalculation?.hcs.electricityVolume || 0
     const prevColdWaterVolume = data.prevCalculation?.water.coldVolume || 0
