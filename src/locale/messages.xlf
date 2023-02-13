@@ -58,7 +58,7 @@
           <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="layout.confirm_export_data" datatype="html">
+      <trans-unit id="layout.export_data.confirmation_text" datatype="html">
         <source>Are you sure to export data?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/layout/layout.component.ts</context>
@@ -101,7 +101,7 @@
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="main.edit-calc.links" datatype="html">
+      <trans-unit id="main.edit-flat.links" datatype="html">
         <source>Links</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>

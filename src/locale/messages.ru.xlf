@@ -66,6 +66,14 @@
           <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="layout.export_data.confirmation_text" datatype="html">
+        <source>Are you sure to export data?</source>
+        <target>Вы действительно хотите экспортировать данные?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/layout/layout.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="flats.edit-flat.edit-flat" datatype="html">
         <source>Edit flat</source>
         <target>Редактирование квартиры</target>
@@ -87,7 +95,7 @@
         <target>Адрес</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
@@ -99,11 +107,79 @@
         <target>№</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
           <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="main.edit-flat.links" datatype="html">
+        <source>Links</source>
+        <target>Ссылки для ввода показаний</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.hcs_link" datatype="html">
+        <source>HCS link</source>
+        <target>ЖКХ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.water_link" datatype="html">
+        <source>Water link</source>
+        <target>Водоснабжение</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.heating_link" datatype="html">
+        <source>Heating link</source>
+        <target>Отопление</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.garbage_link" datatype="html">
+        <source>Garbage link</source>
+        <target>Мусор</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flats.edit-flat.overhaul_link" datatype="html">
+        <source>Overhaul link</source>
+        <target>Кап. ремонт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/flats/flats.component.html</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shared.delete" datatype="html">
@@ -111,11 +187,11 @@
         <target>Удалить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">175</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shared.save" datatype="html">
@@ -123,11 +199,11 @@
         <target>Сохранить</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">50</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">177</context>
         </context-group>
       </trans-unit>
       <trans-unit id="shared.cancel" datatype="html">
@@ -135,11 +211,11 @@
         <target>Отмена</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">51</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">153</context>
+          <context context-type="linenumber">178</context>
         </context-group>
       </trans-unit>
       <trans-unit id="flats.edit-flat.delete_confirmation" datatype="html">
@@ -147,7 +223,7 @@
         <target>Вы действительно хотите удалить квартиру &quot;<x id="PH" equiv-text="flat.address"/> кв. <x id="PH_1" equiv-text="flat.number"/>&quot;?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.ts</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">92</context>
         </context-group>
       </trans-unit>
       <trans-unit id="flats.list.add" datatype="html">
@@ -191,7 +267,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="units.kwh" datatype="html">
@@ -211,15 +287,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.monthly" datatype="html">
@@ -243,19 +319,19 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.cost" datatype="html">
@@ -275,23 +351,23 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">127</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">146</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="units.currency" datatype="html">
@@ -323,23 +399,23 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">127</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">146</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">164</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.cold_water" datatype="html">
@@ -351,7 +427,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="units.m" datatype="html">
@@ -375,19 +451,19 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.hot_water" datatype="html">
@@ -399,7 +475,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.heating" datatype="html">
@@ -411,7 +487,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">95</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.heating_converted" datatype="html">
@@ -423,7 +499,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="units.gcal" datatype="html">
@@ -439,11 +515,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">111</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.garbage" datatype="html">
@@ -455,7 +531,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">138</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.overhaul" datatype="html">
@@ -467,7 +543,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">156</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.total" datatype="html">
@@ -483,7 +559,7 @@
         <target>ЖКХ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.water" datatype="html">
@@ -491,7 +567,7 @@
         <target>Водоснабжение</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.volume" datatype="html">
@@ -499,7 +575,7 @@
         <target>Объем</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.last" datatype="html">
@@ -507,11 +583,11 @@
         <target>Последнее</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">130</context>
+          <context context-type="linenumber">150</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.html</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">168</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.edit_title" datatype="html">
@@ -519,7 +595,7 @@
         <target>Редактирование подсчетов за <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="currentYear"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.add_title" datatype="html">
@@ -527,7 +603,7 @@
         <target>Добавление подсчетов за <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="currentYear"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
-          <context context-type="linenumber">153</context>
+          <context context-type="linenumber">155</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.confirm_delete" datatype="html">
@@ -535,7 +611,7 @@
         <target>Вы действительно хотите удалить подсчеты за <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="this.data.calculation.year"/>?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stat.year" datatype="html">
