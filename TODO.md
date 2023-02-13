@@ -1,6 +1,6 @@
 TODO
 ====
 
-## Minor
+- Client-server architecture
 
-- Возможность добавления ссылок для ввода показаний датчиков
+## Minor
