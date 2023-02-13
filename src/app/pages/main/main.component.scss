@@ -7,7 +7,15 @@
 
   .tables {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    app-calc-table:first-child {
+      margin-right: 10px;
+    }
+
+    app-calc-table {
+      max-width: 1500px;
+    }
   }
 }
 
