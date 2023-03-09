@@ -25,12 +25,12 @@
 
     .cost {
       color: $font-color;
-      background-color: mat.get-color-from-palette($pink-palette, 800);
+      background-color: mat.get-color-from-palette($pink-palette, 900);
     }
 
     .total-cost {
       color: $font-color;
-      background-color: mat.get-color-from-palette($pink-palette, 900);
+      background-color: mat.get-color-from-palette($pink-palette, 800);
       font-weight: 500;
     }
 

@@ -3,7 +3,7 @@ $font-color: rgba(0, 0, 0, 0.85);
 .calc-table {
   margin-top: 10px;
   overflow-x: auto;
-  height: calc(100vh - 165px);
+  max-height: calc(100vh - 165px);
 }
 
 table {
