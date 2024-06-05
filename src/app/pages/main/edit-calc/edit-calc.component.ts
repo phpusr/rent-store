@@ -82,7 +82,7 @@ export class EditCalcDialog implements OnInit {
     const prevColdWaterVolume = data.prevCalculation?.water.coldVolume || 0
     const prevHotWaterVolume = data.prevCalculation?.water.hotVolume || 0
     const prevHeatingVolume = data.prevCalculation?.heating.volume || 0
-    const prevHeatingVolumeConverted = prevHeatingVolume * GCAL_CONST
+    const prevHeatingVolumeConverted = this.roundValue(prevHeatingVolume * GCAL_CONST)
 
     this.form = fb.group({
       flatId: [dataStorage.currentFlatId$.getValue()],
@@ -133,9 +133,8 @@ export class EditCalcDialog implements OnInit {
       this.form.patchValue({ water: { hotVolumeMonthly: val - prevHotWaterVolume } })
     })
     this.form.get('heating.volume')?.valueChanges.subscribe(val => {
-      const precision = 10000
-      const convertedVolume = Math.round(val * GCAL_CONST * precision) / precision
-      const convertedVolumeMonthly = Math.round((convertedVolume - prevHeatingVolumeConverted) * precision) / precision
+      const convertedVolume = this.roundValue(val * GCAL_CONST)
+      const convertedVolumeMonthly = this.roundValue(convertedVolume - prevHeatingVolumeConverted)
       this.form.patchValue({ heating: { convertedVolume, convertedVolumeMonthly } })
     })
   }
@@ -159,10 +158,14 @@ export class EditCalcDialog implements OnInit {
     this.autoCalcProps.forEach(propName => this.form.get(propName)?.enable())
     this.costProps.forEach(propName => this.form.get(propName)?.enable())
 
-    if (this.form.valid) {
-      this.dataStorage.saveCalculation(this.form.value)
-      this.dialogRef.close()
+    if (!this.form.valid) {
+      alert('Form validation errors! See console.')
+      console.log('form invalid errors:', this.getFormGroupValidationErrors(this.form))
+      return
     }
+
+    this.dataStorage.saveCalculation(this.form.value)
+    this.dialogRef.close()
   }
 
   onDelete() {
@@ -183,6 +186,27 @@ export class EditCalcDialog implements OnInit {
 
   fillLastMonthOverhaulCost() {
     this.form.patchValue({ overhaul: { cost: this.data.prevCalculation?.overhaul.cost } })
+  }
+
+  private roundValue(value: number, precision: number = 10000): number {
+    return Math.round((value) * precision) / precision
+  }
+
+  private getFormGroupValidationErrors(formGroup: FormGroup): any[] {
+    const errors: any[] = []
+    Object.keys(formGroup.controls).forEach(key => {
+      const control = formGroup.get(key)
+      if (control instanceof FormGroup) {
+        errors.push(...this.getFormGroupValidationErrors(control))
+      } else {
+        const controlErrors = control?.errors
+        if (controlErrors != null) {
+          errors.push({ control: key, errors: controlErrors })
+        }
+      }
+    })
+
+    return errors
   }
 
 }
