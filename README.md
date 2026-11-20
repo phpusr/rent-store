@@ -1,27 +1,60 @@
 # RentStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+RentStore — приложение для учёта показаний счётчиков и расходов на коммунальные услуги по квартирам. В нём можно вести помесячные записи, сравнивать данные за два года и смотреть общие и средние расходы по годам.
 
-## Development server
+## Как пользоваться
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Добавьте квартиру в разделе «Квартиры» и выберите её в верхней панели.
+2. На главной странице выберите год и внесите данные за нужный месяц. В таблице хранятся показания счётчиков электроэнергии, холодной и горячей воды и отопления, а также суммы начислений, включая вывоз мусора и капремонт.
+3. Откройте раздел «Статистика», чтобы посмотреть расходы по выбранной квартире.
 
-## Code scaffolding
+Данные хранятся локально в `localStorage`. Пункт меню «Экспорт данных» сохраняет квартиры и расчёты в файл `export.json`. Чтобы восстановить или перенести данные, выберите квартиру и воспользуйтесь пунктом «Импорт данных». Импорт заменяет сохранённый список квартир и расчёты данными из файла. Размер файла ограничен 100 КиБ.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Запуск и сборка
 
-## Build
+Для разработки нужны Node.js и npm. Приложение использует Angular 14, Angular Material, RxJS и SCSS.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Установите зависимости и запустите сервер разработки из корня репозитория.
 
-## Running unit tests
+```bash
+npm ci
+npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Откройте <http://localhost:4200/>. Сервер разработки использует русский интерфейс (`ru-RU`) и автоматически обновляет приложение при изменении файлов.
 
-## Running end-to-end tests
+Команда `npm run build` создаёт сборку в каталоге `dist/rent-store/`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Настольная версия
 
-## Further help
+`make build` подготавливает сборку для Electron. Для локального запуска установите зависимости из `electron-src/` и запустите Electron.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+make build
+npm --prefix electron-src ci
+npm --prefix electron-src start
+```
+
+Цель `make mk_package` предназначена для выпуска пакета Arch Linux. Она отправляет изменения в удалённый Git-репозиторий и устанавливает пакет.
+
+## Тесты
+
+Команда запускает тесты Jasmine/Karma один раз в ChromeHeadless.
+
+```bash
+npm test -- --watch=false --browsers=ChromeHeadless
+```
+
+Если вместо Chrome установлен Chromium, укажите путь к его исполняемому файлу в переменной окружения `CHROME_BIN`.
+
+## Локализация
+
+В шаблонах строки отмечаются атрибутом `i18n`, в TypeScript используется `$localize`. После добавления или изменения строк выполните `npm run i18n`, чтобы обновить `src/locale/messages.xlf`, и внесите изменения в русский перевод в `src/locale/messages.ru.xlf`.
+
+## Структура проекта
+
+- `src/app/pages/` — страницы приложения. Маршруты зарегистрированы в `src/app/app.module.ts`.
+- `src/app/components/layout/` — меню, выбор квартиры и экспорт данных.
+- `src/app/services/` — состояние приложения и запись в локальное хранилище. Формат данных описан в `src/app/interfaces/general.ts`.
+- `electron-src/` — точка входа настольной версии.
+- `scripts/export_from_gsheets.mjs` — выгрузка данных из Google Sheets в формат импорта RentStore.
