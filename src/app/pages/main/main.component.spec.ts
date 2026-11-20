@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { MATERIAL_ANIMATIONS } from '@angular/material/core'
 import { provideRouter } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { LocalStorageService } from '../../services/local_storage.service'
@@ -9,7 +9,7 @@ describe('MainComponent', () => {
   it('should create', async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideNoopAnimations(),
+        { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } },
         provideRouter([{ path: 'main/:year', component: MainComponent }])
       ]
     })

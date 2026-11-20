@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { MATERIAL_ANIMATIONS } from '@angular/material/core';
 
 import { FlatSelectorComponent } from './flat-selector.component';
 
@@ -10,7 +10,7 @@ describe('FlatSelectorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FlatSelectorComponent],
-      providers: [provideNoopAnimations()]
+      providers: [{ provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } }]
     })
     .compileComponents();
 

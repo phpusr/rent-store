@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing'
 import { AppComponent } from './app.component'
 import { provideRouter } from '@angular/router'
-import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { MATERIAL_ANIMATIONS } from '@angular/material/core'
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideRouter([]), provideNoopAnimations()]
+      providers: [provideRouter([]), { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } }]
     }).compileComponents()
   })
 

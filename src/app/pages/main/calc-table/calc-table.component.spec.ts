@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { MATERIAL_ANIMATIONS } from '@angular/material/core';
 
 import { CalcTableComponent } from './calc-table.component';
 
@@ -11,7 +11,7 @@ describe('CalcTableComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CalcTableComponent],
-      providers: [provideRouter([]), provideNoopAnimations()]
+      providers: [provideRouter([]), { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } }]
     })
     .compileComponents();
 
