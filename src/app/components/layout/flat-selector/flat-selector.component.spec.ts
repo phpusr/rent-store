@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppModule } from 'src/app/app.module';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { FlatSelectorComponent } from './flat-selector.component';
 
@@ -9,7 +9,8 @@ describe('FlatSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule]
+      imports: [FlatSelectorComponent],
+      providers: [provideNoopAnimations()]
     })
     .compileComponents();
 

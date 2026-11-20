@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AppModule } from 'src/app/app.module';
+import { provideRouter } from '@angular/router';
 
 import { ImportDataDialog } from './import-data.component';
 
@@ -10,8 +10,11 @@ describe('ImportDataDialog', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule],
-      providers: [{ provide: MatDialogRef, useValue: jasmine.createSpyObj('MatDialogRef', ['close']) }]
+      imports: [ImportDataDialog],
+      providers: [
+        provideRouter([]),
+        { provide: MatDialogRef, useValue: jasmine.createSpyObj('MatDialogRef', ['close']) }
+      ]
     })
     .compileComponents();
 

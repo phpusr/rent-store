@@ -2,8 +2,8 @@ import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy } from '@angular
 import { Subscription, combineLatest } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { UtilsService } from 'src/app/services/utils.service'
-import { MatSort } from '@angular/material/sort'
-import { MatTableDataSource } from '@angular/material/table'
+import { MatSort, MatSortHeader } from '@angular/material/sort'
+import { MatTableDataSource, MatTableModule } from '@angular/material/table'
 
 interface TableType {
   year: number
@@ -15,7 +15,7 @@ interface TableType {
   selector: 'app-flats',
   templateUrl: './stat.component.html',
   styleUrls: ['./stat.component.scss'],
-  standalone: false
+  imports: [MatTableModule, MatSort, MatSortHeader]
 })
 export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
 

@@ -1,24 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppModule } from 'src/app/app.module';
-
-import { MainComponent } from './main.component';
+import { TestBed } from '@angular/core/testing'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
+import { provideRouter } from '@angular/router'
+import { RouterTestingHarness } from '@angular/router/testing'
+import { LocalStorageService } from '../../services/local_storage.service'
+import { MainComponent } from './main.component'
 
 describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppModule]
+  it('should create', async () => {
+    TestBed.configureTestingModule({
+      providers: [
+        provideNoopAnimations(),
+        provideRouter([{ path: 'main/:year', component: MainComponent }])
+      ]
     })
-    .compileComponents();
 
-    fixture = TestBed.createComponent(MainComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    const harness = await RouterTestingHarness.create()
+    const component = await harness.navigateByUrl(`/main/${LocalStorageService.currentYear}`, MainComponent)
+    expect(component).toBeTruthy()
+  })
+})

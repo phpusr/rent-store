@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppModule } from 'src/app/app.module';
+import { provideRouter } from '@angular/router';
 
 import { EditCalcComponent } from './edit-calc.component';
 
@@ -9,7 +9,8 @@ describe('EditCalcComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule]
+      imports: [EditCalcComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

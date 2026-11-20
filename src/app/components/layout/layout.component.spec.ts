@@ -1,5 +1,6 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing'
-import { AppModule } from 'src/app/app.module'
+import { provideRouter } from '@angular/router'
+import { provideNoopAnimations } from '@angular/platform-browser/animations'
 import { LayoutComponent } from './layout.component'
 
 describe('LayoutComponent', () => {
@@ -8,7 +9,8 @@ describe('LayoutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule]
+      imports: [LayoutComponent],
+      providers: [provideRouter([]), provideNoopAnimations()]
     }).compileComponents()
   }))
 

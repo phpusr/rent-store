@@ -53,7 +53,7 @@ npm test -- --watch=false --browsers=ChromeHeadless
 
 ## Структура проекта
 
-- `src/app/pages/` — страницы приложения. Маршруты зарегистрированы в `src/app/app.module.ts`.
+- `src/app/pages/` — standalone-компоненты страниц. Маршруты описаны в `src/app/app.routes.ts`.
 - `src/app/components/layout/` — меню, выбор квартиры и экспорт данных.
 - `src/app/services/` — состояние приложения и запись в локальное хранилище. Формат данных описан в `src/app/interfaces/general.ts`.
 - `electron-src/` — точка входа настольной версии.

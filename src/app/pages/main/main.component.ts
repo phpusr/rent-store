@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { CalcTableComponent } from './calc-table/calc-table.component'
+import { NgStyle, NgIf } from '@angular/common'
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  standalone: false
+  imports: [RouterOutlet, CalcTableComponent, NgStyle, NgIf]
 })
 export class MainComponent implements OnInit {
 

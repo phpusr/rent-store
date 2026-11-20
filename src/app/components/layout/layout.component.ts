@@ -2,15 +2,37 @@ import { Component, OnInit } from '@angular/core'
 import { BreakpointObserver } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
-import { Router, ActivatedRoute, NavigationStart } from '@angular/router'
+import { Router, ActivatedRoute, NavigationStart, RouterLink } from '@angular/router'
 import { DataStorageService } from 'src/app/services/data_storage.service'
-import { MatSlideToggleChange } from '@angular/material/slide-toggle'
+import { MatSlideToggleChange, MatSlideToggle } from '@angular/material/slide-toggle'
+import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav'
+import { MatToolbar } from '@angular/material/toolbar'
+import { MatNavList, MatListItem } from '@angular/material/list'
+import { NgIf, AsyncPipe } from '@angular/common'
+import { MatIconButton, MatAnchor } from '@angular/material/button'
+import { MatIcon } from '@angular/material/icon'
+import { FlatSelectorComponent } from './flat-selector/flat-selector.component'
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
-  standalone: false
+  imports: [
+    MatSidenavContainer,
+    MatSidenav,
+    MatToolbar,
+    MatNavList,
+    MatListItem,
+    RouterLink,
+    NgIf,
+    MatSlideToggle,
+    MatSidenavContent,
+    MatIconButton,
+    MatIcon,
+    MatAnchor,
+    FlatSelectorComponent,
+    AsyncPipe,
+  ]
 })
 export class LayoutComponent implements OnInit {
 

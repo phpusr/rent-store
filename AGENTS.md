@@ -16,8 +16,8 @@ Run these from the repository root:
 
 ## Code map
 
-- `src/app/app.module.ts` registers routes and components. Routed features live in `src/app/pages/`, and shared layout and flat selection live in `src/app/components/layout/`.
-- `src/app/modules/mat.module.ts` centralizes Angular Material imports. Shared styles and Material theming live in `src/styles.scss` and `src/theme.scss`.
+- `src/main.ts` bootstraps the standalone app, and `src/app/app.routes.ts` defines its routes. Routed features live in `src/app/pages/`, and shared layout and flat selection live in `src/app/components/layout/`.
+- Standalone components import their own Angular Material dependencies. Shared styles and Material theming live in `src/styles.scss` and `src/theme.scss`.
 - `src/app/interfaces/general.ts` defines the flat, calculation, and export state shapes. `DataStorageService` owns reactive state and writes through `LocalStorageService` to browser `localStorage`. Calculations are keyed by flat ID, year, and month, with months numbered 1 through 12.
 - When changing persisted fields, check compatibility with existing `localStorage` data, JSON import in `src/app/pages/import-data/`, and JSON export in `src/app/components/layout/`. `scripts/export_from_gsheets.mjs` is a separate Google Sheets utility that also produces importable data.
 
