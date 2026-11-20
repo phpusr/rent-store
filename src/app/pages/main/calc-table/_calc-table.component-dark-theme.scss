@@ -2,9 +2,9 @@
 @use '@angular/material' as mat;
 
 @mixin theme($theme) {
-  $teal-palette: mat.define-palette(mat.$teal-palette);
-  $green-palette: mat.define-palette(mat.$light-green-palette);
-  $pink-palette: mat.define-palette(mat.$pink-palette);
+  $teal-palette: mat.m2-define-palette(mat.$m2-teal-palette);
+  $green-palette: mat.m2-define-palette(mat.$m2-light-green-palette);
+  $pink-palette: mat.m2-define-palette(mat.$m2-pink-palette);
 
   $font-color: rgba(255, 255, 255, 0.85);
 
@@ -15,22 +15,22 @@
 
     .vol {
       color: $font-color;
-      background-color: mat.get-color-from-palette($teal-palette, 800);
+      background-color: mat.m2-get-color-from-palette($teal-palette, 800);
     }
 
     .vol-monthly {
       color: $font-color;
-      background-color: mat.get-color-from-palette($green-palette, 800);
+      background-color: mat.m2-get-color-from-palette($green-palette, 800);
     }
 
     .cost {
       color: $font-color;
-      background-color: mat.get-color-from-palette($pink-palette, 900);
+      background-color: mat.m2-get-color-from-palette($pink-palette, 900);
     }
 
     .total-cost {
       color: $font-color;
-      background-color: mat.get-color-from-palette($pink-palette, 800);
+      background-color: mat.m2-get-color-from-palette($pink-palette, 800);
       font-weight: 500;
     }
 
