@@ -13,6 +13,7 @@ export interface Dessert {
   selector: 'app-test',
   styleUrls: ['test.component.scss'],
   templateUrl: 'test.component.html',
+  standalone: false
 })
 export class TestComponent {
   desserts: Dessert[] = [

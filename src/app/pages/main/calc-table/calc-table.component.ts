@@ -40,7 +40,8 @@ interface FooterRowType {
 @Component({
   selector: 'app-calc-table',
   templateUrl: './calc-table.component.html',
-  styleUrls: ['./calc-table.component.scss']
+  styleUrls: ['./calc-table.component.scss'],
+  standalone: false
 })
 export class CalcTableComponent implements OnInit, OnDestroy {
 

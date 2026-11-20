@@ -9,7 +9,8 @@ const MAX_FILE_SIZE = 100 * 1024
 
 @Component({
   selector: 'app-import-data',
-  template: ''
+  template: '',
+  standalone: false
 })
 export class ImportDataComponent implements OnInit {
 
@@ -25,7 +26,8 @@ export class ImportDataComponent implements OnInit {
 @Component({
   selector: 'app-import-data-dialog',
   templateUrl: './import-data.component.html',
-  styleUrls: ['./import-data.component.scss']
+  styleUrls: ['./import-data.component.scss'],
+  standalone: false
 })
 export class ImportDataDialog implements OnInit {
 

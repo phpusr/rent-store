@@ -9,7 +9,8 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle'
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
+  standalone: false
 })
 export class LayoutComponent implements OnInit {
 

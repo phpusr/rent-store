@@ -18,7 +18,8 @@ interface DialogData {
 
 @Component({
   selector: 'app-edit-calc',
-  template: ''
+  template: '',
+  standalone: false
 })
 export class EditCalcComponent implements OnInit {
 
@@ -53,7 +54,8 @@ export class EditCalcComponent implements OnInit {
 @Component({
   selector: 'app-edit-calc-dialog',
   templateUrl: './edit-calc.component.html',
-  styleUrls: ['./edit-calc.component.scss']
+  styleUrls: ['./edit-calc.component.scss'],
+  standalone: false
 })
 export class EditCalcDialog implements OnInit {
 

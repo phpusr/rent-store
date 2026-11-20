@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router'
 @Component({
   selector: 'app-flats',
   templateUrl: './flats.component.html',
-  styleUrls: ['./flats.component.scss']
+  styleUrls: ['./flats.component.scss'],
+  standalone: false
 })
 export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {
 

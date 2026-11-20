@@ -14,7 +14,8 @@ interface TableType {
 @Component({
   selector: 'app-flats',
   templateUrl: './stat.component.html',
-  styleUrls: ['./stat.component.scss']
+  styleUrls: ['./stat.component.scss'],
+  standalone: false
 })
 export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
 

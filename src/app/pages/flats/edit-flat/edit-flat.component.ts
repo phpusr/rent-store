@@ -12,7 +12,8 @@ interface DialogData {
 
 @Component({
   selector: 'app-edit-flat',
-  template: ''
+  template: '',
+  standalone: false
 })
 export class EditFlatComponent implements OnInit {
 
@@ -40,7 +41,8 @@ export class EditFlatComponent implements OnInit {
 @Component({
   selector: 'app-edit-flat-dialog',
   templateUrl: './edit-flat.component.html',
-  styleUrls: ['./edit-flat.component.scss']
+  styleUrls: ['./edit-flat.component.scss'],
+  standalone: false
 })
 export class EditFlatDialog implements OnInit {
 
