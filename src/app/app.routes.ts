@@ -1,10 +1,6 @@
 import { Routes } from '@angular/router'
-import { EditFlatComponent } from './pages/flats/edit-flat/edit-flat.component'
-import { FlatsComponent } from './pages/flats/flats.component'
-import { ImportDataComponent } from './pages/import-data/import-data.component'
 import { EditCalcComponent } from './pages/main/edit-calc/edit-calc.component'
 import { MainComponent } from './pages/main/main.component'
-import { StatComponent } from './pages/stat/stat.component'
 import { TestComponent } from './pages/test/test.component'
 import { LocalStorageService } from './services/local_storage.service'
 
@@ -16,17 +12,29 @@ export const routes: Routes = [
     path: 'main/:year',
     component: MainComponent,
     children: [
-      { path: 'import-data', component: ImportDataComponent },
+      {
+        path: 'import-data',
+        loadComponent: () => import('./pages/import-data/import-data.component').then(m => m.ImportDataComponent)
+      },
       { path: ':month/edit', component: EditCalcComponent }
     ]
   },
-  { path: 'stat', component: StatComponent },
+  {
+    path: 'stat',
+    loadComponent: () => import('./pages/stat/stat.component').then(m => m.StatComponent)
+  },
   {
     path: 'flats',
-    component: FlatsComponent,
+    loadComponent: () => import('./pages/flats/flats.component').then(m => m.FlatsComponent),
     children: [
-      { path: ':flatId/edit', component: EditFlatComponent },
-      { path: 'create', component: EditFlatComponent }
+      {
+        path: ':flatId/edit',
+        loadComponent: () => import('./pages/flats/edit-flat/edit-flat.component').then(m => m.EditFlatComponent)
+      },
+      {
+        path: 'create',
+        loadComponent: () => import('./pages/flats/edit-flat/edit-flat.component').then(m => m.EditFlatComponent)
+      }
     ]
   },
   { path: 'test', component: TestComponent }
