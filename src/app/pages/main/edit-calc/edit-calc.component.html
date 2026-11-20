@@ -3,7 +3,7 @@
 <div mat-dialog-content>
   <form [formGroup]="form">
     <!-- HCS -->
-    <mat-card formGroupName="hcs">
+    <mat-card appearance="outlined" formGroupName="hcs">
       <mat-card-title>
         <span i18n="@@main.edit-calc.hcs">HCS</span>
         <a *ngIf="currentFlat.hcsLink" mat-icon-button [href]="currentFlat.hcsLink" target="_blank">
@@ -39,7 +39,7 @@
     </mat-card>
 
     <!-- Water -->
-    <mat-card formGroupName="water">
+    <mat-card appearance="outlined" formGroupName="water">
       <mat-card-title>
         <span i18n="@@main.edit-calc.water">Water</span>
         <a *ngIf="currentFlat.waterLink" mat-icon-button [href]="currentFlat.waterLink" target="_blank">
@@ -90,7 +90,7 @@
     </mat-card>
 
     <!-- Heating -->
-    <mat-card formGroupName="heating">
+    <mat-card appearance="outlined" formGroupName="heating">
       <mat-card-title>
         <span i18n="@@main.edit-calc.heating">Heating</span>
         <a *ngIf="currentFlat.heatingLink" mat-icon-button [href]="currentFlat.heatingLink" target="_blank">
@@ -133,7 +133,7 @@
 
     <div class="two-columns">
       <!-- Garbage -->
-      <mat-card formGroupName="garbage">
+      <mat-card appearance="outlined" formGroupName="garbage">
         <mat-card-title>
           <span i18n="@@main.edit-calc.garbage">Garbage</span>
           <a *ngIf="currentFlat.garbageLink" mat-icon-button [href]="currentFlat.garbageLink" target="_blank">
@@ -151,7 +151,7 @@
       </mat-card>
 
       <!-- Overhaul -->
-      <mat-card formGroupName="overhaul">
+      <mat-card appearance="outlined" formGroupName="overhaul">
         <mat-card-title>
           <span i18n="@@main.edit-calc.overhaul">Overhaul</span>
           <a *ngIf="currentFlat.overhaulLink" mat-icon-button [href]="currentFlat.overhaulLink" target="_blank">

@@ -7,7 +7,7 @@
 
 <div mat-dialog-content>
   <form [formGroup]="form">
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-form-field>
         <mat-label i18n="@@flats.edit-flat.address">Address</mat-label>
         <input type="text" matInput cdkFocusInitial formControlName="address">
@@ -18,7 +18,7 @@
       </mat-form-field>
     </mat-card>
 
-    <mat-card class="links">
+    <mat-card appearance="outlined" class="links">
       <mat-card-title i18n="@@main.edit-flat.links">Links</mat-card-title>
       <mat-form-field>
         <mat-label i18n="@@flats.edit-flat.hcs_link">HCS link</mat-label>

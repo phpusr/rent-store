@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { FlatSelectorComponent } from './flat-selector.component';
 
@@ -8,7 +9,7 @@ describe('FlatSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlatSelectorComponent ]
+      imports: [AppModule]
     })
     .compileComponents();
 

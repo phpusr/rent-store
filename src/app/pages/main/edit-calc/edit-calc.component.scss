@@ -1,17 +1,18 @@
-.mat-card {
+mat-card {
   margin-bottom: 20px;
+  padding: 16px;
 }
 
-.mat-card-title {
+mat-card-title {
   font-size: 18px;
   font-weight: normal;
 }
 
-.mat-form-field {
+mat-form-field {
   margin-right: 20px;
 }
 
-.mat-dialog-actions {
+[mat-dialog-actions] {
   display: flex;
   justify-content: space-between;
 }

@@ -1,31 +1,23 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { TestBed } from '@angular/core/testing'
+import { AppComponent } from './app.component'
+import { AppModule } from './app.module'
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
+      imports: [AppModule]
+    }).compileComponents()
+  })
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    const fixture = TestBed.createComponent(AppComponent)
+    expect(fixture.componentInstance).toBeTruthy()
+  })
 
-  it(`should have as title 'rent-store'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('rent-store');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('rent-store app is running!');
-  });
-});
+  it('should render the layout with a router outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent)
+    fixture.detectChanges()
+    const element = fixture.nativeElement as HTMLElement
+    expect(element.querySelector('app-layout router-outlet')).not.toBeNull()
+  })
+})

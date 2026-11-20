@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from 'src/app/app.module';
 
 import { CalcTableComponent } from './calc-table.component';
 
@@ -8,7 +9,7 @@ describe('CalcTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalcTableComponent ]
+      imports: [AppModule]
     })
     .compileComponents();
 

@@ -17,14 +17,14 @@ npx ng update "@angular/cli@^N" "@angular/core@^N"
 npx ng update "@angular/material@^N"
 ```
 
-Если peer dependencies старого Material препятствуют первому вызову, передать CLI, Core и Material вместе в один `ng update` для того же `N`. При конфликте сверить диапазоны всех пакетов Angular, включая `@angular/localize`, а также TypeScript и `zone.js`. Если механизм временного CLI выбирает версию, которую текущий Node.js не запускает, использовать CLI целевого major. RxJS 7.5 входит в поддерживаемый Angular 22 диапазон.
+Если peer dependencies старого Material препятствуют первому вызову, передать CLI, Core и Material вместе в один `ng update` для того же `N`. При конфликте сверить диапазоны всех пакетов Angular, включая `@angular/localize`, а также TypeScript и `zone.js`. Если временный CLI выбирает версию, несовместимую с текущим Node.js, запустить CLI целевой версии через `NG_DISABLE_VERSION_CHECK=true npx --yes --package="@angular/cli@N" ng update …`. RxJS 7.5 входит в поддерживаемый Angular 22 диапазон.
 
 После каждого перехода выполнить чистую установку, production-сборку и headless-тесты. Проверить запуск приложения с русской локалью и сохранить рабочий шаг отдельным коммитом с манифестом и lock-файлом. [Матрица совместимости](https://angular.dev/reference/versions), [Angular Update Guide](https://angular.dev/update-guide), [команда ng update](https://angular.dev/cli/update).
 
 | Переход | Node.js для шага | Что проверить в RentStore |
 | --- | --- | --- |
-| 14 → 15 | 16.20.x | Обновить Material/CDK. Выполнить MDC-миграцию командой `npx ng generate @angular/material:mdc-migration`. Разобрать оставленные миграцией TODO. |
-| 15 → 16 | 16.20.x | Завершить перенос на MDC. Проверить диалоги, подписи полей, кнопки и таблицы. Убрать оставшиеся импорты `@angular/material/legacy-*` до перехода на 17. |
+| 14 → 15 | 16.20.x | **Выполнено** в `04d6d9e`. Angular 15.2.10, Material 15.2.9 и MDC. Сборки и 13 тестов прошли, проверен запуск в Electron 30. |
+| 15 → 16 | 18.20.x | Проверить перенос на MDC, включая диалоги, подписи полей, кнопки и таблицы. Убедиться в отсутствии импортов `@angular/material/legacy-*` до перехода на 17. |
 | 16 → 17 | 18.20.x | Проверить обнаружение всех Jasmine-спеков. Если CLI перевёл обнаружение тестов в builder, убрать старый `require.context` из `src/test.ts`. Проверить изменения схемы целей в `angular.json`. |
 | 17 → 18 | 18.20.x | Перенести Sass-темы Material 2 на API с префиксом `m2-`. Переключение сборщика выполнить отдельным коммитом. |
 | 18 → 19 | 18.20.x | Проверить, что миграция добавила `standalone: false` компонентам и диалогам из `AppModule.declarations`. Проверить маршруты и открытие диалогов. |
