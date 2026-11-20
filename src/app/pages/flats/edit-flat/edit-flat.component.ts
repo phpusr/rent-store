@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core'
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -16,6 +16,7 @@ interface DialogData {
 
 @Component({
   selector: 'app-edit-flat',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 export class EditFlatComponent implements OnInit {
@@ -45,6 +46,7 @@ export class EditFlatComponent implements OnInit {
   selector: 'app-edit-flat-dialog',
   templateUrl: './edit-flat.component.html',
   styleUrls: ['./edit-flat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatDialogModule,
     ReactiveFormsModule,
@@ -79,7 +81,7 @@ export class EditFlatDialog implements OnInit {
     })
 
     if (data.flat) {
-      this.form.setValue(data.flat)
+      this.form.patchValue(data.flat)
     }
   }
 

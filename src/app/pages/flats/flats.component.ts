@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy } from '@angular/core'
+import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
@@ -11,6 +11,7 @@ import { MatAnchor } from '@angular/material/button'
   selector: 'app-flats',
   templateUrl: './flats.component.html',
   styleUrls: ['./flats.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RouterOutlet, MatAnchor, RouterLink, MatTableModule, MatSort, MatSortHeader]
 })
 export class FlatsComponent implements OnInit, AfterViewInit, OnDestroy {

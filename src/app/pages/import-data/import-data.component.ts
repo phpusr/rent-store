@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 import { combineLatest, take } from 'rxjs'
@@ -12,6 +12,7 @@ const MAX_FILE_SIZE = 100 * 1024
 
 @Component({
   selector: 'app-import-data',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 export class ImportDataComponent implements OnInit {
@@ -29,6 +30,7 @@ export class ImportDataComponent implements OnInit {
   selector: 'app-import-data-dialog',
   templateUrl: './import-data.component.html',
   styleUrls: ['./import-data.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatDialogModule, MatButton, MatFormField, MatLabel, MatInput, MatError]
 })
 export class ImportDataDialog implements OnInit {

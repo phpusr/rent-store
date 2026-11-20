@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatOption, MatSelect, MatSelectChange } from '@angular/material/select'
 import { Subscription } from 'rxjs/internal/Subscription'
@@ -9,6 +9,7 @@ import { AsyncPipe } from '@angular/common'
   selector: 'app-flat-selector',
   templateUrl: './flat-selector.component.html',
   styleUrls: ['./flat-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatFormField, MatLabel, MatSelect, MatOption, AsyncPipe]
 })
 export class FlatSelectorComponent implements OnInit, OnDestroy {

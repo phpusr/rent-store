@@ -62,7 +62,7 @@
         <source>Are you sure to export data?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/layout/layout.component.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="flats.edit-flat.edit-flat" datatype="html">
@@ -200,7 +200,7 @@
         <source>Are you sure to delete &quot;<x id="PH" equiv-text="flat.address"/> <x id="PH_1" equiv-text="flat.number"/>&quot;?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/flats/edit-flat/edit-flat.component.ts</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="flats.list.add" datatype="html">
@@ -549,21 +549,21 @@
         <source>Edit calculation for <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="currentYear"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
-          <context context-type="linenumber">168</context>
+          <context context-type="linenumber">170</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.add_title" datatype="html">
         <source>Add calculation for <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="currentYear"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
       <trans-unit id="main.edit-calc.confirm_delete" datatype="html">
         <source>Are you sure to delete calculation for <x id="PH" equiv-text="this.monthName"/> <x id="PH_1" equiv-text="this.data.calculation.year"/>?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/main/edit-calc/edit-calc.component.ts</context>
-          <context context-type="linenumber">193</context>
+          <context context-type="linenumber">195</context>
         </context-group>
       </trans-unit>
       <trans-unit id="stat.year" datatype="html">

@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { ActivatedRoute, Router, RouterLink } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
@@ -44,6 +44,7 @@ interface FooterRowType {
   selector: 'app-calc-table',
   templateUrl: './calc-table.component.html',
   styleUrls: ['./calc-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatTabNav,
     MatTabLink,

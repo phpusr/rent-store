@@ -9,6 +9,6 @@
   "author": "phpusr",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^22.1.0"
+    "electron": "^44.11.5"
   }
 }

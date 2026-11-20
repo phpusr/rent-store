@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { BreakpointObserver } from '@angular/cdk/layout'
 import { Observable } from 'rxjs'
 import { map, shareReplay } from 'rxjs/operators'
@@ -17,6 +17,7 @@ import { FlatSelectorComponent } from './flat-selector/flat-selector.component'
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatSidenavContainer,
     MatSidenav,

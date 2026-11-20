@@ -7,7 +7,7 @@
 
     <mat-form-field class="file-path">
       <mat-label>Filename</mat-label>
-      <input matInput disabled [value]="file?.name">
+      <input matInput disabled [value]="file?.name ?? ''">
     </mat-form-field>
   </div>
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { Sort, MatSort, MatSortHeader } from '@angular/material/sort'
 
 export interface Dessert {
@@ -13,6 +13,7 @@ export interface Dessert {
   selector: 'app-test',
   styleUrls: ['test.component.scss'],
   templateUrl: 'test.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatSort, MatSortHeader]
 })
 export class TestComponent {

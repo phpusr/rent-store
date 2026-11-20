@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy } from '@angular/core'
+import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core'
 import { Subscription, combineLatest } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { UtilsService } from 'src/app/services/utils.service'
@@ -15,6 +15,7 @@ interface TableType {
   selector: 'app-flats',
   templateUrl: './stat.component.html',
   styleUrls: ['./stat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatTableModule, MatSort, MatSortHeader]
 })
 export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
