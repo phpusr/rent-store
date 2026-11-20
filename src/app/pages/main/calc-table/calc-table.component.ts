@@ -1,8 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { ActivatedRoute, Router, RouterLink } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { UtilsService } from 'src/app/services/utils.service'
+import { MatTabNav, MatTabLink, MatTabNavPanel } from '@angular/material/tabs'
+import { AsyncPipe } from '@angular/common'
+import { MatTableModule } from '@angular/material/table'
 
 interface TableType {
   monthIndex: number
@@ -40,7 +43,16 @@ interface FooterRowType {
 @Component({
   selector: 'app-calc-table',
   templateUrl: './calc-table.component.html',
-  styleUrls: ['./calc-table.component.scss']
+  styleUrls: ['./calc-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    MatTabNav,
+    MatTabLink,
+    RouterLink,
+    MatTabNavPanel,
+    MatTableModule,
+    AsyncPipe,
+  ]
 })
 export class CalcTableComponent implements OnInit, OnDestroy {
 

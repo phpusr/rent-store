@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 import { combineLatest, take } from 'rxjs'
 import { Calculation } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { MatButton } from '@angular/material/button'
+import { MatError, MatFormField, MatLabel } from '@angular/material/form-field'
+import { MatInput } from '@angular/material/input'
 
 const MAX_FILE_SIZE = 100 * 1024
 
 @Component({
   selector: 'app-import-data',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 export class ImportDataComponent implements OnInit {
@@ -25,7 +29,9 @@ export class ImportDataComponent implements OnInit {
 @Component({
   selector: 'app-import-data-dialog',
   templateUrl: './import-data.component.html',
-  styleUrls: ['./import-data.component.scss']
+  styleUrls: ['./import-data.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [MatDialogModule, MatButton, MatFormField, MatLabel, MatInput, MatError]
 })
 export class ImportDataDialog implements OnInit {
 

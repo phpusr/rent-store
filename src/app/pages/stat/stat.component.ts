@@ -1,9 +1,9 @@
-import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy } from '@angular/core'
+import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core'
 import { Subscription, combineLatest } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { UtilsService } from 'src/app/services/utils.service'
-import { MatSort } from '@angular/material/sort'
-import { MatTableDataSource } from '@angular/material/table'
+import { MatSort, MatSortHeader } from '@angular/material/sort'
+import { MatTableDataSource, MatTableModule } from '@angular/material/table'
 
 interface TableType {
   year: number
@@ -14,7 +14,9 @@ interface TableType {
 @Component({
   selector: 'app-flats',
   templateUrl: './stat.component.html',
-  styleUrls: ['./stat.component.scss']
+  styleUrls: ['./stat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [MatTableModule, MatSort, MatSortHeader]
 })
 export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
 

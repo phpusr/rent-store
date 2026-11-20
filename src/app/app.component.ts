@@ -1,10 +1,14 @@
-import { OnInit, Component, Renderer2 } from '@angular/core';
+import { OnInit, Component, Renderer2, ChangeDetectionStrategy } from '@angular/core'
 import { DataStorageService } from './services/data_storage.service'
+import { LayoutComponent } from './components/layout/layout.component'
+import { RouterOutlet } from '@angular/router'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [LayoutComponent, RouterOutlet]
 })
 export class AppComponent implements OnInit {
 

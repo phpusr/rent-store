@@ -7,11 +7,13 @@
 
     <mat-form-field class="file-path">
       <mat-label>Filename</mat-label>
-      <input matInput disabled [value]="file?.name">
+      <input matInput disabled [value]="file?.name ?? ''">
     </mat-form-field>
   </div>
 
-  <mat-error class="error" *ngIf="errorMessage">Error: {{ errorMessage }}</mat-error>
+  @if (errorMessage) {
+    <mat-error class="error">Error: {{ errorMessage }}</mat-error>
+  }
 </div>
 
 <div mat-dialog-actions align="end">

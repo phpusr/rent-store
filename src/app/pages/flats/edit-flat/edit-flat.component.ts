@@ -1,9 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { MatCard, MatCardTitle } from '@angular/material/card'
+import { MatFormField, MatLabel } from '@angular/material/form-field'
+import { MatInput } from '@angular/material/input'
+import { MatButton } from '@angular/material/button'
 
 interface DialogData {
   route: ActivatedRoute,
@@ -12,6 +16,7 @@ interface DialogData {
 
 @Component({
   selector: 'app-edit-flat',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 export class EditFlatComponent implements OnInit {
@@ -40,7 +45,18 @@ export class EditFlatComponent implements OnInit {
 @Component({
   selector: 'app-edit-flat-dialog',
   templateUrl: './edit-flat.component.html',
-  styleUrls: ['./edit-flat.component.scss']
+  styleUrls: ['./edit-flat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatCard,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatCardTitle,
+    MatButton,
+  ]
 })
 export class EditFlatDialog implements OnInit {
 
@@ -65,7 +81,7 @@ export class EditFlatDialog implements OnInit {
     })
 
     if (data.flat) {
-      this.form.setValue(data.flat)
+      this.form.patchValue(data.flat)
     }
   }
 

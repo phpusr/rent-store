@@ -1,12 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSelectChange } from '@angular/material/select'
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { MatFormField, MatLabel } from '@angular/material/form-field'
+import { MatOption, MatSelect, MatSelectChange } from '@angular/material/select'
 import { Subscription } from 'rxjs/internal/Subscription'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { AsyncPipe } from '@angular/common'
 
 @Component({
   selector: 'app-flat-selector',
   templateUrl: './flat-selector.component.html',
-  styleUrls: ['./flat-selector.component.scss']
+  styleUrls: ['./flat-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [MatFormField, MatLabel, MatSelect, MatOption, AsyncPipe]
 })
 export class FlatSelectorComponent implements OnInit, OnDestroy {
 

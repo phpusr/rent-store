@@ -6,9 +6,11 @@
     <mat-card formGroupName="hcs">
       <mat-card-title>
         <span i18n="@@main.edit-calc.hcs">HCS</span>
-        <a *ngIf="currentFlat.hcsLink" mat-icon-button [href]="currentFlat.hcsLink" target="_blank">
-          <mat-icon class="link">open_in_new</mat-icon>
-        </a>
+        @if (currentFlat.hcsLink) {
+          <a mat-icon-button [href]="currentFlat.hcsLink" target="_blank">
+            <mat-icon class="link">open_in_new</mat-icon>
+          </a>
+        }
       </mat-card-title>
 
       <mat-card-content>
@@ -42,9 +44,11 @@
     <mat-card formGroupName="water">
       <mat-card-title>
         <span i18n="@@main.edit-calc.water">Water</span>
-        <a *ngIf="currentFlat.waterLink" mat-icon-button [href]="currentFlat.waterLink" target="_blank">
-          <mat-icon class="link">open_in_new</mat-icon>
-        </a>
+        @if (currentFlat.waterLink) {
+          <a mat-icon-button [href]="currentFlat.waterLink" target="_blank">
+            <mat-icon class="link">open_in_new</mat-icon>
+          </a>
+        }
       </mat-card-title>
 
       <mat-card-content>
@@ -93,9 +97,11 @@
     <mat-card formGroupName="heating">
       <mat-card-title>
         <span i18n="@@main.edit-calc.heating">Heating</span>
-        <a *ngIf="currentFlat.heatingLink" mat-icon-button [href]="currentFlat.heatingLink" target="_blank">
-          <mat-icon class="link">open_in_new</mat-icon>
-        </a>
+        @if (currentFlat.heatingLink) {
+          <a mat-icon-button [href]="currentFlat.heatingLink" target="_blank">
+            <mat-icon class="link">open_in_new</mat-icon>
+          </a>
+        }
       </mat-card-title>
 
       <div>
@@ -136,9 +142,11 @@
       <mat-card formGroupName="garbage">
         <mat-card-title>
           <span i18n="@@main.edit-calc.garbage">Garbage</span>
-          <a *ngIf="currentFlat.garbageLink" mat-icon-button [href]="currentFlat.garbageLink" target="_blank">
-            <mat-icon class="link">open_in_new</mat-icon>
-          </a>
+          @if (currentFlat.garbageLink) {
+            <a mat-icon-button [href]="currentFlat.garbageLink" target="_blank">
+              <mat-icon class="link">open_in_new</mat-icon>
+            </a>
+          }
         </mat-card-title>
 
         <mat-form-field>
@@ -154,9 +162,11 @@
       <mat-card formGroupName="overhaul">
         <mat-card-title>
           <span i18n="@@main.edit-calc.overhaul">Overhaul</span>
-          <a *ngIf="currentFlat.overhaulLink" mat-icon-button [href]="currentFlat.overhaulLink" target="_blank">
-            <mat-icon class="link">open_in_new</mat-icon>
-          </a>
+          @if (currentFlat.overhaulLink) {
+            <a mat-icon-button [href]="currentFlat.overhaulLink" target="_blank">
+              <mat-icon class="link">open_in_new</mat-icon>
+            </a>
+          }
         </mat-card-title>
 
         <mat-form-field>
@@ -172,7 +182,9 @@
 </div>
 
 <div mat-dialog-actions>
-  <button *ngIf="data.calculation" mat-raised-button color="warn" (click)="onDelete()" i18n="@@shared.delete">Delete</button>
+  @if (data.calculation) {
+    <button mat-raised-button color="warn" (click)="onDelete()" i18n="@@shared.delete">Delete</button>
+  }
   <div>
     <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid" i18n="@@shared.save">Save</button>
     <button mat-button mat-dialog-close i18n="@@shared.cancel">Cancel</button>

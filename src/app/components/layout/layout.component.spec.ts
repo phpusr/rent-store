@@ -1,32 +1,18 @@
-import { LayoutModule } from '@angular/cdk/layout'
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
-import { MatButtonModule } from '@angular/material/button'
-import { MatIconModule } from '@angular/material/icon'
-import { MatListModule } from '@angular/material/list'
-import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatToolbarModule } from '@angular/material/toolbar'
-
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { provideRouter } from '@angular/router'
+import { MATERIAL_ANIMATIONS } from '@angular/material/core'
 import { LayoutComponent } from './layout.component'
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent
   let fixture: ComponentFixture<LayoutComponent>
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [LayoutComponent],
-      imports: [
-        NoopAnimationsModule,
-        LayoutModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatSidenavModule,
-        MatToolbarModule,
-      ]
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [LayoutComponent],
+      providers: [provideRouter([]), { provide: MATERIAL_ANIMATIONS, useValue: { animationsDisabled: true } }]
     }).compileComponents()
-  }))
+  })
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LayoutComponent)

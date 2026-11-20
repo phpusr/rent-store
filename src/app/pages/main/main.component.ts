@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router'
 import { DataStorageService } from 'src/app/services/data_storage.service'
+import { CalcTableComponent } from './calc-table/calc-table.component'
+import { NgStyle } from '@angular/common'
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [RouterOutlet, CalcTableComponent, NgStyle]
 })
 export class MainComponent implements OnInit {
 

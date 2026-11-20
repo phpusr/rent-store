@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { FlatsComponent } from './flats.component';
 
@@ -8,7 +9,8 @@ describe('FlatsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlatsComponent ]
+      imports: [FlatsComponent],
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

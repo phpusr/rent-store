@@ -1,8 +1,9 @@
 <h1 mat-dialog-title>
-  <span *ngIf="data.flat; else addFlat" i18n="@@flats.edit-flat.edit-flat">Edit flat</span>
-  <ng-template #addFlat>
+  @if (data.flat) {
+    <span i18n="@@flats.edit-flat.edit-flat">Edit flat</span>
+  } @else {
     <span i18n="@@flats.edit-flat.add-flat">Add flat</span>
-  </ng-template>
+  }
 </h1>
 
 <div mat-dialog-content>
@@ -45,7 +46,9 @@
 </div>
 
 <div mat-dialog-actions>
-  <button *ngIf="data.flat" mat-raised-button color="warn" (click)="onDelete()" i18n="@@shared.delete">Delete</button>
+  @if (data.flat) {
+    <button mat-raised-button color="warn" (click)="onDelete()" i18n="@@shared.delete">Delete</button>
+  }
   <div>
     <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid" i18n="@@shared.save">Save</button>
     <button mat-button mat-dialog-close i18n="@@shared.cancel">Cancel</button>

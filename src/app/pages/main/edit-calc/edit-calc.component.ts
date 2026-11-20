@@ -1,10 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Calculation, Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
-
+import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card'
+import { MatIconAnchor, MatButton } from '@angular/material/button'
+import { MatIcon } from '@angular/material/icon'
+import { MatFormField, MatLabel } from '@angular/material/form-field'
+import { MatInput } from '@angular/material/input'
 
 /* Convert KWats to GCal */
 const GCAL_CONST = 0.00086
@@ -18,6 +22,7 @@ interface DialogData {
 
 @Component({
   selector: 'app-edit-calc',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 export class EditCalcComponent implements OnInit {
@@ -53,7 +58,21 @@ export class EditCalcComponent implements OnInit {
 @Component({
   selector: 'app-edit-calc-dialog',
   templateUrl: './edit-calc.component.html',
-  styleUrls: ['./edit-calc.component.scss']
+  styleUrls: ['./edit-calc.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatCard,
+    MatCardTitle,
+    MatIconAnchor,
+    MatIcon,
+    MatCardContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatButton,
+  ]
 })
 export class EditCalcDialog implements OnInit {
 

@@ -3,7 +3,9 @@
 
   <div class="tables">
     <app-calc-table [ngStyle]="getTableStyles()"></app-calc-table>
-    <app-calc-table *ngIf="isSplitMode()" [ngStyle]="getTableStyles()" [splitModeTable]="true"></app-calc-table>
+    @if (isSplitMode()) {
+      <app-calc-table [ngStyle]="getTableStyles()" [splitModeTable]="true"></app-calc-table>
+    }
   </div>
 
 </div>
