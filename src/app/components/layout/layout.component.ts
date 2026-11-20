@@ -8,7 +8,7 @@ import { MatSlideToggleChange, MatSlideToggle } from '@angular/material/slide-to
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav'
 import { MatToolbar } from '@angular/material/toolbar'
 import { MatNavList, MatListItem } from '@angular/material/list'
-import { NgIf, AsyncPipe } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { MatIconButton, MatAnchor } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import { FlatSelectorComponent } from './flat-selector/flat-selector.component'
@@ -24,7 +24,6 @@ import { FlatSelectorComponent } from './flat-selector/flat-selector.component'
     MatNavList,
     MatListItem,
     RouterLink,
-    NgIf,
     MatSlideToggle,
     MatSidenavContent,
     MatIconButton,

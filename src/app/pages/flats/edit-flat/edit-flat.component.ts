@@ -4,7 +4,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angu
 import { ActivatedRoute, Router } from '@angular/router'
 import { Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
-import { NgIf } from '@angular/common'
 import { MatCard, MatCardTitle } from '@angular/material/card'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
@@ -48,7 +47,6 @@ export class EditFlatComponent implements OnInit {
   styleUrls: ['./edit-flat.component.scss'],
   imports: [
     MatDialogModule,
-    NgIf,
     ReactiveFormsModule,
     MatCard,
     MatFormField,

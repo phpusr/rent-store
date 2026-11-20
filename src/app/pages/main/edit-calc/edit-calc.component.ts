@@ -5,12 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Calculation, Flat } from 'src/app/interfaces/general'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card'
-import { NgIf } from '@angular/common'
 import { MatIconAnchor, MatButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import { MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
-
 
 /* Convert KWats to GCal */
 const GCAL_CONST = 0.00086
@@ -65,7 +63,6 @@ export class EditCalcComponent implements OnInit {
     ReactiveFormsModule,
     MatCard,
     MatCardTitle,
-    NgIf,
     MatIconAnchor,
     MatIcon,
     MatCardContent,

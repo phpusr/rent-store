@@ -1,6 +1,6 @@
 # RentStore
 
-RentStore tracks monthly utility readings and costs by flat. It uses Angular 20, Angular Material, RxJS, and SCSS. Electron loads the built Angular app for desktop use.
+RentStore tracks monthly utility readings and costs by flat. It uses Angular 21, Angular Material, RxJS, and SCSS. Electron loads the built Angular app for desktop use.
 
 ## Development commands
 

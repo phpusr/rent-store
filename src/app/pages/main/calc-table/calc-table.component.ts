@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs'
 import { DataStorageService } from 'src/app/services/data_storage.service'
 import { UtilsService } from 'src/app/services/utils.service'
 import { MatTabNav, MatTabLink, MatTabNavPanel } from '@angular/material/tabs'
-import { NgFor, AsyncPipe } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { MatTableModule } from '@angular/material/table'
 
 interface TableType {
@@ -46,7 +46,6 @@ interface FooterRowType {
   styleUrls: ['./calc-table.component.scss'],
   imports: [
     MatTabNav,
-    NgFor,
     MatTabLink,
     RouterLink,
     MatTabNavPanel,

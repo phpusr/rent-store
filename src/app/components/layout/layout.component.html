@@ -1,8 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
 
     <mat-toolbar i18n="@@layout.menu.title">Menu</mat-toolbar>
 
@@ -10,10 +10,12 @@
       <a mat-list-item [routerLink]="getImportDataLink()" i18n="@@layout.menu.import_data">Import data</a>
       <button mat-list-item (click)="exportData()" i18n="@@layout.menu.export_data">Export data</button>
 
-      <mat-list-item *ngIf="isMainPage">
-        <mat-slide-toggle [checked]="dataStorage.isSplitMode$ | async"
-          (change)="switchSplitMode($event)" i18n="@@layout.menu.split_mode">Split Mode</mat-slide-toggle>
-      </mat-list-item>
+      @if (isMainPage) {
+        <mat-list-item>
+          <mat-slide-toggle [checked]="dataStorage.isSplitMode$ | async"
+            (change)="switchSplitMode($event)" i18n="@@layout.menu.split_mode">Split Mode</mat-slide-toggle>
+        </mat-list-item>
+      }
 
       <mat-list-item>
         <mat-slide-toggle [checked]="dataStorage.isDarkMode$ | async"
@@ -24,14 +26,15 @@
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
       <a mat-button routerLink="" class="home-button">rent-store</a>
 
       <a mat-button routerLink="flats" i18n="@@layout.navbar.flats">Flats</a>

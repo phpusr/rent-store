@@ -7,7 +7,6 @@ import { DataStorageService } from 'src/app/services/data_storage.service'
 import { MatButton } from '@angular/material/button'
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field'
 import { MatInput } from '@angular/material/input'
-import { NgIf } from '@angular/common'
 
 const MAX_FILE_SIZE = 100 * 1024
 
@@ -30,7 +29,7 @@ export class ImportDataComponent implements OnInit {
   selector: 'app-import-data-dialog',
   templateUrl: './import-data.component.html',
   styleUrls: ['./import-data.component.scss'],
-  imports: [MatDialogModule, MatButton, MatFormField, MatLabel, MatInput, NgIf, MatError]
+  imports: [MatDialogModule, MatButton, MatFormField, MatLabel, MatInput, MatError]
 })
 export class ImportDataDialog implements OnInit {
 

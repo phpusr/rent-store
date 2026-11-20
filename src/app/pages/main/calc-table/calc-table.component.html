@@ -1,10 +1,11 @@
 <div>
   <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-    <a mat-tab-link
-      [routerLink]="getLink(year)"
-      *ngFor="let year of dataStorage.years$ | async"
-      [active]="year === getCurrentYear()"
-    >{{ year }}</a>
+    @for (year of dataStorage.years$ | async; track year) {
+      <a mat-tab-link
+        [routerLink]="getLink(year)"
+        [active]="year === getCurrentYear()"
+      >{{ year }}</a>
+    }
   </nav>
   <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
