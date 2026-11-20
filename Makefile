@@ -9,8 +9,7 @@ help:
 build: ## Build
 	@echo "=== Build ==="
 	@npm install
-	@npm run build
-	@sed -i 's!<base href="/">!<base href="./">!' dist/rent-store/index.html
+	@npm run build -- --base-href ./
 	@cd electron-src && cp index.js package*.json ../dist/rent-store
 	@cd dist/rent-store && NODE_ENV=production npm install --omit=dev
 

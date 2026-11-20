@@ -11,11 +11,9 @@ const createWindow = () => {
     height: 600
   })
 
-  if (fs.existsSync(path.resolve(__dirname, 'index.html'))) {
-    win.loadFile('index.html')
-  } else {
-    win.loadFile('../dist/rent-store/index.html')
-  }
+  const bundledIndex = path.join(__dirname, 'browser', 'index.html')
+  const localIndex = path.resolve(__dirname, '../dist/rent-store/browser/index.html')
+  win.loadFile(fs.existsSync(bundledIndex) ? bundledIndex : localIndex)
 
   // Open the DevTools
   if (!isProduction) {

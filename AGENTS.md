@@ -8,11 +8,11 @@ Run these from the repository root:
 
 - `npm ci` installs dependencies from `package-lock.json`.
 - `npm start` serves the app at `http://localhost:4200/` with live reload and the `ru-RU` development locale.
-- `npm run build` builds the production app into `dist/rent-store`.
+- `npm run build` builds the production app into `dist/rent-store/browser`.
 - `npm test -- --watch=false --browsers=ChromeHeadless` runs the Jasmine/Karma suite once. Set `CHROME_BIN` to the Chromium executable if Chrome is unavailable.
 - `npm run i18n` refreshes `src/locale/messages.xlf`. Update `src/locale/messages.ru.xlf` when adding or changing translated strings. Templates use Angular `i18n` markers, and TypeScript uses `$localize`.
 
-`make build` prepares the Electron bundle by setting a relative base URL and copying the files from `electron-src/`. `make mk_package` pushes to Git and installs an Arch Linux package, so use the Angular build for routine verification.
+`make build` sets a relative base URL during compilation and copies the files from `electron-src/` into `dist/rent-store`. Electron opens `browser/index.html` there. `make mk_package` pushes to Git and installs an Arch Linux package, so use the Angular build for routine verification.
 
 ## Code map
 
