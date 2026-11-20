@@ -7,7 +7,7 @@ RentStore tracks monthly utility readings and costs by flat. It uses Angular 22,
 Run these from the repository root:
 
 - `npm ci` installs dependencies from `package-lock.json`.
-- `npm start` serves the app at `http://localhost:4200/` with live reload and the `ru-RU` development locale.
+- `npm start` serves the app at `http://localhost:4200/` with live reload and the `ru` development locale.
 - `npm run build` builds the production app into `dist/rent-store/browser`.
 - `npm test -- --watch=false --browsers=ChromeHeadless` runs the Jasmine/Karma suite once. Set `CHROME_BIN` to the Chromium executable if Chrome is unavailable.
 - `npm run i18n` refreshes `src/locale/messages.xlf`. Update `src/locale/messages.ru.xlf` when adding or changing translated strings. Templates use Angular `i18n` markers, and TypeScript uses `$localize`.

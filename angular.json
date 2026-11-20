@@ -8,7 +8,7 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "ru-RU": "src/locale/messages.ru.xlf"
+          "ru": "src/locale/messages.ru.xlf"
         }
       },
       "schematics": {
@@ -64,7 +64,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "localize": ["ru-RU"],
+              "localize": ["ru"],
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
