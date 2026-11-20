@@ -6,7 +6,6 @@
 @include mat.app-background();
 
 @mixin rent-store-theme($theme) {
-  @include mat.core-theme($theme);
   @include mat.button-theme($theme);
   @include mat.card-theme($theme);
   @include mat.dialog-theme($theme);
