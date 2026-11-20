@@ -12,6 +12,10 @@ mat-form-field {
   display: block;
 }
 
+mat-form-field + mat-form-field {
+  margin-top: 12px;
+}
+
 mat-card {
   padding: 16px;
 }

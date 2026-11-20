@@ -149,13 +149,15 @@
           }
         </mat-card-title>
 
-        <mat-form-field>
-          <mat-label>
-            <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
-          </mat-label>
-          <input type="number" matInput formControlName="cost">
-        </mat-form-field>
-        <button type="button" mat-button color="primary" (click)="fillLastMonthGarbageCost()" i18n="@@main.edit-calc.last">Last</button>
+        <div class="cost-row">
+          <mat-form-field>
+            <mat-label>
+              <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+            </mat-label>
+            <input type="number" matInput formControlName="cost">
+          </mat-form-field>
+          <button type="button" mat-button color="primary" (click)="fillLastMonthGarbageCost()" i18n="@@main.edit-calc.last">Last</button>
+        </div>
       </mat-card>
 
       <!-- Overhaul -->
@@ -169,13 +171,15 @@
           }
         </mat-card-title>
 
-        <mat-form-field>
-          <mat-label>
-            <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
-          </mat-label>
-          <input type="number" matInput formControlName="cost">
-        </mat-form-field>
-        <button type="button" mat-button color="primary" (click)="fillLastMonthOverhaulCost()" i18n="@@main.edit-calc.last">Last</button>
+        <div class="cost-row">
+          <mat-form-field>
+            <mat-label>
+              <span i18n="@@main.edit-calc.cost">Cost</span> (<span i18n="@@units.currency">₽</span>)
+            </mat-label>
+            <input type="number" matInput formControlName="cost">
+          </mat-form-field>
+          <button type="button" mat-button color="primary" (click)="fillLastMonthOverhaulCost()" i18n="@@main.edit-calc.last">Last</button>
+        </div>
       </mat-card>
     </div>
   </form>

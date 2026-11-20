@@ -9,6 +9,7 @@
   @include mat.button-theme($theme);
   @include mat.card-theme($theme);
   @include mat.dialog-theme($theme);
+  @include mat.dialog-overrides((actions-padding: 16px 24px));
   @include mat.form-field-theme($theme);
   @include mat.icon-theme($theme);
   @include mat.icon-button-theme($theme);
@@ -21,6 +22,16 @@
   @include mat.table-theme($theme);
   @include mat.tabs-theme($theme);
   @include mat.toolbar-theme($theme);
+}
+
+[mat-dialog-content] mat-form-field {
+  @include mat.form-field-overrides((
+    container-height: 44px,
+    container-text-line-height: 20px,
+    container-text-size: 14px,
+    filled-with-label-container-padding-top: 20px,
+    filled-with-label-container-padding-bottom: 6px,
+  ));
 }
 
 $my-primary-light: mat.m2-define-palette(mat.$m2-indigo-palette, 500);

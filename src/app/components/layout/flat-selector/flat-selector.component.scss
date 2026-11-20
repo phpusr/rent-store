@@ -1,4 +1,27 @@
+@use '@angular/material' as mat;
+
 .main {
-  font-size: 0.6em;
-  margin-top: 15px;
+  @include mat.form-field-overrides((
+    container-height: 40px,
+    container-text-size: 13px,
+    container-text-line-height: 16px,
+    filled-with-label-container-padding-top: 18px,
+    filled-with-label-container-padding-bottom: 6px,
+    filled-container-color: transparent,
+    filled-label-text-color: currentColor,
+    filled-hover-label-text-color: currentColor,
+    filled-focus-label-text-color: currentColor,
+    filled-active-indicator-color: currentColor,
+    filled-hover-active-indicator-color: currentColor,
+    filled-focus-active-indicator-color: currentColor,
+    enabled-select-arrow-color: currentColor,
+    focus-select-arrow-color: currentColor,
+  ));
+
+  @include mat.select-overrides((
+    trigger-text-size: 13px,
+    trigger-text-line-height: 16px,
+    enabled-trigger-text-color: currentColor,
+    arrow-transform: none,
+  ));
 }
