@@ -1,17 +1,19 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router'
-import { DataStorageService } from 'src/app/services/data_storage.service'
-import { CalcTableComponent } from './calc-table/calc-table.component'
-import { NgStyle } from '@angular/common'
+import {Component, OnInit} from '@angular/core'
+import {toSignal} from '@angular/core/rxjs-interop'
+import {ActivatedRoute, RouterOutlet} from '@angular/router'
+import {DataStorageService} from 'src/app/services/data_storage.service'
+import {CalcTableComponent} from './calc-table/calc-table.component'
+import {NgStyle} from '@angular/common'
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RouterOutlet, CalcTableComponent, NgStyle]
 })
 export class MainComponent implements OnInit {
+
+  private readonly splitMode = toSignal(this.dataStorage.isSplitMode$, { requireSync: true })
 
   constructor(
     public dataStorage: DataStorageService,
@@ -27,14 +29,12 @@ export class MainComponent implements OnInit {
   }
 
   isSplitMode(): boolean {
-    return this.dataStorage.isSplitMode$.getValue()
+    return this.splitMode()
   }
 
   getTableStyles() {
     if (this.isSplitMode()) {
-      return {
-        width: `calc(50% - 3px)`
-      }
+      return { width: 'calc(50% - 3px)' }
     }
 
     return { width: '100%' }

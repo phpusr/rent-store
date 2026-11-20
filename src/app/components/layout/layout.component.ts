@@ -1,23 +1,23 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
-import { BreakpointObserver } from '@angular/cdk/layout'
-import { Observable } from 'rxjs'
-import { map, shareReplay } from 'rxjs/operators'
-import { Router, ActivatedRoute, NavigationStart, RouterLink } from '@angular/router'
-import { DataStorageService } from 'src/app/services/data_storage.service'
-import { MatSlideToggleChange, MatSlideToggle } from '@angular/material/slide-toggle'
-import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav'
-import { MatToolbar } from '@angular/material/toolbar'
-import { MatNavList, MatListItem } from '@angular/material/list'
-import { AsyncPipe } from '@angular/common'
-import { MatIconButton, MatAnchor } from '@angular/material/button'
-import { MatIcon } from '@angular/material/icon'
-import { FlatSelectorComponent } from './flat-selector/flat-selector.component'
+import {Component} from '@angular/core'
+import {toSignal} from '@angular/core/rxjs-interop'
+import {BreakpointObserver} from '@angular/cdk/layout'
+import {Observable} from 'rxjs'
+import {filter, map, shareReplay} from 'rxjs/operators'
+import {NavigationStart, Router, RouterLink} from '@angular/router'
+import {DataStorageService} from 'src/app/services/data_storage.service'
+import {MatSlideToggle, MatSlideToggleChange} from '@angular/material/slide-toggle'
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav'
+import {MatToolbar} from '@angular/material/toolbar'
+import {MatListItem, MatNavList} from '@angular/material/list'
+import {AsyncPipe} from '@angular/common'
+import {MatAnchor, MatIconButton} from '@angular/material/button'
+import {MatIcon} from '@angular/material/icon'
+import {FlatSelectorComponent} from './flat-selector/flat-selector.component'
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatSidenavContainer,
     MatSidenav,
@@ -34,9 +34,14 @@ import { FlatSelectorComponent } from './flat-selector/flat-selector.component'
     AsyncPipe,
   ]
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
 
-  isMainPage = false
+  isMainPage = toSignal(this.router.events.pipe(
+    filter(event => event instanceof NavigationStart),
+    map(event => event.url === '/' || event.url.startsWith('/main/'))
+  ), { initialValue: false })
+
+  private readonly currentYear = toSignal(this.dataStorage.currentYear$, { requireSync: true })
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe('(min-width: 1px)')
     .pipe(
@@ -50,16 +55,8 @@ export class LayoutComponent implements OnInit {
     public dataStorage: DataStorageService
   ) { }
 
-  ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.isMainPage = event.url == '/' || event.url.startsWith('/main/')
-      }
-    })
-  }
-
   getImportDataLink(): string[] {
-    return ['/main', '' + this.dataStorage.currentYear$.getValue(), 'import-data']
+    return ['/main', '' + this.currentYear(), 'import-data']
   }
 
   exportData(): void {

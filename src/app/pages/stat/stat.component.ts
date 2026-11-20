@@ -1,9 +1,9 @@
-import { Component, ViewChild, OnInit, AfterViewInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core'
-import { Subscription, combineLatest } from 'rxjs'
-import { DataStorageService } from 'src/app/services/data_storage.service'
-import { UtilsService } from 'src/app/services/utils.service'
-import { MatSort, MatSortHeader } from '@angular/material/sort'
-import { MatTableDataSource, MatTableModule } from '@angular/material/table'
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core'
+import {combineLatest, Subscription} from 'rxjs'
+import {DataStorageService} from 'src/app/services/data_storage.service'
+import {UtilsService} from 'src/app/services/utils.service'
+import {MatSort, MatSortHeader} from '@angular/material/sort'
+import {MatTableDataSource, MatTableModule} from '@angular/material/table'
 
 interface TableType {
   year: number
@@ -15,7 +15,6 @@ interface TableType {
   selector: 'app-flats',
   templateUrl: './stat.component.html',
   styleUrls: ['./stat.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatTableModule, MatSort, MatSortHeader]
 })
 export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -28,7 +27,8 @@ export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private dataStorage: DataStorageService,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +54,7 @@ export class StatComponent implements OnInit, AfterViewInit, OnDestroy {
       }
       this.dataSource = new MatTableDataSource(tableData)
       this.dataSource.sort = this.sort
+      this.changeDetector.markForCheck()
     })
   }
 

@@ -1,11 +1,12 @@
-import { Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core'
-import { ActivatedRoute, Router, RouterLink } from '@angular/router'
-import { Subscription } from 'rxjs'
-import { DataStorageService } from 'src/app/services/data_storage.service'
-import { UtilsService } from 'src/app/services/utils.service'
-import { MatTabNav, MatTabLink, MatTabNavPanel } from '@angular/material/tabs'
-import { AsyncPipe } from '@angular/common'
-import { MatTableModule } from '@angular/material/table'
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core'
+import {toSignal} from '@angular/core/rxjs-interop'
+import {ActivatedRoute, Router, RouterLink} from '@angular/router'
+import {Subscription} from 'rxjs'
+import {DataStorageService} from 'src/app/services/data_storage.service'
+import {UtilsService} from 'src/app/services/utils.service'
+import {MatTabLink, MatTabNav, MatTabNavPanel} from '@angular/material/tabs'
+import {AsyncPipe} from '@angular/common'
+import {MatTableModule} from '@angular/material/table'
 
 interface TableType {
   monthIndex: number
@@ -44,7 +45,6 @@ interface FooterRowType {
   selector: 'app-calc-table',
   templateUrl: './calc-table.component.html',
   styleUrls: ['./calc-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatTabNav,
     MatTabLink,
@@ -67,21 +67,22 @@ export class CalcTableComponent implements OnInit, OnDestroy {
   footerDisplayColumns = ['month', 'hcsCost']
   footerRow: FooterRowType = this.getFooterRowInitValues()
   private calcSub?: Subscription
-  private splitSub?: Subscription
+  private readonly currentYear = toSignal(this.dataStorage.currentYear$, { requireSync: true })
+  private readonly splitYear = toSignal(this.dataStorage.splitYear$, { requireSync: true })
+  private readonly isSplitMode = toSignal(this.dataStorage.isSplitMode$, { requireSync: true })
 
   constructor(
     public dataStorage: DataStorageService,
     private utils: UtilsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private changeDetector: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    this.splitSub = this.dataStorage.isSplitMode$.subscribe(isSplitMode => {
-      if (this.splitModeTable) {
-        this.displayedColumns = this.displayedColumns.filter(it => it !== 'month')
-      }
-    })
+    if (this.splitModeTable) {
+      this.displayedColumns = this.displayedColumns.filter(it => it !== 'month')
+    }
 
     const calculations = this.splitModeTable ? this.dataStorage.splitFlatYearCalculations$ : this.dataStorage.flatYearCalculations$
     this.calcSub = calculations.subscribe(calculations => {
@@ -121,23 +122,24 @@ export class CalcTableComponent implements OnInit, OnDestroy {
         this.footerRow.overhaulCost += calc?.overhaul.cost || 0
         this.footerRow.totalCost += convertedCalc.totalCost
       }
+      this.changeDetector.markForCheck()
     })
   }
 
   getCurrentYear() {
-    return this.splitModeTable ? this.dataStorage.splitYear$.getValue() : this.dataStorage.currentYear$.getValue()
+    return this.splitModeTable ? this.splitYear() : this.currentYear()
   }
 
   getLink(year: number) {
-    if (!this.dataStorage.isSplitMode$.getValue()) {
+    if (!this.isSplitMode()) {
       return ['..', year]
     }
 
     let action = ''
     if (this.splitModeTable) {
-      action = `${this.dataStorage.currentYear$.getValue()}-${year}`
+      action = `${this.currentYear()}-${year}`
     } else {
-      action = `${year}-${this.dataStorage.splitYear$.getValue()}`
+      action = `${year}-${this.splitYear()}`
     }
 
     return ['..', action]
@@ -173,6 +175,5 @@ export class CalcTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.calcSub?.unsubscribe()
-    this.splitSub?.unsubscribe()
   }
 }

@@ -10,7 +10,7 @@
       <a mat-list-item [routerLink]="getImportDataLink()" i18n="@@layout.menu.import_data">Import data</a>
       <button mat-list-item (click)="exportData()" i18n="@@layout.menu.export_data">Export data</button>
 
-      @if (isMainPage) {
+      @if (isMainPage()) {
         <mat-list-item>
           <mat-slide-toggle [checked]="dataStorage.isSplitMode$ | async"
             (change)="switchSplitMode($event)" i18n="@@layout.menu.split_mode">Split Mode</mat-slide-toggle>

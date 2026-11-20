@@ -1,14 +1,15 @@
-import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core'
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog'
-import { ActivatedRoute, Router } from '@angular/router'
-import { Calculation, Flat } from 'src/app/interfaces/general'
-import { DataStorageService } from 'src/app/services/data_storage.service'
-import { MatCard, MatCardTitle, MatCardContent } from '@angular/material/card'
-import { MatIconAnchor, MatButton } from '@angular/material/button'
-import { MatIcon } from '@angular/material/icon'
-import { MatFormField, MatLabel } from '@angular/material/form-field'
-import { MatInput } from '@angular/material/input'
+import {Component, Inject, OnInit} from '@angular/core'
+import {toSignal} from '@angular/core/rxjs-interop'
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog'
+import {ActivatedRoute, Router} from '@angular/router'
+import {Calculation, Flat} from 'src/app/interfaces/general'
+import {DataStorageService} from 'src/app/services/data_storage.service'
+import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card'
+import {MatButton, MatIconAnchor} from '@angular/material/button'
+import {MatIcon} from '@angular/material/icon'
+import {MatFormField, MatLabel} from '@angular/material/form-field'
+import {MatInput} from '@angular/material/input'
 
 /* Convert KWats to GCal */
 const GCAL_CONST = 0.00086
@@ -22,7 +23,6 @@ interface DialogData {
 
 @Component({
   selector: 'app-edit-calc',
-  changeDetection: ChangeDetectionStrategy.Eager,
   template: ''
 })
 export class EditCalcComponent implements OnInit {
@@ -59,7 +59,6 @@ export class EditCalcComponent implements OnInit {
   selector: 'app-edit-calc-dialog',
   templateUrl: './edit-calc.component.html',
   styleUrls: ['./edit-calc.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatDialogModule,
     ReactiveFormsModule,
@@ -79,6 +78,7 @@ export class EditCalcDialog implements OnInit {
   monthName: string
   form: FormGroup
   currentFlat: Flat
+  private readonly currentYear = toSignal(this.dataStorage.currentYear$, { requireSync: true })
   autoCalcProps = [
     'hcs.electricityVolumeMonthly',
     'water.hotVolumeMonthly', 'water.coldVolumeMonthly',
@@ -165,7 +165,7 @@ export class EditCalcDialog implements OnInit {
   }
 
   getTitle() {
-    const currentYear = this.dataStorage.currentYear$.getValue()
+    const currentYear = this.currentYear()
     if (this.data.calculation) {
       return $localize`:@@main.edit-calc.edit_title:Edit calculation for ${this.monthName} ${currentYear}`
     }

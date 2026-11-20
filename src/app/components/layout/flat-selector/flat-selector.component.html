@@ -1,6 +1,6 @@
 <mat-form-field class="main">
   <mat-label i18n="@@layout.flat-selector.flat">Flat</mat-label>
-  <mat-select [value]="currentFlatId" (selectionChange)="onChangeFlat($event)">
+  <mat-select [value]="(dataStorage.currentFlat$ | async)?.id" (selectionChange)="onChangeFlat($event)">
     @for (flat of dataStorage.flats$ | async; track flat) {
       <mat-option [value]="flat.id">
         {{ flat.address }} ({{ flat.number }})
